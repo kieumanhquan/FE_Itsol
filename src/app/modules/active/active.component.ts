@@ -6,11 +6,11 @@ import { TokenService } from '../../@core/services/token.service';
 import {User} from '../../@core/models/user';
 
 @Component({
-  selector: 'ngx-regis',
-  templateUrl: './regis.component.html',
-  styleUrls: ['./regis.component.scss'],
+  selector: 'ngx-active',
+  templateUrl: './active.component.html',
+  styleUrls: ['./active.component.scss'],
 })
-export class RegisComponent implements OnInit {
+export class ActiveComponent implements OnInit {
   user: User;
   // eslint-disable-next-line @typescript-eslint/naming-convention
   FormRegis: FormGroup;

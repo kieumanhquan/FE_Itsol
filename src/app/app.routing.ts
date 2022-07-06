@@ -25,13 +25,17 @@ export const routes: Routes = [
     path: 'signup',
     loadChildren: () => import('./modules/regis/regis.module').then(m => m.RegisModule),
   },
+  {
+    path: 'public/active_account/{}',
+    loadChildren: () => import('./modules/active/active.module').then(m => m.ActiveModule),
+  },
   { path: '',
     redirectTo: 'home',
     pathMatch: 'full',
   },
-  { path: '**',
-    redirectTo: 'home',
-  },
+  // { path: '**',
+  //   redirectTo: 'home',
+  // },
 ];
 
 const config: ExtraOptions = {

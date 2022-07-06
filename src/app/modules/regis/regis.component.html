@@ -20,6 +20,7 @@
             <input id="p-inputtext-lg" required email class="custom-input" formControlName="email" type="email"
                    pInputText />
             <label for="p-inputtext-lg">Email</label>
+            <span class="error" *ngIf="error">Email is exist</span>
             <span class="error" *ngIf="FormRegis.get('email').invalid && FormRegis.get('email').touched">Email is required</span>
           </div>
 
@@ -51,43 +52,30 @@
 
         </form>
       </div>
+        </div>
     </div>
-  </div>
-  <div
-    class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
-    <!-- Copyright -->
-    <div class="text-white mb-3 mb-md-0">
-      Mockup 1 - Java32 - ITSOL
-    </div>
-    <!-- Copyright -->
+      <div
+        class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+        <!-- Copyright -->
+        <div class="text-white mb-3 mb-md-0">
+          Mockup 1 - Java32 - ITSOL
+        </div>
+        <!-- Copyright -->
 
         <!-- Right -->
         <div>
-            <a href="#!" class="text-white me-4">
-                <i class="pi pi-facebook"></i>
-            </a>
-            <a href="#!" class="text-white me-4">
-                <i class="pi pi-twitter"></i>
-            </a>
-            <a href="#!" class="text-white">
-                <i class="pi pi-linkedin"></i>
-            </a>
+          <a href="#!" class="text-white me-4">
+            <i class="pi pi-facebook"></i>
+          </a>
+          <a href="#!" class="text-white me-4">
+            <i class="pi pi-twitter"></i>
+          </a>
+          <a href="#!" class="text-white">
+            <i class="pi pi-linkedin"></i>
+          </a>
         </div>
+      </div>
+    </div>
+  </div>
         <!-- Right -->
-    </div>
-    <!-- Right -->
-    <div>
-      <a href="#!" class="text-white me-4">
-        <i class="pi pi-facebook"></i>
-      </a>
-      <a href="#!" class="text-white me-4">
-        <i class="pi pi-twitter"></i>
-      </a>
-      <a href="#!" class="text-white">
-        <i class="pi pi-linkedin"></i>
-      </a>
-    </div>
-    <!-- Right -->
-  </div>
-  </div>
 </section>
