@@ -5,16 +5,24 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
+import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 const routes: Routes = [{
   path: '',
   component: AuthComponent,
   children: [],
-}];
+},
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
+  },
+];
 
 @NgModule({
   declarations: [
     AuthComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     CommonModule,
@@ -22,6 +30,7 @@ const routes: Routes = [{
     ButtonModule,
     InputTextModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
   ],
 })
 export class AuthModule { }
