@@ -1,7 +1,6 @@
-import { ExtraOptions, RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
-
-import { AuthGuard } from './@core/guards/auth.guard';
+import {ExtraOptions, RouterModule, Routes} from '@angular/router';
+import {NgModule} from '@angular/core';
+import {AuthGuard} from './@core/guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -13,13 +12,11 @@ export const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule),
   },
-  { path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  },
-  { path: '**',
+  {
+    path: '**',
     redirectTo: 'home',
   },
+
 ];
 
 const config: ExtraOptions = {

@@ -21,7 +21,6 @@ const routes: Routes = [{
       path: 'profile',
       component: ProfileComponent,
     },
-
   ],
 }];
 
@@ -37,7 +36,7 @@ const routes: Routes = [{
     NbMenuModule,
     ReactiveFormsModule,
     PrimengModule,
-    SharedModule
+    SharedModule,
   ],
 })
 export class HomeModule { }
