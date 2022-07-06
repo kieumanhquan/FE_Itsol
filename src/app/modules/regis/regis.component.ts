@@ -3,11 +3,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisService } from '../../@core/services/regis.service';
 import { TokenService } from '../../@core/services/token.service';
+<<<<<<< HEAD
 import {User} from '../../@core/models/user';
+=======
+import {User} from "../../@core/models/user";
+>>>>>>> 417d7ae3087857c53131115fda16f81491d9993a
 
 @Component({
   selector: 'ngx-regis',
   templateUrl: './regis.component.html',
+  styleUrls: ['./regis.component.scss']
   styleUrls: ['./regis.component.scss'],
 })
 export class RegisComponent implements OnInit {
@@ -44,6 +49,10 @@ export class RegisComponent implements OnInit {
     });
   }
 
+  get f() {
+    return this.FormRegis.controls;
+  }
+
   // eslint-disable-next-line @typescript-eslint/member-ordering
   get f() {
     return this.FormRegis.controls;
@@ -62,11 +71,11 @@ export class RegisComponent implements OnInit {
     if (this.FormRegis.valid) {
       this.regisService.regis(this.user)
         .then (data => {
-          console.log(data);
-          alert('đăng kí tài khoản thành công, mời vào email để active tài khoản');
-          this.router.navigate(['/home/']);
-        },
-        error => console.log(error));
+            console.log(data);
+            alert("đăng kí tài khoản thành công, mời vào email để active tài khoản");
+            this.router.navigate(['/home/']);
+          },
+          error => console.log(error));
     }
   }
 }
