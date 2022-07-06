@@ -2,6 +2,8 @@ import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { AuthGuard } from './@core/guards/auth.guard';
+import {PublicModule} from './modules/Public/public.module';
+
 
 export const routes: Routes = [
   {
@@ -18,7 +20,11 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   { path: '**',
-    redirectTo: 'home',
+    redirectTo: 'publ',
+  },
+  {
+    path: 'public',
+    loadChildren: () => import('./modules/Public/public.module').then(m =>PublicModule),
   },
 ];
 
