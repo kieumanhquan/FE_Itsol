@@ -28,6 +28,10 @@ export const routes: Routes = [
   { path: '**',
     redirectTo: 'home',
   },
+  {
+    path: 'signup',
+    loadChildren: () => import('./modules/regis/regis.module').then(m => m.RegisModule),
+  },
 ];
 
 const config: ExtraOptions = {
