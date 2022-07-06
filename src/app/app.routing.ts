@@ -13,6 +13,10 @@ export const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule),
   },
+  {
+    path: 'signup',
+    loadChildren: () => import('./modules/regis/regis.module').then(m => m.RegisModule),
+  },
   { path: '',
     redirectTo: 'home',
     pathMatch: 'full',
