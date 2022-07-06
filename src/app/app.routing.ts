@@ -18,7 +18,7 @@ export const routes: Routes = [
   },
   {
     path: 'public',
-    loadChildren: () => import('./modules/public/public.module').then(m => PublicModule),
+    loadChildren: () => import('./modules/public/public.module').then(m => m.PublicModule),
   },
   { path: '',
     redirectTo: 'home',
