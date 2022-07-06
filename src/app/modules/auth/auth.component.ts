@@ -39,6 +39,7 @@ export class AuthComponent implements OnInit {
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   get f() {
     return this.formLogin.controls;
   }

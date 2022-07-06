@@ -24,6 +24,8 @@ import {
 import { TokenInterceptor } from './@core/services/interceptor.service';
 
 
+import { TokenInterceptor } from './@core/services/interceptor.service';
+
 const configToast: any = {
   timeOut: 3000,
   positionClass: 'toast-top-right',

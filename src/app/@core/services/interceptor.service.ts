@@ -31,7 +31,7 @@ export class TokenInterceptor implements HttpInterceptor {
         catchError((error: HttpErrorResponse) => {
           if(error['status']===403){
             this.http.removeToken,
-            this.router.navigate(['/auth']);
+              this.router.navigate(['/auth']);
           }
           return throwError(error);
         }),
