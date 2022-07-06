@@ -1,7 +1,7 @@
-import { ExtraOptions, RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
-
-import { AuthGuard } from './@core/guards/auth.guard';
+import {ExtraOptions, RouterModule, Routes} from '@angular/router';
+import {NgModule} from '@angular/core';
+import {AuthGuard} from './@core/guards/auth.guard';
+import {PublicModule} from './modules/Public/public.module';
 
 export const routes: Routes = [
   {
@@ -13,13 +13,31 @@ export const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule),
   },
+
+  // {
+  //   path: '**',
+  //   redirectTo: 'home',
+  // },
+
+  // { path: '**',
+  //   redirectTo: 'public',
+  // },
+  {
+    path: 'public',
+    loadChildren: () => import('./modules/public/public.module').then(m => PublicModule),
+  },
   { path: '',
     redirectTo: 'home',
     pathMatch: 'full',
   },
-  { path: '**',
-    redirectTo: 'home',
+  // { path: '**',
+  //   redirectTo: 'home',
+  // },
+  {
+    path: 'signup',
+    loadChildren: () => import('./modules/regis/regis.module').then(m => m.RegisModule),
   },
+
 ];
 
 const config: ExtraOptions = {
