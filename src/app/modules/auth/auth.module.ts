@@ -21,7 +21,7 @@ const routes: Routes = [{
     RouterModule.forChild(routes),
     ButtonModule,
     InputTextModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+  ],
 })
 export class AuthModule { }
