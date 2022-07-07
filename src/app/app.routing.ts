@@ -20,7 +20,7 @@ export const routes: Routes = [
   // },
   {
     path: 'public',
-    canActivate: [AuthGuard ],
+    // canActivate: [AuthGuard ],
     loadChildren: () => import('./modules/public/public.module').then(m => m.PublicModule),
   },
   { path: '',
