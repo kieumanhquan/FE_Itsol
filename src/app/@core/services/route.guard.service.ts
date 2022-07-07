@@ -10,6 +10,7 @@ export class RouteGuardService implements CanActivate{
     const  tokenIf = JSON.parse(localStorage.getItem('user'));
     const routes = tokenIf.auth;
     if (routes === 'ROLE_ADMIN') {
+      console.log(routes);
       return true;
     } else {
       this.route.navigate(['/public']);

@@ -11,7 +11,7 @@ import jwt_decode from 'jwt-decode';
   styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent implements OnInit {
-
+hide: boolean;
   formLogin: FormGroup;
   isSubmitted = false;
   roles: string[] = [];
@@ -35,7 +35,8 @@ export class AuthComponent implements OnInit {
   initForm() {
     this.formLogin = this.fb.group({
       userName: ['', Validators.required],
-      password: ['', Validators.required],
+      // eslint-disable-next-line max-len
+      password: ['', [Validators.required , Validators.minLength(6) , Validators.maxLength(8)]],
     });
   }
 
@@ -46,6 +47,10 @@ export class AuthComponent implements OnInit {
 
 
   onSubmit() {
+    if(!this.formLogin.valid){
+      this.hide=false;
+      console.log(this.hide);
+    }
     this.isSubmitted = true;
     if (this.formLogin.valid) {
       this.authService.login(this.formLogin.value).subscribe(
@@ -65,6 +70,7 @@ export class AuthComponent implements OnInit {
             const role = userinfo.auth;
             console.log(role);
             if(role === 'ROLE_ADMIN' ){
+              console.log('aaa');
               this.router.navigate(['/home']);
             } else if(role === 'ROLE_USER'){
               this.router.navigate(['/public']);

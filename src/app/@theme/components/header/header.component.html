@@ -4,7 +4,6 @@
       <nb-icon icon="menu-2-outline"></nb-icon>
     </a>
     <a class="logo" href="#" (click)="navigateHome()">Mockup 1</a>
-
   </div>
   <nb-select [selected]="currentTheme" (selectedChange)="changeTheme($event)" status="primary">
     <nb-option *ngFor="let theme of themes" [value]="theme.value"> {{ theme.name }}</nb-option>
@@ -25,7 +24,6 @@
                [name]="'Xin chào' + ' ' +name"
                [picture]="'data:image/png;base64,'+picture">
       </nb-user>
-
     </nb-action>
 
   </nb-actions>
