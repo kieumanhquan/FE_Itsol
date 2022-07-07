@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisService } from '../../@core/services/regis.service';
 import { TokenService } from '../../@core/services/token.service';
@@ -37,11 +37,11 @@ export class RegisComponent implements OnInit {
 
   initForm() {
     this.FormRegis = this.fb.group({
-      fullname: ['', [Validators.required]],
-      email: ['', [Validators.required,Validators.email]],
-      phonenum: ['', [Validators.required, Validators.pattern('^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$')]],
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required,Validators.min(6),Validators.max(8)]],
+      fullname: new FormControl('', [Validators.required]),
+      email: new FormControl( '', [Validators.required,Validators.email]),
+      phonenum: new FormControl('', [Validators.required, Validators.pattern('^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$')]),
+      username: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required,Validators.minLength(8),Validators.maxLength(16),Validators.pattern('(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!#^~%*?&,.<>"\'\\;:\{\\\}\\\[\\\]\\\|\\\+\\\-\\\=\\\_\\\)\\\(\\\)\\\`\\\/\\\\\\]])[A-Za-z0-9\d$@].{7,}')]),
     });
   }
 
@@ -53,6 +53,9 @@ export class RegisComponent implements OnInit {
 
   onSubmit() {
     this.isSubmitted = true;
+    setTimeout(() => {
+      this.isSubmitted = false;
+    }, 4000);
     this.user = new User(
       this.FormRegis.value.fullname,
       this.FormRegis.value.email,
@@ -77,4 +80,5 @@ export class RegisComponent implements OnInit {
     );
     }
   }
+
 }
