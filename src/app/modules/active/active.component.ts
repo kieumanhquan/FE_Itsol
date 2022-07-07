@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { RegisService } from '../../@core/services/regis.service';
 import { TokenService } from '../../@core/services/token.service';
 import {User} from '../../@core/models/user';
+import {ActivatedRoute} from '@angular/router';
+import {ActiveService} from '../../@core/services/active.service';
+import jwtDecode from "jwt-decode";
 
 @Component({
   selector: 'ngx-active',
@@ -18,60 +21,33 @@ export class ActiveComponent implements OnInit {
   roles: string[] = [];
   isLoggedIn = false;
   error = null;
+  id: number;
 
   constructor(private fb: FormBuilder,
               private regisService: RegisService,
               private tokenService: TokenService,
               private router: Router,
+              private at: ActivatedRoute,
+              private activeService: ActiveService,
   ) {
   }
 
   ngOnInit(): void {
-    this.initForm();
-    if (this.tokenService.getToken()) {
-      this.isLoggedIn = true;
-      // this.roles = this.tokenService.getUser().roles;
-    }
-
+    this.id = this.at.snapshot.params['id'];
   }
 
-  initForm() {
-    this.FormRegis = this.fb.group({
-      fullname: ['', [Validators.required]],
-      email: ['', [Validators.required,Validators.email]],
-      phonenum: ['', [Validators.required]],
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-    });
-  }
+  active() {
+    this.activeService.updateActive(this.id).toPromise()
+      .then(data => {
 
-  // eslint-disable-next-line @typescript-eslint/member-ordering
-  get f() {
-    return this.FormRegis.controls;
-  }
-  // eslint-disable-next-line @typescript-eslint/member-ordering
-
-  onSubmit() {
-    this.isSubmitted = true;
-    this.user = new User(
-      this.FormRegis.value.fullname,
-      this.FormRegis.value.email,
-      this.FormRegis.value.phonenum,
-      this.FormRegis.value.username,
-      this.FormRegis.value.password,
-    );
-    if (this.FormRegis.valid) {
-      console.log("ok");
-      this.regisService.regis(this.user)
-        .then (data => {
-            console.log(data);
-            alert('đăng kí tài khoản thành công, mời vào email để active tài khoản');
-            this.router.navigate(['/home/']);
-          })
-        .catch(error => {
-          this.error = error.message;
-          },
-    );
-    }
+      console.log(data);
+      alert('active tài khoản thành công, bấm OK để đăng nhập');
+      this.router.navigate(['/home/']);
+    })
+      .catch(error => {
+          this.error = error.status;
+        },
+      );
   }
 }
+

@@ -39,9 +39,9 @@ export class RegisComponent implements OnInit {
     this.FormRegis = this.fb.group({
       fullname: ['', [Validators.required]],
       email: ['', [Validators.required,Validators.email]],
-      phonenum: ['', [Validators.required]],
+      phonenum: ['', [Validators.required, Validators.pattern('^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$')]],
       username: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      password: ['', [Validators.required,Validators.min(6),Validators.max(8)]],
     });
   }
 
@@ -61,15 +61,18 @@ export class RegisComponent implements OnInit {
       this.FormRegis.value.password,
     );
     if (this.FormRegis.valid) {
+      this.error = null;
       console.log("ok");
+      // show html truoc khi gui sang service
       this.regisService.regis(this.user)
         .then (data => {
+
             console.log(data);
             alert('đăng kí tài khoản thành công, mời vào email để active tài khoản');
             this.router.navigate(['/home/']);
           })
         .catch(error => {
-          this.error = error.message;
+          this.error = error.status;
           },
     );
     }

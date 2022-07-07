@@ -1,48 +1,49 @@
 <section class="vh-100">
   <div class="container-fluid h-custom">
     <div class="row d-flex justify-content-center align-items-center h-100">
-    <div class="container-fluid h-custom">
-        <div class="row d-flex justify-content-center align-items-center h-100">
 
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
         <form [formGroup]="FormRegis">
 
-          <!-- Email input -->
+          <!-- Full Name input -->
           <div class="p-float-label mb-4">
             <input id="p-inputtext-lg" class="custom-input" formControlName="fullname" type="text"
                    pInputText>
             <label for="p-inputtext-lg">Họ và tên</label>
-            <span class="error" *ngIf="FormRegis.get('fullname').invalid && FormRegis.get('fullname').touched">FullName is required</span>
+            <span class="error" *ngIf="FormRegis.get('fullname').invalid && FormRegis.get('fullname').touched">Không được bỏ trống tên </span>
           </div>
 
-          <!-- Password input -->
-          <div class="p-float-label custom-input mb-3">
+          <!-- Email input -->
+          <div class="p-float-label custom-input mb-4">
             <input id="p-inputtext-lg" required email class="custom-input" formControlName="email" type="email"
                    pInputText />
             <label for="p-inputtext-lg">Email</label>
-            <span class="error" *ngIf="error">Email is exist</span>
-            <span class="error" *ngIf="FormRegis.get('email').invalid && FormRegis.get('email').touched">Email is required</span>
+            <span class="error" *ngIf="error === 400">Email này đã được đăng ký</span>
+            <span class="error" *ngIf="FormRegis.get('email').invalid && FormRegis.get('email').touched">Email không hợp lệ</span>
           </div>
 
-
-          <div class="p-float-label custom-input mb-3">
+          <div class="p-float-label custom-input mb-4">
             <input id="p-inputtext-lg" class="custom-input" formControlName="phonenum" type="phone"
                    pInputText />
             <label for="p-inputtext-lg">Số điện thoại</label>
-            <span class="error"  *ngIf="FormRegis.get('phonenum').invalid && FormRegis.get('phonenum').touched">Phone number is required</span>
+            <span class="error" *ngIf="error === 401">Số điện thoại đã tồn tại</span>
+            <span class="error"  *ngIf="FormRegis.get('phonenum').invalid && FormRegis.get('phonenum').touched">Số điện thoại không đúng định dạng</span>
           </div>
 
-          <div class="p-float-label custom-input mb-3">
+
+          <div class="p-float-label custom-input mb-4">
             <input id="p-inputtext-lg" class="custom-input" formControlName="username" type="text"
                    pInputText />
             <label for="p-inputtext-lg">User name</label>
-            <span class="error" *ngIf="FormRegis.get('username').invalid && FormRegis.get('username').touched">User name is required</span>
+            <span class="error" *ngIf="FormRegis.get('username').invalid && FormRegis.get('username').touched">Tên người dùng không hợp lệ</span>
+            <span class="error" *ngIf="error === 403">Tên người dùng đã tồn tại</span>
           </div>
-          <div class="p-float-label custom-input mb-3">
+
+          <div class="p-float-label custom-input mb-4">
             <input id="p-inputtext-lg" class="custom-input" formControlName="password" type="password"
                    pInputText />
             <label for="p-inputtext-lg">Mật khẩu</label>
-            <span class="error" *ngIf="FormRegis.get('password').invalid && FormRegis.get('password').touched">Password is required</span>
+            <span class="error" *ngIf="FormRegis.get('password').invalid && FormRegis.get('password').touched">Mật khẩu không đủ mạnh, mật khẩu phải từ 6-8 kí tự</span>
           </div>
 
 
@@ -52,30 +53,28 @@
 
         </form>
       </div>
-        </div>
-    </div>
-      <div
-        class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
-        <!-- Copyright -->
-        <div class="text-white mb-3 mb-md-0">
-          Mockup 1 - Java32 - ITSOL
-        </div>
-        <!-- Copyright -->
-
-        <!-- Right -->
-        <div>
-          <a href="#!" class="text-white me-4">
-            <i class="pi pi-facebook"></i>
-          </a>
-          <a href="#!" class="text-white me-4">
-            <i class="pi pi-twitter"></i>
-          </a>
-          <a href="#!" class="text-white">
-            <i class="pi pi-linkedin"></i>
-          </a>
-        </div>
-      </div>
     </div>
   </div>
-        <!-- Right -->
+  <div
+    class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+    <!-- Copyright -->
+    <div class="text-white mb-3 mb-md-0">
+      Mockup 1 - Java32 - ITSOL
+    </div>
+    <!-- Copyright -->
+
+    <!-- Right -->
+    <div>
+      <a href="#!" class="text-white me-4">
+        <i class="pi pi-facebook"></i>
+      </a>
+      <a href="#!" class="text-white me-4">
+        <i class="pi pi-twitter"></i>
+      </a>
+      <a href="#!" class="text-white">
+        <i class="pi pi-linkedin"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </div>
 </section>

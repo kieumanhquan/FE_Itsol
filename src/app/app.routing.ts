@@ -26,16 +26,14 @@ export const routes: Routes = [
     loadChildren: () => import('./modules/regis/regis.module').then(m => m.RegisModule),
   },
   {
-    path: 'public/active_account/{}',
+    path: 'public/active_account/:id',
     loadChildren: () => import('./modules/active/active.module').then(m => m.ActiveModule),
   },
   { path: '',
     redirectTo: 'home',
     pathMatch: 'full',
   },
-  // { path: '**',
-  //   redirectTo: 'home',
-  // },
+
 ];
 
 const config: ExtraOptions = {
