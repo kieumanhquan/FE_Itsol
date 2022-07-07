@@ -30,6 +30,7 @@ export class TokenInterceptor implements HttpInterceptor {
         }),
         catchError((error: HttpErrorResponse) => {
           if(error['status']===403){
+            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
             this.http.removeToken,
               this.router.navigate(['/auth']);
           }

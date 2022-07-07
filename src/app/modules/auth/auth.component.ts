@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injectable, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../@core/services/auth.service';
 import { TokenService } from '../../@core/services/token.service';
-import jwtDecode from 'jwt-decode';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'ngx-auth',
@@ -50,14 +50,28 @@ export class AuthComponent implements OnInit {
     if (this.formLogin.valid) {
       this.authService.login(this.formLogin.value).subscribe(
         data => {
+          console.log(data);
           this.isLoggedIn = true;
+          // save token sisson
           this.tokenService.saveToken(data.token);
-          this.tokenService.saveUser(jwtDecode(data.token));
-          // this.roles = this.tokenService.getUser().roles;
-          this.router.navigate(['/home/']);
+          this.tokenService.saveUser(jwt_decode(data.token));
+          // save user localstorage
+          const user = JSON.stringify(jwt_decode(data.token));
+          localStorage.setItem('user', user);
+          // router
+          if(localStorage.getItem('user')!=null){
+            const userinfo = JSON.parse(localStorage.getItem('user'));
+            // lấy ra auth để router
+            const role = userinfo.auth;
+            console.log(role);
+            if(role === 'ROLE_ADMIN' ){
+              this.router.navigate(['/home']);
+            } else if(role === 'ROLE_USER'){
+              this.router.navigate(['/public']);
+            }
+          }
         },
       );
     }
   }
-
 }
