@@ -23,17 +23,19 @@ export const routes: Routes = [
     // canActivate: [AuthGuard ],
     loadChildren: () => import('./modules/public/public.module').then(m => m.PublicModule),
   },
-  { path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  },
-  { path: '**',
-    redirectTo: 'home',
-  },
   {
     path: 'signup',
     loadChildren: () => import('./modules/regis/regis.module').then(m => m.RegisModule),
   },
+  {
+    path: 'public/active_account/:id',
+    loadChildren: () => import('./modules/active/active.module').then(m => m.ActiveModule),
+  },
+  { path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
+
 ];
 
 const config: ExtraOptions = {

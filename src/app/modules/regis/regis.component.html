@@ -5,42 +5,56 @@
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
         <form [formGroup]="FormRegis">
 
-          <!-- Email input -->
+          <!-- Full Name input -->
           <div class="p-float-label mb-4">
-            <input id="p-inputtext-lg" class="custom-input" formControlName="fullname" type="text"
+            <input id="p-inputtext-lg3" class="custom-input" formControlName="fullname" type="text"
                    pInputText>
-            <label for="p-inputtext-lg">Họ và tên</label>
+            <label for="p-inputtext-lg3">Họ và tên</label>
+            <span class="error" *ngIf="FormRegis.controls.fullname.errors?.required && FormRegis.get('fullname').touched">Không được bỏ trống tên </span>
           </div>
 
-          <!-- Password input -->
-          <div class="p-float-label custom-input mb-3">
-            <input id="p-inputtext-lg" class="custom-input" formControlName="email" type="text"
+          <!-- Email input -->
+          <div class="p-float-label custom-input mb-4">
+            <input id="p-inputtext-lg" required email class="custom-input" formControlName="email" type="email"
                    pInputText />
             <label for="p-inputtext-lg">Email</label>
+            <span class="error" *ngIf="error === 400">Email đã tồn tại</span>
+            <span class="error" *ngIf="FormRegis.controls.email.errors?.email && FormRegis.get('email').touched">Email không hợp lệ</span>
+            <span class="error" *ngIf="FormRegis.controls.email.errors?.required && FormRegis.get('email').touched">Không được bỏ trống email</span>
           </div>
 
-          <div class="p-float-label custom-input mb-3">
-            <input id="p-inputtext-lg" class="custom-input" formControlName="phonenum" type="text"
+          <div class="p-float-label custom-input mb-4">
+            <input id="p-inputtext-lg0" class="custom-input" formControlName="phonenum" type="phone"
                    pInputText />
-            <label for="p-inputtext-lg">Số điện thoại</label>
+            <label for="p-inputtext-lg0">Số điện thoại</label>
+            <span class="error" *ngIf="error === 401">Số điện thoại đã tồn tại</span>
+            <span class="error"  *ngIf="FormRegis.controls.phonenum.errors?.required && FormRegis.controls.phonenum.touched">Không được bỏ trống số điện thoại</span>
+            <span class="error"  *ngIf="FormRegis.controls.phonenum.errors?.pattern && FormRegis.controls.phonenum.touched">Định dạng số điện thoại không hợp lệ</span>
           </div>
 
-          <div class="p-float-label custom-input mb-3">
-            <input id="p-inputtext-lg" class="custom-input" formControlName="username" type="text"
+
+          <div class="p-float-label custom-input mb-4">
+            <input id="p-inputtext-lg1" class="custom-input" formControlName="username" type="text"
                    pInputText />
-            <label for="p-inputtext-lg">User name</label>
+            <label for="p-inputtext-lg1">User name</label>
+            <span class="error" *ngIf="FormRegis.controls.username.errors?.required && FormRegis.controls.username.touched">Không được bỏ trống tên</span>
+            <span class="error" *ngIf="error === 403">Tên người dùng đã tồn tại</span>
           </div>
-          <div class="p-float-label custom-input mb-3">
-            <input id="p-inputtext-lg" class="custom-input" formControlName="password" type="text"
+
+          <div class="p-float-label custom-input mb-4">
+            <input id="p-inputtext-lg5" class="custom-input" formControlName="password" type="password"
                    pInputText />
-            <label for="p-inputtext-lg">Mật khẩu</label>
-          </div>
+            <label for="p-inputtext-lg5">Mật khẩu</label>
+            <span class="error" *ngIf="FormRegis.controls.password.errors?.required && FormRegis.controls.password.touched">Không được để trống mật khẩu</span>
+            <span class="error" *ngIf="FormRegis.controls.password.errors?.pattern && FormRegis.controls.password.touched">Mật khẩu phải chứa cả chữ, số và ký tự đặc biệt <br> </span>
+            <span class="error" *ngIf="FormRegis.controls.password.errors?.minlength && FormRegis.controls.password.touched">Mật khẩu phải từ 8-16 kí tự</span>
+            <span class="error" *ngIf="FormRegis.controls.password.errors?.maxlength && FormRegis.controls.password.touched">Mật khẩu phải từ 8-16 kí tự</span></div>
 
 
           <div class="text-center text-lg-start mt-4 pt-2">
-            <button pButton type="button" label="Đăng Ký" (click)="onSubmit()"></button>
+            <button [disabled]="FormRegis.invalid" pButton type="button" label="Đăng Ký" (click)="onSubmit()"><div  *ngIf="isSubmitted && error ===null" class="spinner-border spinner-border-sm"  role="status">
+            </div></button>
           </div>
-
         </form>
       </div>
     </div>
