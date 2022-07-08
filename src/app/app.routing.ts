@@ -5,6 +5,9 @@ import { AuthGuard } from './@core/guards/auth.guard';
 import {RouteGuardService} from './@core/services/route.guard.service';
 
 
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
 export const routes: Routes = [
   {
     path: 'home',
@@ -35,7 +38,18 @@ export const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
-
+  // { path: '**',
+  //   redirectTo: 'home',
+  // },
+  {
+    path: 'signup',
+    loadChildren: () => import('./modules/regis/regis.module').then(m => m.RegisModule),
+  },
+  {
+    path:'change-password',
+    // eslint-disable-next-line max-len
+    loadChildren: () => import('./modules/auth/forgot-password/change-password/change-password.module').then(m => m.ChangePasswordModule),
+  },
 ];
 
 const config: ExtraOptions = {

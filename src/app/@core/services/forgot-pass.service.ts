@@ -16,6 +16,7 @@ const httpOptions = {
 })
 export class ForgotPasswordService {
   private readonly baseUrl = `${environment.apiUrl}auth/`;
+  email: string;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -23,4 +24,11 @@ export class ForgotPasswordService {
   public sendOTP(email: any): Observable<any> {
     return this.http.post(`${this.baseUrl}send-otp?email=${email}`, '');
   }
+  public tranferMail(email: string){
+    this.email = email;
+  }
+  public changePassword(data:any):Observable<any>{
+    return this.http.post(`${this.baseUrl}change-password`, data);
+  }
+
 }

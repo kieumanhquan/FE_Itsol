@@ -62,4 +62,5 @@ const configToast: any = {
   ],
 })
 export class AppModule {
+
 }
