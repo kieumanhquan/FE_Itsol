@@ -2,12 +2,13 @@ import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { AuthGuard } from './@core/guards/auth.guard';
-import {PublicModule} from './modules/Public/public.module';
+import {RouteGuardService} from './@core/services/route.guard.service';
+
 
 export const routes: Routes = [
   {
     path: 'home',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard ,RouteGuardService],
     loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule),
   },
   {
@@ -19,7 +20,8 @@ export const routes: Routes = [
   // },
   {
     path: 'public',
-    loadChildren: () => import('./modules/public/public.module').then(m => PublicModule),
+    // canActivate: [AuthGuard ],
+    loadChildren: () => import('./modules/public/public.module').then(m => m.PublicModule),
   },
   {
     path: 'signup',

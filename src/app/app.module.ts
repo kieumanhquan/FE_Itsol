@@ -21,8 +21,8 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
-
 import { TokenInterceptor } from './@core/services/interceptor.service';
+import {RouteGuardService} from './@core/services/route.guard.service';
 
 const configToast: any = {
   timeOut: 3000,
@@ -57,8 +57,9 @@ const configToast: any = {
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
-    multi:true
-  }]
+    multi:true,
+  },RouteGuardService,
+  ],
 })
 export class AppModule {
 }
