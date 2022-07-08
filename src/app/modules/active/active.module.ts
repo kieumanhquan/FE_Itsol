@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RegisComponent } from './regis.component';
+import { ActiveComponent } from './active.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
@@ -8,13 +8,13 @@ import {InputTextModule} from 'primeng/inputtext';
 
 const routes: Routes = [{
   path: '',
-  component: RegisComponent,
+  component: ActiveComponent,
   children: [],
 }];
 
 @NgModule({
   declarations: [
-    RegisComponent,
+    ActiveComponent,
   ],
   imports: [
     CommonModule,
@@ -24,4 +24,4 @@ const routes: Routes = [{
     ReactiveFormsModule,
   ],
 })
-export class RegisModule { }
+export class ActiveModule { }
