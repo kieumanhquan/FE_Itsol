@@ -55,7 +55,7 @@ export class RegisComponent implements OnInit {
     this.isSubmitted = true;
     setTimeout(() => {
       this.isSubmitted = false;
-    }, 4000);
+    }, 4200);
     this.user = new User(
       this.FormRegis.value.fullname,
       this.FormRegis.value.email,
