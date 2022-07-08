@@ -55,7 +55,7 @@ export class RegisComponent implements OnInit {
     this.isSubmitted = true;
     setTimeout(() => {
       this.isSubmitted = false;
-    }, 4200);
+    }, 3000);
     this.user = new User(
       this.FormRegis.value.fullname,
       this.FormRegis.value.email,
@@ -69,7 +69,6 @@ export class RegisComponent implements OnInit {
       // show html truoc khi gui sang service
       this.regisService.regis(this.user)
         .then (data => {
-
             console.log(data);
             alert('đăng kí tài khoản thành công, mời vào email để active tài khoản');
             this.router.navigate(['/home/']);

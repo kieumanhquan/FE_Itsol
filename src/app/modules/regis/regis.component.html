@@ -52,7 +52,7 @@
 
 
           <div class="text-center text-lg-start mt-4 pt-2">
-            <button [disabled]="FormRegis.invalid" pButton type="button" label="Đăng Ký" (click)="onSubmit()"><div  *ngIf="isSubmitted" class="spinner-border spinner-border-sm"  role="status">
+            <button [disabled]="FormRegis.invalid" pButton type="button" label="Đăng Ký" (click)="onSubmit()"><div  *ngIf="isSubmitted && error ===null" class="spinner-border spinner-border-sm"  role="status">
             </div></button>
           </div>
         </form>
