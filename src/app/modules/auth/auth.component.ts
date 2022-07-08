@@ -1,5 +1,5 @@
 import {Component, Injectable, OnInit} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../@core/services/auth.service';
 import { TokenService } from '../../@core/services/token.service';
@@ -16,6 +16,7 @@ hide: boolean;
   isSubmitted = false;
   roles: string[] = [];
   isLoggedIn = false;
+  private message: string;
 
   constructor(private fb: FormBuilder,
     private authService: AuthService,
@@ -33,11 +34,17 @@ hide: boolean;
   }
 
   initForm() {
-    this.formLogin = this.fb.group({
-      userName: ['', Validators.required],
-      // eslint-disable-next-line max-len
-      password: ['', [Validators.required , Validators.minLength(6) , Validators.maxLength(8)]],
-    });
+      this.formLogin = this.fb.group({
+        userName: new FormControl('', [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(20),
+        ]),
+        password: new FormControl('', [
+          Validators.required,
+          Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,16}$'),
+        ]),
+      });
   }
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
@@ -47,10 +54,7 @@ hide: boolean;
 
 
   onSubmit() {
-    if(!this.formLogin.valid){
-      this.hide=false;
-      console.log(this.hide);
-    }
+
     this.isSubmitted = true;
     if (this.formLogin.valid) {
       this.authService.login(this.formLogin.value).subscribe(
@@ -75,6 +79,16 @@ hide: boolean;
             } else if(role === 'ROLE_USER'){
               this.router.navigate(['/public']);
             }
+          }
+        },
+        (error) => {
+          console.log(error);
+
+          if (error.status === '400') {
+            this.message = 'Tài khoản hoặc mật khẩu sai.';
+          }
+          if (error.status === '401') {
+            this.message = 'Tài khoản hoặc mật khẩu sai.';
           }
         },
       );
