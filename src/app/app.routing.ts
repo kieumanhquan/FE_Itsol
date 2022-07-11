@@ -50,6 +50,10 @@ export const routes: Routes = [
     // eslint-disable-next-line max-len
     loadChildren: () => import('./modules/auth/forgot-password/change-password/change-password.module').then(m => m.ChangePasswordModule),
   },
+  {
+    path: 'public/itsol_recruitment',
+    loadChildren: () => import('./modules/web-home/web-home.module').then(m => m.WebhomeModule),
+  },
 ];
 
 const config: ExtraOptions = {
