@@ -16,8 +16,8 @@ export class ProfileComponent implements OnInit {
   formProfile: FormGroup;
   user: User;
   username: string;
-  
-  constructor(              
+
+  constructor(
     private sessionService: SessionService,
     private profileService: ProfileService,
     private fb: FormBuilder,
@@ -30,7 +30,7 @@ export class ProfileComponent implements OnInit {
   }
   initForm(){
     this.formProfile = this.fb.group({
-      fullName: ["", Validators.required],
+      fullName: ['', Validators.required],
       email: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       birthDay: ['', Validators.required],

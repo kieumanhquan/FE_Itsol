@@ -16,6 +16,7 @@ const httpOptions = {
 })
 export class ForgotPasswordService {
   private readonly baseUrl = `${environment.apiUrl}auth/`;
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   email: string;
 
   constructor(private http: HttpClient, private router: Router) { }

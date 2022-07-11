@@ -1,26 +1,60 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {ForgotPasswordService} from '../../../@core/services/forgot-pass.service';
+import {Router} from '@angular/router';
 
-import { ForgotPasswordComponent } from './forgot-password.component';
 
-
-describe('ForgotPasswordComponent', () => {
-  let component: ForgotPasswordComponent;
-  let fixture: ComponentFixture<ForgotPasswordComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ ForgotPasswordComponent ],
-    })
-      .compileComponents();
+@Component({
+  selector: 'ngx-forgot-password',
+  templateUrl: './forgot-password.component.html',
+  styleUrls: ['./forgot-password.component.scss'],
+})
+export class ForgotPasswordComponent implements OnInit {
+  isSubmitted = false;
+  message = '';
+  formEmail = new FormGroup({
+    email: new FormControl('', [Validators.email, Validators.required]),
   });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ForgotPasswordComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  constructor(private forgotPasswordService: ForgotPasswordService, private fb: FormBuilder,
+              private router: Router) {
+  }
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  ngOnInit(): void {
+
+    this.initForm();
+  }
+
+  initForm() {
+    this.formEmail = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+
+    });
+  }
+
+  onKeyup() {
+    this.message = '';
+  }
+
+  onSubmit() {
+    this.isSubmitted = true;
+    setTimeout(() => {
+      this.isSubmitted = false;
+    }, 4000);
+    if (this.formEmail.valid) {
+      const email = this.formEmail.controls.email.value;
+      this.forgotPasswordService.tranferMail(email);
+      this.forgotPasswordService.sendOTP(email).subscribe(
+        data => {
+          this.message = data.message;
+          console.log(this.message);
+          if (this.message === 'success') {
+            this.router.navigate(['/change-password/']);
+            alert('Đã gửi mã OTP thành công vui lòng vào xem email ');
+          }
+        },
+      );
+    }
+
+  }
+}
