@@ -2,6 +2,7 @@ import {ExtraOptions, RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {AuthGuard} from './@core/guards/auth.guard';
 import {PublicModule} from './modules/Public/public.module';
+import {JobListComponent} from './modules/home/job-list/job-list.component';
 
 export const routes: Routes = [
   {
@@ -37,6 +38,8 @@ export const routes: Routes = [
     path: 'signup',
     loadChildren: () => import('./modules/regis/regis.module').then(m => m.RegisModule),
   },
+  {path: 'job', component: JobListComponent},
+  {path: '', redirectTo: 'jobs', pathMatch: 'full'},
 
 ];
 
