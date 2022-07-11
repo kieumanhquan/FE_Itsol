@@ -4,10 +4,12 @@ import {TokenService} from './token.service';
 import jwt_decode from 'jwt-decode';
 
 @Injectable()
-export class RouteGuardService implements CanActivate{
-  constructor(private token: TokenService , private route: Router ){}
+export class RouteGuardService implements CanActivate {
+  constructor(private token: TokenService, private route: Router) {
+  }
+
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const  tokenIf = JSON.parse(localStorage.getItem('user'));
+    const tokenIf = JSON.parse(localStorage.getItem('user'));
     const routes = tokenIf.auth;
     if (routes === 'ROLE_ADMIN') {
       console.log(routes);
