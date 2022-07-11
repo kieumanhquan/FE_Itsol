@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AuthGuard } from './@core/guards/auth.guard';
 import {RouteGuardService} from './@core/services/route.guard.service';
+import {FilerecruitComponent} from './modules/home/filerecruit/filerecruit.component';
 
 
 // @ts-ignore
@@ -39,7 +40,7 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   // { path: '**',
-  //   redirectTo: 'home',
+  //   redirectTo: 'auth',
   // },
   {
     path: 'signup',
@@ -49,6 +50,15 @@ export const routes: Routes = [
     path:'change-password',
     // eslint-disable-next-line max-len
     loadChildren: () => import('./modules/auth/forgot-password/change-password/change-password.module').then(m => m.ChangePasswordModule),
+  },
+  {
+
+    path: 'public/itsol_recruitment',
+    loadChildren: () => import('./modules/web-home/web-home.module').then(m => m.WebhomeModule),
+  },
+  {
+    path : 'file-recruit',
+    component : FilerecruitComponent,
   },
 ];
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -6,10 +6,13 @@ import {Router} from '@angular/router';
   templateUrl: 'public.component.html',
   styleUrls: ['./public.component.scss'],
 })
-export class PublicComponent implements OnInit{
-  constructor(private router: Router){}
+export class PublicComponent implements OnInit {
+  constructor(private router: Router) {
+  }
+
   ngOnInit(): void {
   }
+
   onlogout(){
     localStorage.removeItem('auth-token');
     localStorage.removeItem('auth-user');
