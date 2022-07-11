@@ -73,7 +73,7 @@ hide: boolean;
             // lấy ra auth để router
             const role = userinfo.auth;
             console.log(role);
-            if(role === 'ROLE_ADMIN' ){
+            if(role === 'ROLE_ADMIN' || role === 'ROLE_JE'){
               console.log('aaa');
               this.router.navigate(['/home']);
             } else if(role === 'ROLE_USER'){

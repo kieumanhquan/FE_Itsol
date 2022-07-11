@@ -1,4 +1,4 @@
-import { HttpResponse } from '@angular/common/http';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PrimeNGConfig } from 'primeng/api';
@@ -9,15 +9,16 @@ import { ProfileService } from './profile.service';
 @Component({
   selector: 'ngx-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
   [x: string]: any;
   formProfile: FormGroup;
   user: User;
   username: string;
-  
-  constructor(              
+  id: number;
+
+  constructor(
     private sessionService: SessionService,
     private profileService: ProfileService,
     private fb: FormBuilder,
@@ -27,36 +28,43 @@ export class ProfileComponent implements OnInit {
     this.primengConfig.ripple = true;
     this.getByUserName();
     this.initForm();
+
   }
   initForm(){
     this.formProfile = this.fb.group({
-      fullName: ["", Validators.required],
+      fullName: ['', Validators.required],
       email: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       birthDay: ['', Validators.required],
       homeTown: ['', Validators.required],
-      gender: ['', Validators.required]
+      gender: ['', Validators.required],
     });
   }
 
   getByUserName(){
-    this.username=this.sessionService.getItem('auth-user')
-    this.profileService.getProfile(this.username).subscribe(
+    this.username=this.sessionService.getItem('auth-user');
+    console.log(this.username.sub);
+    this.profileService.getProfile(this.username.sub).subscribe(
       (res)=>{
-        this.updateForm(res)
-      }
-    )
+        console.log(res.id);
+        this.updateForm(res);
+        this.id = res.id;
+      },
+    );
   }
+
 
   updateForm(user: User): void {
     this.formProfile.patchValue({
-      fullName:user.fullName,
+      fullName:user.userName,
       email:user.email,
       phoneNumber:user.phoneNumber,
       birthDay:user.birthDay,
       homeTown:user.homeTown,
-      gender: user.gender
+      gender: user.gender,
     });
   }
+
+
 
 }

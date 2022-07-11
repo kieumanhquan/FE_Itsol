@@ -11,8 +11,8 @@ export class PublicComponent implements OnInit{
   ngOnInit(): void {
   }
   onlogout(){
-    sessionStorage.removeItem('auth-token');
-    sessionStorage.removeItem('auth-user');
+    localStorage.removeItem('auth-token');
+    localStorage.removeItem('auth-user');
     this.router.navigate(['/auth']);
   }
 }
