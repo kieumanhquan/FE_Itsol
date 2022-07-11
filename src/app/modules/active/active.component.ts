@@ -42,7 +42,7 @@ export class ActiveComponent implements OnInit {
 
       console.log(data);
       alert('active tài khoản thành công, bấm OK để đăng nhập');
-      this.router.navigate(['/home/']);
+      this.router.navigate(['/auth/']);
     })
       .catch(error => {
           this.error = error.status;

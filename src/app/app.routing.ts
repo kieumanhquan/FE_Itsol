@@ -52,6 +52,11 @@ export const routes: Routes = [
     loadChildren: () => import('./modules/auth/forgot-password/change-password/change-password.module').then(m => m.ChangePasswordModule),
   },
   {
+
+    path: 'public/itsol_recruitment',
+    loadChildren: () => import('./modules/web-home/web-home.module').then(m => m.WebhomeModule),
+  },
+  {
     path : 'file-recruit',
     component : FilerecruitComponent,
   },

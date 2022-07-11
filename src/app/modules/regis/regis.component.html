@@ -11,6 +11,8 @@
                    pInputText>
             <label for="p-inputtext-lg3">Họ và tên</label>
             <span class="error" *ngIf="FormRegis.controls.fullname.errors?.required && FormRegis.get('fullname').touched">Không được bỏ trống tên </span>
+            <span class="error" *ngIf="FormRegis.controls.fullname.errors?.minlength && FormRegis.controls.fullname.touched">Mật khẩu phải từ 5-20 kí tự</span>
+            <span class="error" *ngIf="FormRegis.controls.fullname.errors?.maxlength && FormRegis.controls.fullname.touched">Mật khẩu phải từ 5-20 kí tự</span>
           </div>
 
           <!-- Email input -->
@@ -38,7 +40,7 @@
                    pInputText />
             <label for="p-inputtext-lg1">User name</label>
             <span class="error" *ngIf="FormRegis.controls.username.errors?.required && FormRegis.controls.username.touched">Không được bỏ trống tên</span>
-            <span class="error" *ngIf="error === 403">Tên người dùng đã tồn tại</span>
+            <span class="error" *ngIf="error === 402">Tên người dùng đã tồn tại</span>
           </div>
 
           <div class="p-float-label custom-input mb-4">
