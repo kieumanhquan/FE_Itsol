@@ -11,7 +11,7 @@ export class RouteGuardService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const tokenIf = JSON.parse(localStorage.getItem('user'));
     const routes = tokenIf.auth;
-    if (routes === 'ROLE_ADMIN') {
+    if (routes === 'ROLE_ADMIN' || routes === 'ROLE_JE') {
       console.log(routes);
       return true;
     } else {
