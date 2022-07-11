@@ -12,6 +12,7 @@ import {Router} from '@angular/router';
 export class ForgotPasswordComponent implements OnInit {
   isSubmitted = false;
   message = '';
+  isEnable = true;
   formEmail = new FormGroup({
     email: new FormControl('', [Validators.email, Validators.required]),
   });
@@ -37,6 +38,7 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isEnable = false;
     this.isSubmitted = true;
     setTimeout(() => {
       this.isSubmitted = false;
@@ -49,8 +51,10 @@ export class ForgotPasswordComponent implements OnInit {
           this.message = data.message;
           console.log(this.message);
           if (this.message === 'success') {
-            this.router.navigate(['/change-password/']);
+            this.router.navigate(['/change-password']);
             alert('Đã gửi mã OTP thành công vui lòng vào xem email ');
+          } else {
+            this.isEnable = true;
           }
         },
       );
