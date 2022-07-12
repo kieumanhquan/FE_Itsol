@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NbMenuModule } from '@nebular/theme';
 import { ThemeModule } from '../../@theme/theme.module';
 import { ProfileComponent } from './profile/profile.component';
+import { ManagerJeComponent } from './managerJe/managerJe.component';
 import { SharedModule } from 'primeng/api';
 import { PrimengModule } from '../../shared/primeng.module';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -23,10 +24,13 @@ const routes: Routes = [{
       component: ProfileComponent,
     },
     {
+      path: 'managerJe',
+      component: ManagerJeComponent,
+    },
+    {
       path: 'jobregister',
       component: FilerecruitComponent,
     },
-
   ],
 }];
 
@@ -34,6 +38,7 @@ const routes: Routes = [{
   declarations: [
     HomeComponent,
     ProfileComponent,
+    ManagerJeComponent,
   ],
   imports: [
     CommonModule,

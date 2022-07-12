@@ -41,7 +41,6 @@ const configToast: any = {
   declarations: [AppComponent, FilerecruitComponent],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     NbSidebarModule.forRoot(),
