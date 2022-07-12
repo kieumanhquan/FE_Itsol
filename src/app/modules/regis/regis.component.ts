@@ -37,7 +37,7 @@ export class RegisComponent implements OnInit {
 
   initForm() {
     this.FormRegis = this.fb.group({
-      fullname: new FormControl('', [Validators.required]),
+      fullname: new FormControl('', [Validators.required,Validators.minLength(5),Validators.maxLength(20)]),
       email: new FormControl( '', [Validators.required,Validators.email]),
       phonenum: new FormControl('', [Validators.required, Validators.pattern('^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$')]),
       username: new FormControl('', [Validators.required]),
@@ -55,7 +55,7 @@ export class RegisComponent implements OnInit {
     this.isSubmitted = true;
     setTimeout(() => {
       this.isSubmitted = false;
-    }, 3000);
+    }, 3400);
     this.user = new User(
       this.FormRegis.value.fullname,
       this.FormRegis.value.email,
@@ -71,7 +71,7 @@ export class RegisComponent implements OnInit {
         .then (data => {
             console.log(data);
             alert('đăng kí tài khoản thành công, mời vào email để active tài khoản');
-            this.router.navigate(['/home/']);
+            this.router.navigate(['/auth/']);
           })
         .catch(error => {
           this.error = error.status;

@@ -6,8 +6,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import { ChangePasswordComponent } from './change-password.component';
-import {ErrorStateMatcher} from "@angular/material/core";
-import {MaterialModule} from "../../../../shared/material.module";
+import {ErrorStateMatcher} from '@angular/material/core';
+import {MaterialModule} from '../../../../shared/material.module';
 const routes: Routes = [{
   path: '',
   component: ChangePasswordComponent,

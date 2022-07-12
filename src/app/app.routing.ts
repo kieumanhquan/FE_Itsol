@@ -1,7 +1,9 @@
-import { ExtraOptions, RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
+import {ExtraOptions, RouterModule, Routes} from '@angular/router';
+import {NgModule} from '@angular/core';
+import {AuthGuard} from './@core/guards/auth.guard';
+import {PublicModule} from './modules/Public/public.module';
+import {JobListComponent} from './modules/home/job-list/job-list.component';
 
-import { AuthGuard } from './@core/guards/auth.guard';
 import {RouteGuardService} from './@core/services/route.guard.service';
 
 
@@ -39,16 +41,25 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   // { path: '**',
-  //   redirectTo: 'home',
+  //   redirectTo: 'auth',
   // },
   {
     path: 'signup',
     loadChildren: () => import('./modules/regis/regis.module').then(m => m.RegisModule),
   },
+
+  {path: 'job', component: JobListComponent},
+  {path: '', redirectTo: 'jobs', pathMatch: 'full'},
+
   {
     path:'change-password',
     // eslint-disable-next-line max-len
     loadChildren: () => import('./modules/auth/forgot-password/change-password/change-password.module').then(m => m.ChangePasswordModule),
+  },
+  {
+
+    path: 'public/itsol_recruitment',
+    loadChildren: () => import('./modules/web-home/web-home.module').then(m => m.WebhomeModule),
   },
 ];
 

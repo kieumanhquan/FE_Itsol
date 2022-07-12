@@ -3,15 +3,15 @@
  * Copyright Akveo. All Rights Reserved.
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { CoreModule } from './@core/core.module';
-import { ThemeModule } from './@theme/theme.module';
-import { AppComponent } from './app.component';
-import { ToastrModule } from 'ngx-toastr';
-import { AppRoutingModule } from './app.routing';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NgModule} from '@angular/core';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {CoreModule} from './@core/core.module';
+import {ThemeModule} from './@theme/theme.module';
+import {AppComponent} from './app.component';
+import {ToastrModule} from 'ngx-toastr';
+import {AppRoutingModule} from './app.routing';
 import {
   NbChatModule,
   NbDatepickerModule,
@@ -21,8 +21,12 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
-import { TokenInterceptor } from './@core/services/interceptor.service';
+import {TokenInterceptor} from './@core/services/interceptor.service';
 import {RouteGuardService} from './@core/services/route.guard.service';
+import {FilerecruitComponent} from './modules/home/filerecruit/filerecruit.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatIconModule} from "@angular/material/icon";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 const configToast: any = {
   timeOut: 3000,
@@ -34,7 +38,7 @@ const configToast: any = {
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, FilerecruitComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -51,13 +55,16 @@ const configToast: any = {
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
     ToastrModule.forRoot(configToast),
+    MatFormFieldModule,
+    MatIconModule,
+    MatPaginatorModule,
   ],
   bootstrap: [AppComponent],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
-    multi:true,
-  },RouteGuardService,
+    multi: true,
+  }, RouteGuardService,
   ],
 })
 export class AppModule {
