@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Filerecruit} from './filerecruit';
-import {FileRecruitService} from '../../../@core/services/file-recruit.service';
+import {JobregisterService} from '../../../@core/services/jobregister.service';
+import {PageEvent} from '@angular/material/paginator';
 
 // @ts-ignore
 @Component({
@@ -9,31 +10,35 @@ import {FileRecruitService} from '../../../@core/services/file-recruit.service';
   styleUrls: ['./filerecruit.component.scss'],
 })
 export class FilerecruitComponent implements OnInit {
+  pageNo = 0;
+  pageSize = 1;
+  pageSizeOption: Number[] = [1, 2, 5, 10, 20, 50,];
+  sort: String;
   // @ts-ignore
   filerecruit: Filerecruit[];
 
-  constructor(private filerecruitService: FileRecruitService) {
+  constructor(private jobregisterService: JobregisterService) {
   }
 
   ngOnInit(): void {
-    // this.filerecruit = [{
-    //   name: 'Lộc',
-    //   jobPosition: 'javadev',
-    //   dateRegister: 'Jun 15, 2022',
-    //   cv: 'filecv',
-    //   status: 'Ứng viên bị từ chối',
-    //   reason: 'thiếu kinh nghiệm',
-    // }];
     this.getFilerecruit();
   }
 
 
-  private getFilerecruit() {
-    this.filerecruitService.getFileRecruit().subscribe(data => {
+  getFilerecruit() {
+    // @ts-ignore
+    this.jobregisterService.getJobRegister(this.pageNo, this.pageSize).subscribe(data => {
+      console.log("test")
       console.log(data);
       this.filerecruit = data;
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  pageChanged(event: PageEvent) {
+    this.pageSize = event.pageSize;
+    this.pageNo = event.pageIndex;
+    this.getFilerecruit();
+  }
 
 }

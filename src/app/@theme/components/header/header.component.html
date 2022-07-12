@@ -8,7 +8,6 @@
   <nb-select [selected]="currentTheme" (selectedChange)="changeTheme($event)" status="primary">
     <nb-option *ngFor="let theme of themes" [value]="theme.value"> {{ theme.name }}</nb-option>
   </nb-select>
-  <a [routerLink]="['/file-recruit']" routerLinkActive="router-link-active" style=" margin-left: 13px;">Hồ sơ tuyển dụng</a>
 
 </div>
 

@@ -66,9 +66,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
       if(event.item.title==='Đăng xuất'){
         this.sessionService.removeItem('auth-token'),
         this.sessionService.removeItem('auth-user'),
+        this.sessionService.removeItem('user'),
         this.router.navigate(['/auth/']);
       }
-      if(event.item.title==='Profile'){
+      if(event.item.title==='Thông tin cá nhân'){
         this.router.navigate(['/home/profile']);
       }
     });

@@ -14,11 +14,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Người dùng',
     icon: 'person-outline',
-    link: '/home/user',
+    link: '/home/managerJe',
   },
   {
     title: 'Sản phẩm',
     icon: 'globe-2-outline',
     link: '/home/product',
+  },
+  {
+    title: 'Sản phẩm',
+    icon: 'file',
+    link: '/home/jobregister',
   },
 ];

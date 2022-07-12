@@ -62,7 +62,8 @@
           }
         ],
         "no-underscore-dangle": "off",
-        "valid-typeof": "error"
+        "valid-typeof": "error",
+        "@typescript-eslint/ban-types": "off"
       }
     },
     {
