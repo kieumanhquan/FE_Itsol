@@ -19,13 +19,13 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#contact">Liên hệ</a>
+            <a class="nav-link" href="/public/aboutus">Liên hệ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#signin">Đăng nhập</a>
+            <a class="nav-link" href="/auth">Đăng nhập</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#signup">Đăng ký</a>
+            <a class="nav-link" href="signup">Đăng ký</a>
           </li>
         </ul>
 
@@ -40,7 +40,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
-          <h1 class="h1-large">PLAN<br> DESIGN<br> DEVELOP</h1>
+          <h1 class="h1-large">TALENTS<br> TRUSTED<br> PARTNER</h1>
         </div> <!-- end of col -->
         <div class="col-lg-6">
 
@@ -142,13 +142,17 @@
 
               <h4 class="card-title">Việc mới tuyển</h4>
               <hr>
-              <a href="#" class=h2-heading *ngFor="let job of jobs">
-                <p>Tuyển dụng {{job.name}} làm việc tại {{job.address_work}} </p>
-                <p></p>
-                <p>Hạn ứng tuyển: {{job.due_date|date}} </p>
-                <p>Lương: Upto {{job.salary_max}} </p>
-              </a>
+              <tr href="#" class=h2-heading *ngFor="let job of jobs">
+
+                <div *ngIf="countday(job.create_date)=== 1">
+                  <a style="font-size:20px" href = "#"> {{job.name}} </a>
+                  <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate|date}} </p>
+                  <span ><a style="color:red" href="#">{{job.addressWork}}</a> | </span>
+
+                  <span style="color:gray"> upto {{job.salaryMax }} </span></div>
+              </tr>
               <hr>
+              <a href="#" style="color:#3B82F6"> Xem thêm</a>
             </div>
           </div>
           <!-- end of card -->
@@ -160,7 +164,18 @@
             </div>
             <div class="card-body">
               <h4 class="card-title">Việc tuyển gấp</h4>
-              <div class="card-text">Not his difficulty boisterous surro bed. Seems folly if in given scale now where word contented</div>
+              <hr>
+              <tr href="#" class=h2-heading *ngFor="let job of jobs">
+
+                <div *ngIf="countday(job.dueDate)=== 1 && job.qtyPerson > 0">
+                  <a style="font-size:20px" href = "#"> {{job.name}} </a>
+                  <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate|date}} </p>
+                  <span ><a style="color:red" href="#">{{job.addressWork}}</a> | </span>
+
+                  <span style="color:gray"> upto {{job.salaryMax }} </span></div>
+              </tr>
+              <hr>
+              <a href="#" style="color:#3B82F6"> Xem thêm</a>
             </div>
           </div>
           <!-- end of card -->
@@ -172,7 +187,18 @@
             </div>
             <div class="card-body">
               <h4 class="card-title">Việc làm lương cao</h4>
-              <div class="card-text">Living valley had silent eat merits esteem bed. In last an or went wise as left. Visited civilly</div>
+              <hr>
+              <tr href="#" class=h2-heading *ngFor="let job of jobs">
+
+                <div *ngIf="job.salaryMin >=18000000">
+                  <a style="font-size:20px" href = "#"> {{job.name}} </a>
+                  <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate|date}} </p>
+                  <span ><a style="color:red" href="#">{{job.addressWork}}</a> | </span>
+
+                  <span style="color:gray"> upto {{job.salaryMax }} </span></div>
+              </tr>
+              <hr>
+              <a href="#" style="color:#3B82F6"> Xem thêm</a>
             </div>
           </div>
         </div> <!-- end of col -->
