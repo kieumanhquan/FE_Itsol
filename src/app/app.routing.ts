@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AuthGuard } from './@core/guards/auth.guard';
 import {RouteGuardService} from './@core/services/route.guard.service';
 import {FilerecruitComponent} from './modules/home/filerecruit/filerecruit.component';
+import {AboutModule} from "./modules/about/about.module";
 
 
 // @ts-ignore
@@ -56,6 +57,12 @@ export const routes: Routes = [
     path: 'public/itsol_recruitment',
     loadChildren: () => import('./modules/web-home/web-home.module').then(m => m.WebhomeModule),
   },
+  {
+
+    path: 'public/aboutus',
+    loadChildren: () => import('./modules/about/about.module').then(m => m.AboutModule),
+  },
+
   {
     path : 'file-recruit',
     component : FilerecruitComponent,
