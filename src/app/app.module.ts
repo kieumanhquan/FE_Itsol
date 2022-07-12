@@ -24,6 +24,8 @@ import {
 import {TokenInterceptor} from './@core/services/interceptor.service';
 import {RouteGuardService} from './@core/services/route.guard.service';
 import {FilerecruitComponent} from './modules/home/filerecruit/filerecruit.component';
+import {FormsModule} from '@angular/forms';
+
 
 const configToast: any = {
   timeOut: 3000,
@@ -53,6 +55,7 @@ const configToast: any = {
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
     ToastrModule.forRoot(configToast),
+    FormsModule,
   ],
   bootstrap: [AppComponent],
   providers: [{
