@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SharedModule } from 'primeng/api';
 import { PrimengModule } from '../../shared/primeng.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import {FilerecruitComponent} from './filerecruit/filerecruit.component';
 
 const routes: Routes = [{
   path: '',
@@ -20,6 +21,10 @@ const routes: Routes = [{
     {
       path: 'profile',
       component: ProfileComponent,
+    },
+    {
+      path: 'jobregister',
+      component: FilerecruitComponent,
     },
 
   ],

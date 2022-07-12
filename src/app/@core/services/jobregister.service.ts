@@ -18,17 +18,20 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root',
 })
-export class FileRecruitService {
+export class JobregisterService {
   private readonly baseUrl = `${environment.apiUrl}`;
 
   // private readonly baseUrl = 'localhost:9090/api/file-recruit';
   constructor(private http: HttpClient, private router: Router) {
   }
 
-  getFileRecruit(): Observable<any> {
-     return this.http.get<Filerecruit[]>(`${this.baseUrl}file-recruit`);
+  // getFileRecruit(): Observable<any> {
+  //    return this.http.get<Filerecruit[]>(`${this.baseUrl}file-recruit`);
+  // }
+  // @ts-ignore
+  getJobRegister(param,param1): Observable<any> {
+    // @ts-ignore
+    return this.http.get<any>(`${this.baseUrl}job-register?pageNo=` + param + `&pageSize=` + param1);
   }
-  findName(): Observable<any> {
-    return this.http.get<Filerecruit[]>(`${this.baseUrl}find-name`);
-  }
+
 }
