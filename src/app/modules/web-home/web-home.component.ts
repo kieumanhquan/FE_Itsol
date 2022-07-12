@@ -5,6 +5,8 @@ import {Job} from '../../@core/models/job';
 
 import {catchError} from "rxjs/operators";
 import {LocalData} from "@akveo/ng2-completer";
+import {DatePipe} from '@angular/common';
+// import {parseDate} from 'echarts/types/dist/shared';
 // import { OrderDetailsService } from 'src/app/services/order-details.service';
 
 @Component({
@@ -14,19 +16,32 @@ import {LocalData} from "@akveo/ng2-completer";
 })
 
 export class WebHomeComponent implements OnInit {
-  myDate = Date.now();
+  myDate= new Date();
+
+  datePipe: DatePipe = new DatePipe('en-US');
+  pDate = new Date('7-10-2022');
   jobs: Job[];
   // eslint-disable-next-line @typescript-eslint/naming-convention
   // FormSearch: FormGroup;
-  constructor(private webHomeService: WebHomeService) { }
+  constructor(private webHomeService: WebHomeService) {}
   foodData:any;
   ngOnInit(): void {
+
+    // @ts-ignore
+
+    // @ts-ignore
+
     this.webHomeService.getJobList().subscribe(data => {
       console.log(data);
       this.jobs = data;
       console.log(this.jobs);
     });
     // this.foodData = this.service.foodDetails;
+  }
+  countday(createDate: Date){
+    const utc1 = Date.UTC(this.myDate.getFullYear(), this.myDate.getMonth(), this.myDate.getDate());
+    const utc2 = Date.UTC(this.pDate.getFullYear(), this.pDate.getMonth(), this.pDate.getDate());
+    return (utc1-utc2)/86400000;
   }
   onSubmit(): void{}
 }

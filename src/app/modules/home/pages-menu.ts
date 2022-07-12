@@ -14,7 +14,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Người dùng',
     icon: 'person-outline',
-    link: '/home/user',
+    link: '/home/managerJe',
   },
   {
     title: 'Sản phẩm',
@@ -26,5 +26,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon:'briefcase-outline',
     link: '/home/job',
   },
-
+  {
+    title: 'Sản phẩm',
+    icon: 'file',
+    link: '/home/jobregister',
+  },
 ];

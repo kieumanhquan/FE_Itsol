@@ -5,7 +5,7 @@ import {PublicModule} from './modules/Public/public.module';
 import {JobListComponent} from './modules/home/job-list/job-list.component';
 import {RouteGuardService} from './@core/services/route.guard.service';
 import {FilerecruitComponent} from './modules/home/filerecruit/filerecruit.component';
-
+import {AboutModule} from "./modules/about/about.module";
 
 // @ts-ignore
 // @ts-ignore
@@ -57,9 +57,12 @@ export const routes: Routes = [
     loadChildren: () => import('./modules/auth/forgot-password/change-password/change-password.module').then(m => m.ChangePasswordModule),
   },
   {
-
     path: 'public/itsol_recruitment',
     loadChildren: () => import('./modules/web-home/web-home.module').then(m => m.WebhomeModule),
+  },
+  {
+    path: 'public/aboutus',
+    loadChildren: () => import('./modules/about/about.module').then(m => m.AboutModule),
   },
   {
     path : 'file-recruit',
