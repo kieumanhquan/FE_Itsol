@@ -9,6 +9,7 @@ import { ManagerJeComponent } from './managerJe/managerJe.component';
 import { SharedModule } from 'primeng/api';
 import { PrimengModule } from '../../shared/primeng.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import {JobListComponent} from './job-list/job-list.component';
 import {FilerecruitComponent} from './filerecruit/filerecruit.component';
 
 const routes: Routes = [{
@@ -22,6 +23,10 @@ const routes: Routes = [{
     {
       path: 'profile',
       component: ProfileComponent,
+    },
+    {
+      path: 'job',
+      component: JobListComponent,
     },
     {
       path: 'managerJe',
@@ -38,6 +43,7 @@ const routes: Routes = [{
   declarations: [
     HomeComponent,
     ProfileComponent,
+    JobListComponent,
     ManagerJeComponent,
   ],
   imports: [

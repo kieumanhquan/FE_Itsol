@@ -22,6 +22,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/home/product',
   },
   {
+    title: 'Tin tuyển dụng',
+    icon:'briefcase-outline',
+    link: '/home/job',
+  },
+  {
     title: 'Sản phẩm',
     icon: 'file',
     link: '/home/jobregister',
