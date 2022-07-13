@@ -11,6 +11,8 @@ import { PrimengModule } from '../../shared/primeng.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import {JobListComponent} from './job-list/job-list.component';
 import {FilerecruitComponent} from './filerecruit/filerecruit.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
+import { DetailJobComponent } from './detail-job/detail-job/detail-job.component';
 
 const routes: Routes = [{
   path: '',
@@ -36,6 +38,10 @@ const routes: Routes = [{
       path: 'jobregister',
       component: FilerecruitComponent,
     },
+    {
+      path : 'detail-job',
+      component : DetailJobComponent,
+    },
   ],
 }];
 
@@ -45,6 +51,8 @@ const routes: Routes = [{
     ProfileComponent,
     JobListComponent,
     ManagerJeComponent,
+    FilerecruitComponent,
+    DetailJobComponent,
   ],
   imports: [
     CommonModule,
@@ -54,6 +62,7 @@ const routes: Routes = [{
     ReactiveFormsModule,
     PrimengModule,
     SharedModule,
+    MatPaginatorModule,
   ],
 })
 export class HomeModule { }
