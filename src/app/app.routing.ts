@@ -6,7 +6,7 @@ import {JobListComponent} from './modules/home/job-list/job-list.component';
 import {RouteGuardService} from './@core/services/route.guard.service';
 import {FilerecruitComponent} from './modules/home/filerecruit/filerecruit.component';
 import {AboutModule} from "./modules/about/about.module";
-import {DetailJobComponent} from "./modules/home/detail-job/detail-job/detail-job.component";
+import {SearchjobModule} from "./modules/searchjob/searchjob.module";
 
 // @ts-ignore
 // @ts-ignore
@@ -70,8 +70,8 @@ export const routes: Routes = [
     component : FilerecruitComponent,
   },
   {
-    path : 'detail-job',
-    component : DetailJobComponent,
+    path: 'public/searchJob',
+    loadChildren: () => import('./modules/searchjob/searchjob.module').then(m => m.SearchjobModule),
   },
 ];
 
