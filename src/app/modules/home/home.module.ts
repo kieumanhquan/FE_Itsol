@@ -11,8 +11,10 @@ import { PrimengModule } from '../../shared/primeng.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import {FilerecruitComponent} from './filerecruit/filerecruit.component';
-import {JobListComponent} from './job/job-list/job-list.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatDialog} from '@angular/material/dialog';
+import {MatDialogModule} from '@angular/material/dialog';
+import {JobListComponent} from './job/job-list/job-list.component';
 import {JobInsertComponent} from './job/job-insert/job-insert.component';
 import {JobDetailComponent} from './job/job-detail/job-detail.component';
 
@@ -68,6 +70,7 @@ const routes: Routes = [{
     PrimengModule,
     SharedModule,
     MatPaginatorModule,
+    MatDialogModule,
   ],
 })
 export class HomeModule { }
