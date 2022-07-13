@@ -40,12 +40,10 @@ const routes: Routes = [{
       path: 'jobregister',
       component: FilerecruitComponent,
     },
-
     {
       path: 'job/insert',
       component: JobInsertComponent,
     },
-
     {
       path: 'job/detail/:id',
       component: JobDetailComponent,

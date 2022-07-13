@@ -10,29 +10,31 @@
 
     <th>file CV</th>
     <th>Trạng thái</th>
-    <th>Thời gian nộp hồ sơ</th>
+    <th>Thời gian nộp hồ sơ  <i class="fa fa-sort" (click)="sorttable()"></i></th>
     <th>quicktion</th>
 
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let filerecruits of filerecruit ">
-    <td>{{filerecruits.name}}</td>
-    <td>{{filerecruits.jobPosition}}</td>
-    <td>{{filerecruits.cv}}</td>
-    <td>{{filerecruits.status}}</td>
-    <td>{{filerecruits.dateRegister}}</td>
-    <td>
-      <button class="btn btn-sm btn-info" *ngIf="filerecruits.status === 'ứng viên bị từ chối'">
-        <i class="fa fa-search" ></i>lý do</button>
-      <button class="btn btn-sm btn-warning" *ngIf="filerecruits.status === 'chờ phỏng vấn'">
-        <i class="fa fa-edit" ></i>Hẹn phỏng vấn</button>
-    </td>
+  <ng-container  *ngFor="let filerecruits of filerecruit ">
+    <tr>
+      <td>{{filerecruits.name}}</td>
+      <td (click)="getjobPosition(filerecruits)">{{filerecruits.jobPosition}}</td>
+      <td>{{filerecruits.cv}}</td>
+      <td>{{filerecruits.status}}</td>
+      <td>{{filerecruits.dateRegister}}</td>
+      <td>
+        <button class="btn btn-sm btn-info" *ngIf="filerecruits.status === 'ứng viên bị từ chối'" (click)="getReason(filerecruits)">
+          <i class="fa fa-search" ></i>lý do</button>
+        <button class="btn btn-sm btn-warning" *ngIf="filerecruits.status === 'chờ phỏng vấn'" (click)="changeDetailJob()">
+          <i class="fa fa-edit" ></i>Hẹn phỏng vấn</button>
+      </td>
 
-  </tr>
+    </tr>
+  </ng-container>
+
   </tbody>
 </table>
-
-<mat-paginator [length]='filerecruit.length+1' [pageIndex]="pageNo" [pageSize]="pageSize" (page)="pageChanged($event)"
-               [pageSizeOptions]="pageSizeOption" aria-label="Select page" color = "warning">
+<mat-paginator [length]='50' [pageIndex]="pageNo" [pageSize]="pageSize" (page)="onChangePage($event)"
+               [pageSizeOptions]="pageSizeOption" aria-label="Select page"   showFirstLastButtons="firstLastButtons">
 </mat-paginator>
