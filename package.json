@@ -42,6 +42,7 @@
     "@angular/platform-browser": "^13.0.1",
     "@angular/platform-browser-dynamic": "^13.0.1",
     "@angular/router": "^13.0.1",
+    "@ant-design/icons": "^4.7.0",
     "@asymmetrik/ngx-leaflet": "3.0.1",
     "@nebular/auth": "9.0.0",
     "@nebular/eva-icons": "9.0.0",

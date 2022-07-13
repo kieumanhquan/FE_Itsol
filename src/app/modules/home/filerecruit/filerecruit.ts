@@ -1,4 +1,5 @@
 export class Filerecruit {
+  id: number;
   name: string;
   jobPosition: string;
   dateRegister: Date;

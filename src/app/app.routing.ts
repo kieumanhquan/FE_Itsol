@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {AuthGuard} from './@core/guards/auth.guard';
 import {PublicModule} from './modules/Public/public.module';
 import {JobListComponent} from './modules/home/job-list/job-list.component';
-
 import {RouteGuardService} from './@core/services/route.guard.service';
 import {FilerecruitComponent} from './modules/home/filerecruit/filerecruit.component';
 import {AboutModule} from "./modules/about/about.module";
@@ -75,6 +74,7 @@ export const routes: Routes = [
     loadChildren: () => import('./modules/searchjob/searchjob.module').then(m => m.SearchjobModule),
   },
 ];
+
 
 const config: ExtraOptions = {
   useHash: false,

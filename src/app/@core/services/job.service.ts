@@ -25,7 +25,8 @@ export class JobService {
     return this.httpClient.get<Job>(`${this.baseURL}/${id}`);
   }
 
-  deleteJob(id: number): Observable<Object>{
+/*  deleteJobById (id: number): Observable<Job> {
     return this.httpClient.delete(`${this.baseURL}/${id}`);
-  }
+  }*/
+
 }
