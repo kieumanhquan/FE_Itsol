@@ -12,7 +12,7 @@ import {PageEvent} from '@angular/material/paginator';
 export class FilerecruitComponent implements OnInit {
   pageNo = 0;
   pageSize = 1;
-  pageSizeOption: Number[] = [1, 2, 5, 10, 20, 50,];
+  pageSizeOption: Number[] = [1, 2, 5, 10, 20, 50];
   sort: String;
   // @ts-ignore
   filerecruit: Filerecruit[];
@@ -28,7 +28,6 @@ export class FilerecruitComponent implements OnInit {
   getFilerecruit() {
     // @ts-ignore
     this.jobregisterService.getJobRegister(this.pageNo, this.pageSize).subscribe(data => {
-      console.log("test")
       console.log(data);
       this.filerecruit = data;
     });

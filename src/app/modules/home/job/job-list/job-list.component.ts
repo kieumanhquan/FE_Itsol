@@ -1,21 +1,19 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {Job} from '../../../@core/models/job';
-import {JobService} from '../../../@core/services/job.service';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import {JobService} from '../../../../@core/services/job.service';
+import {Router} from '@angular/router';
+import {Job} from '../../../../@core/models/job';
 
 @Component({
   selector: 'ngx-job-list',
   templateUrl: './job-list.component.html',
   styleUrls: ['./job-list.component.scss'],
 })
-
 export class JobListComponent implements OnInit {
 
   jobs: Job[];
 
   constructor(private jobService: JobService,
-              private router: Router) {
-  }
+              private router: Router) { }
 
   ngOnInit(): void {
     this.getJobs();
@@ -28,8 +26,13 @@ export class JobListComponent implements OnInit {
     });
   }
 
+  gotoInsertJob() {
+    this.router.navigate(['home/job/insert']);
+  }
+
+  gotoDetailJob() {
+    this.router.navigate(['home/job/{{insert}}']);
+  }
+
+
 }
-
-
-
-

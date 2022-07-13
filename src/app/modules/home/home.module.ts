@@ -9,8 +9,11 @@ import { ManagerJeComponent } from './managerJe/managerJe.component';
 import { SharedModule } from 'primeng/api';
 import { PrimengModule } from '../../shared/primeng.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import {JobListComponent} from './job-list/job-list.component';
+
 import {FilerecruitComponent} from './filerecruit/filerecruit.component';
+import {JobListComponent} from './job/job-list/job-list.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {JobInsertComponent} from './job/job-insert/job-insert.component';
 
 const routes: Routes = [{
   path: '',
@@ -36,6 +39,16 @@ const routes: Routes = [{
       path: 'jobregister',
       component: FilerecruitComponent,
     },
+
+    {
+      path: 'job/insert',
+      component: JobInsertComponent,
+    },
+
+    {
+      path: 'job/{{id}}',
+      component: JobInsertComponent,
+    },
   ],
 }];
 
@@ -43,8 +56,9 @@ const routes: Routes = [{
   declarations: [
     HomeComponent,
     ProfileComponent,
-    JobListComponent,
     ManagerJeComponent,
+    FilerecruitComponent,
+    JobListComponent,
   ],
   imports: [
     CommonModule,
@@ -54,6 +68,7 @@ const routes: Routes = [{
     ReactiveFormsModule,
     PrimengModule,
     SharedModule,
+    MatPaginatorModule,
   ],
 })
 export class HomeModule { }
