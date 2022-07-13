@@ -27,7 +27,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/home/job',
   },
   {
-    title: 'Sản phẩm',
+    title: 'hồ sơ ứng tuyển',
     icon: 'file',
     link: '/home/jobregister',
   },
