@@ -5,13 +5,15 @@
       <label> Name </label>
       <input type="text" class = "form-control" id="name"
              [(ngModel)]="job.name"
-             name = "name" placeholder="Nhập tên công việc">
+             name = "name" placeholder="Nhập tên công việc"
+             disabled="disabled">
     </div>
 
     <div class = "form-group col-md-4">
       <label for="job position"> Job Position </label>
-      <select class = "form-control" id="job position"
+      <select class = "form-control" id="job position" disabled="disabled"
               (change)="selectJobPositionOption($event.target.value)">
+        <option [value]="job.name"></option>
         <option *ngFor="let jobPosition of jobPositions"
                 [value]="jobPosition.id"
 
@@ -22,7 +24,7 @@
 
     <div class = "form-group col-md-4">
       <label for="working form"> Working Form </label>
-      <select class = "form-control" id="working form"
+      <select class = "form-control" disabled="disabled" id="working form"
               (change)="selectWorkingFormOption($event.target.value)">
         <option *ngFor="let workingForm of workingForms"
                 [value]="workingForm.id"
@@ -35,34 +37,35 @@
 
     <div class = "form-group col-md-4">
       <label> Salary </label>
-      <input type="text" class = "form-control" id="salary"
-             name = "salary" placeholder="Nhập mức lương">
+      <input type="text" class = "form-control" id="salary" disabled="disabled"
+             name = "salary" placeholder="Nhập mức lương"
+             value=" {{job.salaryMin}} - {{job.salaryMax}}">
     </div>
 
     <div class = "form-group col-md-12">
       <label> Address Work </label>
-      <input type="text" class = "form-control" id="address work"
+      <input type="text" class = "form-control" id="address work" disabled="disabled"
              [(ngModel)]="job.addressWork"
              name = "address work" placeholder="Nhập địa chỉ công việc">
     </div>
 
     <div class = "form-group col-md-12">
       <label> Description </label>
-      <textarea class="form-control" id="description" rows="3"
+      <textarea class="form-control" id="description" rows="3" disabled="disabled"
                 [(ngModel)]="job.description"
                 name = "description" placeholder="Nhập mô tả công việc"></textarea>
     </div>
 
     <div class = "form-group col-md-3">
       <label> Number Experience </label>
-      <input type="text" class = "form-control" id="number experience"
+      <input type="text" class = "form-control" id="number experience" disabled="disabled"
              [(ngModel)]="job.numberExperience"
              name = "number experience" placeholder="Nhập số năm kinh nghiệm">
     </div>
 
     <div class = "form-group col-md-3">
       <label> Quantity Person </label>
-      <input type="text" class = "form-control" id="qty person"
+      <input type="text" class = "form-control" id="qty person" disabled="disabled"
              [(ngModel)]="job.qtyPerson"
              name = "qty person" placeholder="Nhập số lượng tuyển">
     </div>
@@ -132,6 +135,16 @@
 
   </div>
 
-  <button type="submit" class="btn btn-primary btn-lg btn-block">Tạo</button>
+  <div style="float:right">
+    <button type="submit" class="btn btn-primary group-btn">Cập nhập</button>
+    <button type="submit" class="btn btn-primary group-btn">Xét duyệt</button>
+    <button type="submit" class="btn btn-primary group-btn">Từ chối duyệt</button>
+    <button type="submit" class="btn btn-primary group-btn">Đăng tuyển</button>
+    <button type="submit" class="btn btn-primary group-btn">Dừng tuyển</button>
+    <button type="submit" class="btn btn-primary group-btn">Đóng</button>
+    <button type="submit" class="btn btn-primary group-btn">Xóa</button>
+  </div>
+
+
 
 </form>

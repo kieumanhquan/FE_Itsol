@@ -52,10 +52,10 @@
     <td> {{job.views}}</td>
 
     <td>
-      <button class="btn btn-sm btn-info">
+      <button class="btn btn-sm btn-info" (click)="gotoDetailJob(job.id)" >
         <i class="fa fa-search"></i>Xem</button>
       <button class="btn btn-sm btn-warning">
-        <i class="fa fa-edit"></i>Sửa</button>
+        <i class="fa fa-download"></i>Export JD</button>
       <button class="btn btn-sm btn-danger">
         <i class="fa fa-trash"></i>Xóa</button>
     </td>
