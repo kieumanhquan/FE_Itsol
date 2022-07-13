@@ -32,8 +32,8 @@
   </thead>
 
   <tbody>
-  <tr *ngFor="let job of jobs">
-    <td> {{job.name}}</td>
+  <tr *ngFor="let job of jobs" >
+    <td (click)="gotoDetailJob(job.id)" style="cursor: pointer;"> {{job.name}}</td>
     <td> {{job.jobPosition.description}}</td>
     <!--      <td> {{job.numberExperience}}</td>-->
     <!--      <td> {{job.workingForm.description}}</td>-->

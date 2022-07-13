@@ -30,8 +30,8 @@ export class JobListComponent implements OnInit {
     this.router.navigate(['home/job/insert']);
   }
 
-  gotoDetailJob() {
-    this.router.navigate(['home/job/{{insert}}']);
+  gotoDetailJob(id: number) {
+    this.router.navigate(['home/job/detail', id]);
   }
 
 

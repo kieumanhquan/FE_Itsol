@@ -14,6 +14,7 @@ import {FilerecruitComponent} from './filerecruit/filerecruit.component';
 import {JobListComponent} from './job/job-list/job-list.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {JobInsertComponent} from './job/job-insert/job-insert.component';
+import {JobDetailComponent} from './job/job-detail/job-detail.component';
 
 const routes: Routes = [{
   path: '',
@@ -46,8 +47,8 @@ const routes: Routes = [{
     },
 
     {
-      path: 'job/{{id}}',
-      component: JobInsertComponent,
+      path: 'job/detail/:id',
+      component: JobDetailComponent,
     },
   ],
 }];
