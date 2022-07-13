@@ -30,7 +30,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
-
 const configToast: any = {
   timeOut: 3000,
   positionClass: 'toast-top-right',

@@ -1,29 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SearchjobComponent } from './searchjob.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
-import {WebHomeComponent} from './web-home.component';
-import {CardModule} from 'primeng/card';
 
 const routes: Routes = [{
   path: '',
-  component: WebHomeComponent,
+  component: SearchjobComponent,
   children: [],
 }];
 
 @NgModule({
   declarations: [
-    WebHomeComponent,
+    SearchjobComponent,
   ],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),
-        ButtonModule,
-        InputTextModule,
-        ReactiveFormsModule,
-        CardModule,
-    ],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    ButtonModule,
+    InputTextModule,
+    ReactiveFormsModule,
+  ],
 })
-export class WebhomeModule { }
+export class SearchjobModule { }

@@ -36,92 +36,11 @@
 
 
   <!-- Header -->
-  <header id="header" class="header">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
-          <h1 class="h1-large">TALENTS<br> TRUSTED<br> PARTNER</h1>
-        </div> <!-- end of col -->
-        <div class="col-lg-6">
-
-        </div> <!-- end of col -->
-      </div> <!-- end of row -->
-    </div> <!-- end of container -->
-  </header> <!-- end of header -->
-  <!-- end of header -->
 
 
 
   <div id="services" class="cards-1 bg-gray">
     <div class="container">
-
-      <h1>Tìm kiếm vị trí công việc phù hợp với bạn</h1>
-      <div class="col-lg-12">
-
-        <p-card>
-          <form >
-            <div class="form-row">
-              <div class="col-2">
-                <select class="form-select" aria-label="Default select example">
-                  <option value="kỹ năng" >Kỹ năng</option>
-                  <option value="php" >PHP</option>
-                  <option value = "python">Python</option>
-                  <option value = "java">Java</option>
-                </select>
-              </div>
-              <div class="col-1">
-                <select class="form-select" aria-label="Default select example">
-                  <option value = "địa điểm">Địa điểm</option>
-                  <option value="hồ chí minh">TP.Hồ Chí Minh</option>
-                  <option value = "đà nẵng">Đà nẵng</option>
-                </select>
-              </div>
-            </div>
-            <br>
-            <div class="form-row">
-              <div class="col-2">
-                <select class="form-select" aria-label="Default select example">
-                  <option value = "mức lương">Mức lương</option>
-                  <option value="12000000-15000000">12-15m</option>
-                  <option value = "20000000-30000000">20-30m</option>
-                </select>
-
-              </div>
-
-                <div class="col-2">
-                  <select class="form-select" aria-label="Default select example">
-                    <option value = "full time">FullTime</option>
-                    <option value = "part time">PartTime</option>
-                  </select>
-                </div>
-
-
-            </div>
-            <br>
-            <div class="form-row">
-              <div class="col-2">
-                <select class="form-select" aria-label="Default select example">
-                  <option>Số năm kinh nghiệm</option>
-                  <option>Từ 2 đến 3  năm</option>
-                  <option>Từ 3 đến 5 năm</option>
-                </select>
-              </div>
-              <div class="col-1">
-                <select class="form-select" aria-label="Default select example">
-                  <option>Trình độ</option>
-                  <option>Cao đẳng</option>
-                  <option>Không yêu cầu</option>
-                </select>
-              </div>
-            </div>
-            <br>
-            <div >
-              <button class="btn-success"  pButton type="button" label="Tìm kiếm" ></button>
-            </div>
-          </form>
-
-        </p-card>
-      </div>
 
       <div class="row"></div>
       <div class="row"></div>
@@ -134,17 +53,12 @@
         <div class="col-lg-12">
           <!-- Card -->
           <div class="card first">
-            <div class="card-icon">
-              <span class="fas fa-rocket green"></span>
-            </div>
-
             <div class="card-body">
 
-              <h4 class="card-title">Việc mới tuyển</h4>
               <hr>
               <tr href="#" class=h2-heading *ngFor="let job of jobs">
 
-                <div *ngIf="countday(job.create_date) <=7">
+                <div *ngIf="countday(job.create_date)=== 1">
                   <a style="font-size:20px" href = "#"> {{job.name}} </a>
                   <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate|date}} </p>
                   <span ><a style="color:red" href="#">{{job.addressWork}}</a> | </span>
@@ -159,11 +73,8 @@
 
           <!-- Card -->
           <div class="card second">
-            <div class="card-icon">
-              <span class="far fa-clock green"></span>
-            </div>
+
             <div class="card-body">
-              <h4 class="card-title">Việc tuyển gấp</h4>
               <hr>
               <tr href="#" class=h2-heading *ngFor="let job of jobs">
 
@@ -182,11 +93,9 @@
 
           <!-- Card -->
           <div class="card third">
-            <div class="card-icon">
-              <span class="far fa-comments green"></span>
-            </div>
+
             <div class="card-body">
-              <h4 class="card-title">Việc làm lương cao</h4>
+
               <hr>
               <tr href="#" class=h2-heading *ngFor="let job of jobs">
 
