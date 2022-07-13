@@ -4,26 +4,24 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
-import {WebHomeComponent} from './web-home.component';
-import {CardModule} from 'primeng/card';
+import {EditCompanyComponent} from './edit-company.component';
 
 const routes: Routes = [{
   path: '',
-  component: WebHomeComponent,
+  component: EditCompanyComponent,
   children: [],
 }];
 
 @NgModule({
   declarations: [
-    WebHomeComponent,
+    EditCompanyComponent,
   ],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),
-        ButtonModule,
-        InputTextModule,
-        ReactiveFormsModule,
-        CardModule,
-    ],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    ButtonModule,
+    InputTextModule,
+    ReactiveFormsModule,
+  ],
 })
-export class WebhomeModule { }
+export class CompanyModule { }
