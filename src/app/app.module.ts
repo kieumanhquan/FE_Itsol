@@ -26,9 +26,10 @@ import {RouteGuardService} from './@core/services/route.guard.service';
 import {FilerecruitComponent} from './modules/home/filerecruit/filerecruit.component';
 import {FormsModule} from '@angular/forms';
 import { AboutComponent } from './modules/about/about.component';
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatIconModule} from "@angular/material/icon";
-import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 const configToast: any = {
   timeOut: 3000,
@@ -61,6 +62,7 @@ const configToast: any = {
     MatFormFieldModule,
     MatIconModule,
     MatPaginatorModule,
+    BrowserAnimationsModule,
   ],
   bootstrap: [AppComponent],
   providers: [{

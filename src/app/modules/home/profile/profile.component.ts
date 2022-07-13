@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
   user: User;
   username: string;
   id: number;
+  res: any;
 
   constructor(
     private sessionService: SessionService,
@@ -48,9 +49,22 @@ export class ProfileComponent implements OnInit {
       (res)=>{
         console.log(res.id);
         this.updateForm(res);
+        this.res = res;
         this.id = res.id;
       },
     );
+  }
+
+  updateUser() {
+    const user = {
+      userName: this.formProfile.value.fullName,
+      email: this.formProfile.value.email,
+      phoneNumber: this.formProfile.value.phoneNumber,
+      birthDay: this.formProfile.value.birthDay,
+      homeTown: this.formProfile.value.homeTown,
+      gender: this.formProfile.value.gender,
+    };
+    this.profileService.updateUser(this.id, user).subscribe();
   }
 
 

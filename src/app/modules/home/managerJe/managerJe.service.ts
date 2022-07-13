@@ -7,11 +7,13 @@ import {Observable} from 'rxjs';
   providedIn: 'root',
 })
 export class ManagerJeService{
-  private  readonly managerAPI = `${environment.apiUrl}auth/je`;
+  private  readonly managerAPI = `${environment.apiUrl}auth/pageje`;
 
   constructor(private http: HttpClient) { }
-
-  getJE(): Observable<any>{
-    return this.http.get<any>(this.managerAPI);
+  getJe(pram, pram1): Observable<any>{
+    return this.http.get<any>(`${this.managerAPI}?pageNo=` + pram + `&pageSize=`+ pram1);
+  }
+  getJeSort(pram, pram1 , sort): Observable<any>{
+    return this.http.get<any>(`${this.managerAPI}?pageNo=` + pram + `&pageSize=`+ pram1 + `&sort`+sort );
   }
 }

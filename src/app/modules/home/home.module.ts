@@ -11,6 +11,11 @@ import { PrimengModule } from '../../shared/primeng.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import {JobListComponent} from './job-list/job-list.component';
 import {FilerecruitComponent} from './filerecruit/filerecruit.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatDialog} from '@angular/material/dialog';
+import {MatDialogModule} from '@angular/material/dialog';
+
+
 
 const routes: Routes = [{
   path: '',
@@ -45,6 +50,7 @@ const routes: Routes = [{
     ProfileComponent,
     JobListComponent,
     ManagerJeComponent,
+    FilerecruitComponent,
   ],
   imports: [
     CommonModule,
@@ -54,6 +60,8 @@ const routes: Routes = [{
     ReactiveFormsModule,
     PrimengModule,
     SharedModule,
+    MatPaginatorModule,
+    MatDialogModule,
   ],
 })
 export class HomeModule { }
