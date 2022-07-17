@@ -1,0 +1,71 @@
+  <form  [formGroup]="formJobRegis">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <div class="row">
+          <label class="label col-3 col-form-label"  >Ngày hẹn phỏng vấn</label>
+          <div class="col-9">
+            <input type="date" pInputText class="form-control" formControlName="dateInterview">
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <div class="row">
+          <label class="label col-3 col-form-label">Giờ hẹn phỏng vấn</label>
+          <div class="col-9">
+            <input type="text" pInputText class="form-control" formControlName="timeInterview">
+            <mat-error class="error" *ngIf="formJobRegis.controls.timeInterview.errors?.required && formJobRegis.controls.timeInterview.touched">Không được để trống giờ hẹn phỏng vấn</mat-error>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row" style="margin-bottom: 20px;">
+      <div class="col-md-6">
+        <div class="row">
+          <label class="label col-3 col-form-label">Hình thức phỏng vấn</label>
+          <select class="form-control" id="working form" style="
+            position: relative;
+            margin-right: 16px;
+            margin-left: 164px;
+            margin-top: -40px;"
+            (change)="showDetail($event)">
+              <option  selection value="offline" >
+                {{selection[0]}}
+              </option>
+              <option  selection value="online">
+                {{selection[1]}}
+              </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row"  *ngIf="check" >
+          <label class="label col-3 col-form-label" > Công cụ phỏng vấn</label>
+          <select class="form-control" id="working" style="
+            position: relative;
+            margin-right: 16px;
+            margin-left: 164px;
+            margin-top: -23px;"
+                  (change)="showMedia($event)">
+            <option  value="facebook" >
+              {{media[0]}}
+            </option>
+            <option   value="skype">
+              {{media[1]}}
+            </option>
+            <option  value="googlemeet" >
+              {{media[2]}}
+            </option>
+            <option   value="zalo">
+              {{media[3]}}
+            </option>
+          </select>
+          <div class="col-9">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button id="button" type="button" class="btn btn-primary" (click)="sendMail()">Lưu</button>
+    </div>
+  </form>
+

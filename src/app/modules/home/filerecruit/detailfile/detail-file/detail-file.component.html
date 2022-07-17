@@ -1,0 +1,106 @@
+<div class="btnfix">
+  <button type="button" id="btn" class="btn btn-primary">Tải xuống CV</button>
+
+  <ng-template [ngIf]="'đang phỏng vấn'">
+    <p-button type="button" id="btn" class="btn btn-primary" (click)="changeBrowser()">Xét duyệt</p-button>
+  </ng-template>
+<!--  *ngif="status === 'chờ phỏng vấn' || status === 'chờ duyệt' || status === 'đang phỏng vấn'"-->
+    <button type="button" id="btn" class="btn btn-primary" (click)="openDialog()">Từ chối ứng viên</button>
+  <ng-template *ngif="status === 'ứng viên bị từ chối'">
+    <button type="button"  id="btn" class="btn btn-primary" (click)="showReason(regisId)">Xem lí do</button>
+  </ng-template>
+  <ng-template *ngif="status === 'chờ phỏng vấn'">
+    <button type="button" id="btn" class="btn btn-primary" (click)="bookInter(regisId)">Đặt lịch phỏng vấn</button>
+  </ng-template>
+  <ng-template *ngif="status === 'đang phỏng vấn'">
+    <button type="button" id="btn" class="btn btn-primary" (click)="changeSuccess()" *ngif="status === 'đang phỏng vấn'">Tuyển</button>
+  </ng-template>
+
+</div>
+
+
+<table class="table">
+  <div>
+    <tr>
+      <th scope="col" style="font-size: 1.5rem;">Trường thông tin</th>
+      <th scope="col" style="font-size: 1.5rem;">Thông tin chi tiết</th>
+    </tr>
+    <tr>
+      <th scope="row">#</th>
+      <td> {{detailfile?.id}} </td>
+
+    </tr>
+    <tr>
+      <th scope="row">Số năm kinh nghiệm</th>
+      <td>  {{detailfile?.numberExperience}} </td>
+    </tr>
+    <tr>
+      <th scope="row">Địa chỉ làm việc</th>
+      <td> {{detailfile?.addressWork}} </td>
+    </tr>
+    <tr>
+      <th scope="row">Trình độ học vấn</th>
+      <td>  {{detailfile?.qtyPerson}} </td>
+    </tr>
+    <tr>
+      <th scope="row">Số lượng tuyển</th>
+      <td>  {{detailfile?.qtyPerson}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Mô tả công việc</th>
+      <td>  {{detailfile?.description}} </td>
+    </tr>
+    <tr>
+      <th scope="row">Yêu cầu công việc</th>
+      <td> {{detailfile?.jobRequirement}} </td>
+    </tr>
+    <tr>
+      <th scope="row">Lương tối đa</th>
+      <td>  {{detailfile?.salaryMax}} </td>
+    </tr>
+    <tr>
+      <th scope="row">Lương tối thiểu</th>
+      <td> {{detailfile?.salaryMin}} </td>
+    </tr>
+    <tr>
+      <th scope="row">Lượt xem</th>
+      <td>  {{detailfile?.views}} </td>
+    </tr>
+    <tr>
+      <th scope="row">Tên công việc</th>
+      <td>  {{detailfile?.nameJob}} </td>
+    </tr>
+    <tr>
+      <th scope="row">Tên ứng viên</th>
+      <td>  {{detailfile?.name}} </td>
+    </tr>
+    <tr>
+      <th scope="row">Email</th>
+      <td> {{detailfile?.email}} </td>
+    </tr>
+    <tr>
+      <th scope="row">Số điện thoại</th>
+      <td> {{detailfile?.phoneNumber}} </td>
+    </tr>
+    <tr>
+      <th scope="row">địa chỉ nhà</th>
+      <td> {{detailfile?.homeTown}} </td>
+    </tr>
+    <tr>
+      <th scope="row">giới tính</th>
+      <td> {{detailfile?.gender}} </td>
+    </tr>
+    <tr>
+      <th scope="row">Trạng thái</th>
+      <td>  {{detailfile?.status}} </td>
+    </tr>
+    <tr>
+      <th scope="row">lý do</th>
+      <td>  {{detailfile?.reason}} </td>
+    </tr>
+  </div>
+</table>
+
+
+
+

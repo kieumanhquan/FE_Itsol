@@ -5,8 +5,8 @@ import {PublicModule} from './modules/Public/public.module';
 import {JobListComponent} from './modules/home/job-list/job-list.component';
 import {RouteGuardService} from './@core/services/route.guard.service';
 import {FilerecruitComponent} from './modules/home/filerecruit/filerecruit.component';
-import {AboutModule} from "./modules/about/about.module";
-import {DetailJobComponent} from "./modules/home/detail-job/detail-job/detail-job.component";
+import {AboutModule} from './modules/about/about.module';
+// @ts-ignore
 
 // @ts-ignore
 // @ts-ignore
@@ -68,10 +68,6 @@ export const routes: Routes = [
   {
     path : 'file-recruit',
     component : FilerecruitComponent,
-  },
-  {
-    path : 'detail-job',
-    component : DetailJobComponent,
   },
 ];
 

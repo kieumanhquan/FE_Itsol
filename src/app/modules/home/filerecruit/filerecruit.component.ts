@@ -4,6 +4,8 @@ import {JobregisterService} from '../../../@core/services/jobregister.service';
 import {PageEvent} from '@angular/material/paginator';
 import {FormBuilder} from '@angular/forms';
 import {Router} from '@angular/router';
+import {DataService} from '../../../@core/services/dataservice.service';
+import {getLocaleDateFormat} from "@angular/common";
 
 // @ts-ignore
 @Component({
@@ -14,13 +16,16 @@ import {Router} from '@angular/router';
 export class FilerecruitComponent implements OnInit {
   pageNo = 0;
   pageSize = 5;
-  pageSizeOption: Number[] = [1, 2,3,4,10,20];
+  pageSizeOption: Number[] = [1, 2, 3, 4, 10, 20];
   sort = 'dateRegister';
   type = true;
   // @ts-ignore
   filerecruit: Filerecruit[];
+  change: any;
+  // pageQuantity= 5;
 
-  constructor(private jobregisterService: JobregisterService, private fb: FormBuilder, private router: Router) {
+  constructor(private jobregisterService: JobregisterService, private fb: FormBuilder, private router: Router,
+              public dataService: DataService) {
   }
 
   ngOnInit(): void {
@@ -29,17 +34,15 @@ export class FilerecruitComponent implements OnInit {
 
 
   getFilerecruit() {
-    // @ts-ignore
     this.jobregisterService.getJobRegister(this.pageNo, this.pageSize).subscribe(data => {
-      // console.log(data);
       this.filerecruit = data;
     });
   }
 
-  // eslint-disable-next-line @typescript-eslint/member-ordering
   onChangePage(event: PageEvent) {
     this.pageSize = event.pageSize;
     this.pageNo = event.pageIndex;
+    // this.pageQuantity = (this.pageNo + 1) * this.pageNo;
     this.getFilerecruit();
   }
 
@@ -56,7 +59,6 @@ export class FilerecruitComponent implements OnInit {
     });
   }
 
-  // @ts-ignore
   getReason(filerecruits: any) {
     alert(filerecruits.reason);
     console.log(filerecruits.reason);
@@ -66,7 +68,17 @@ export class FilerecruitComponent implements OnInit {
     this.router.navigate(['home/job']);
   }
 
-  changeDetailJob() {
-    this.router.navigate(['home/detail-job']);
+  // @ts-ignore
+  getjobRegStatus(filerecruit: any) {
+    console.log(filerecruit);
+    this.dataService.setIdJobRegis(filerecruit);
+    this.router.navigate(['home/regdetail']);
+  }
+
+  changeDetailFile(filerecruits: any) {
+    this.dataService.setIdJobRegis(filerecruits.id);
+    console.log(filerecruits.id);
+    this.dataService.setStatus(filerecruits.status);
+    this.router.navigate(['home/detailfile']);
   }
 }

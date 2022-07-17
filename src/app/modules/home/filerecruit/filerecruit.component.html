@@ -3,31 +3,37 @@
   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 </form>
 <table class="table">
-  <thead style="background-color =#4c00ff">
+  <thead style="background-color=#4c00ff">
   <tr>
+    <th>#</th>
     <th>Tên ứng viên</th>
     <th>vị trí ứng tuyển</th>
 
     <th>file CV</th>
     <th>Trạng thái</th>
-    <th>Thời gian nộp hồ sơ  <i class="fa fa-sort" (click)="sorttable()"></i></th>
+    <th>Thời gian nộp hồ sơ <i class="fa fa-sort" (click)="sorttable()"></i></th>
     <th>quicktion</th>
 
   </tr>
   </thead>
   <tbody>
-  <ng-container  *ngFor="let filerecruits of filerecruit ">
+  <ng-container *ngFor="let filerecruits of filerecruit ">
     <tr>
-      <td>{{filerecruits.name}}</td>
-      <td (click)="getjobPosition(filerecruits)">{{filerecruits.jobPosition}}</td>
+      <td>{{filerecruits.id}}</td>
+      <td style="cursor: pointer" (click)="changeDetailFile(filerecruits)">{{filerecruits.name}}</td>
+      <td (click)="getjobPosition(filerecruits)" style="cursor: pointer;">{{filerecruits.jobPosition}}</td>
       <td>{{filerecruits.cv}}</td>
       <td>{{filerecruits.status}}</td>
       <td>{{filerecruits.dateRegister}}</td>
       <td>
-        <button class="btn btn-sm btn-info" *ngIf="filerecruits.status === 'ứng viên bị từ chối'" (click)="getReason(filerecruits)">
-          <i class="fa fa-search" ></i>lý do</button>
-        <button class="btn btn-sm btn-warning" *ngIf="filerecruits.status === 'chờ phỏng vấn'" (click)="changeDetailJob()">
-          <i class="fa fa-edit" ></i>Hẹn phỏng vấn</button>
+        <button class="btn btn-sm btn-info" *ngIf="filerecruits.status === 'ứng viên bị từ chối'"
+                (click)="getReason(filerecruits)">
+          <i class="fa fa-search"></i>lý do
+        </button>
+        <button class="btn btn-sm btn-warning" *ngIf="filerecruits.status === 'chờ phỏng vấn'"
+                (click)="getjobRegStatus(filerecruits.id)">
+          <i class="fa fa-edit"></i>Hẹn phỏng vấn
+        </button>
       </td>
 
     </tr>
@@ -36,5 +42,6 @@
   </tbody>
 </table>
 <mat-paginator [length]='50' [pageIndex]="pageNo" [pageSize]="pageSize" (page)="onChangePage($event)"
-               [pageSizeOptions]="pageSizeOption" aria-label="Select page"   showFirstLastButtons="firstLastButtons">
+               [pageSizeOptions]="pageSizeOption" aria-label="Select page" showFirstLastButtons="firstLastButtons">
 </mat-paginator>
+

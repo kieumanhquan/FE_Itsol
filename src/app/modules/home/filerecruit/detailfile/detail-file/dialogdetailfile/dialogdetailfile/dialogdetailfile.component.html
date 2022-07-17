@@ -1,0 +1,16 @@
+<h1 dialog-title></h1>
+<div dialog-content>
+<!--  <form class="form-control" [formGroup]="DialogForm">-->
+  <form class="form-control" >
+
+  <p>Lý do từ chối:</p>
+<!--  <textarea rows="4" cols="50" [(ngModel)]="reason">-->
+      <textarea rows="4" cols="50">
+
+  </textarea>
+  </form>
+</div>
+<div dialog-actions>
+  <button (click)="close()" >Đóng</button>
+  <button (click)="changeRefuse()">Từ chối</button>
+</div>

@@ -1,18 +1,20 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home.component';
-import { RouterModule, Routes } from '@angular/router';
-import { NbMenuModule } from '@nebular/theme';
-import { ThemeModule } from '../../@theme/theme.module';
-import { ProfileComponent } from './profile/profile.component';
-import { ManagerJeComponent } from './managerJe/managerJe.component';
-import { SharedModule } from 'primeng/api';
-import { PrimengModule } from '../../shared/primeng.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import {NgModule} from '@angular/core';
+import {HomeComponent} from './home.component';
+import {RouterModule, Routes} from '@angular/router';
+import {NbMenuModule} from '@nebular/theme';
+import {ThemeModule} from '../../@theme/theme.module';
+import {ProfileComponent} from './profile/profile.component';
+import {ManagerJeComponent} from './managerJe/managerJe.component';
+import {SharedModule} from 'primeng/api';
+import {PrimengModule} from '../../shared/primeng.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {JobListComponent} from './job-list/job-list.component';
 import {FilerecruitComponent} from './filerecruit/filerecruit.component';
-import {MatPaginatorModule} from "@angular/material/paginator";
-import { DetailJobComponent } from './detail-job/detail-job/detail-job.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSelectModule} from '@angular/material/select';
+import {JobregisterDetailComponent} from './filerecruit/jobregister-detail/jobregister-detail.component';
+import {DetailFileComponent} from "./filerecruit/detailfile/detail-file/detail-file.component";
+import {CommonModule} from "@angular/common";
 
 const routes: Routes = [{
   path: '',
@@ -35,12 +37,16 @@ const routes: Routes = [{
       component: ManagerJeComponent,
     },
     {
-      path: 'jobregister',
-      component: FilerecruitComponent,
+      path: 'regdetail',
+      component: JobregisterDetailComponent,
     },
     {
-      path : 'detail-job',
-      component : DetailJobComponent,
+      path: 'detailfile',
+      component: DetailFileComponent,
+    },
+    {
+      path: 'jobregister',
+      component: FilerecruitComponent,
     },
   ],
 }];
@@ -52,10 +58,10 @@ const routes: Routes = [{
     JobListComponent,
     ManagerJeComponent,
     FilerecruitComponent,
-    DetailJobComponent,
+    JobregisterDetailComponent,
   ],
   imports: [
-    CommonModule,
+    MatSelectModule,
     RouterModule.forChild(routes),
     ThemeModule,
     NbMenuModule,
@@ -63,6 +69,9 @@ const routes: Routes = [{
     PrimengModule,
     SharedModule,
     MatPaginatorModule,
+    FormsModule,
+    CommonModule,
   ],
 })
-export class HomeModule { }
+export class HomeModule {
+}

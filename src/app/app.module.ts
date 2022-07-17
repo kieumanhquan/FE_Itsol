@@ -24,11 +24,16 @@ import {
 import {TokenInterceptor} from './@core/services/interceptor.service';
 import {RouteGuardService} from './@core/services/route.guard.service';
 import {FilerecruitComponent} from './modules/home/filerecruit/filerecruit.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AboutComponent } from './modules/about/about.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {
+  DialogdetailfileComponent
+} from './modules/home/filerecruit/detailfile/detail-file/dialogdetailfile/dialogdetailfile/dialogdetailfile.component';
+import {CommonModule} from '@angular/common';
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 
 const configToast: any = {
   timeOut: 3000,
@@ -40,8 +45,10 @@ const configToast: any = {
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,],
   imports: [
+    CommonModule,
+    FormsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
@@ -62,6 +69,8 @@ const configToast: any = {
     MatIconModule,
     MatPaginatorModule,
     BrowserAnimationsModule,
+    MatDialogModule,
+    ReactiveFormsModule,
   ],
   bootstrap: [AppComponent],
   providers: [{
@@ -70,6 +79,7 @@ const configToast: any = {
     multi: true,
   }, RouteGuardService,
   ],
+  entryComponents:[DialogdetailfileComponent],
 })
 export class AppModule {
 
