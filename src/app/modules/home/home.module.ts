@@ -19,6 +19,7 @@ import {ResJeService} from './managerJe/resJe/resJe.service';
 import {ResJeComponent} from './managerJe/resJe/resJe.component';
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {PaginatorModule} from "primeng/paginator";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 
 
@@ -47,14 +48,14 @@ const routes: Routes = [{
       path: 'jobregister',
       component: FilerecruitComponent,
     },
-    {
-      path: 'job/insert',
-      component: JobInsertComponent,
-    },
-    {
-      path: 'job/detail/:id',
-      component: JobDetailComponent,
-    },
+    // {
+    //   path: 'job/insert',
+    //   component: JobInsertComponent,
+    // },
+    // {
+    //   path: 'job/detail/:id',
+    //   component: JobDetailComponent,
+    // },
   ],
 }];
 
@@ -68,18 +69,19 @@ const routes: Routes = [{
     EditJeComponent,
     ResJeComponent,
   ],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),
-        ThemeModule,
-        NbMenuModule,
-        ReactiveFormsModule,
-        PrimengModule,
-        SharedModule,
-        MatPaginatorModule,
-        MatDialogModule,
-        PaginatorModule,
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    ThemeModule,
+    NbMenuModule,
+    ReactiveFormsModule,
+    PrimengModule,
+    SharedModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    PaginatorModule,
+    MatDatepickerModule,
 
-    ],
+  ],
 })
 export class HomeModule { }

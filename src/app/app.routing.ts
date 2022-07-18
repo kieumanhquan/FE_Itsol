@@ -1,7 +1,7 @@
 import {ExtraOptions, RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {AuthGuard} from './@core/guards/auth.guard';
-import {JobListComponent} from './modules/home/job-list/job-list.component';
+// import {JobListComponent} from './modules/home/job-list/job-list.component';
 import {RouteGuardService} from './@core/services/route.guard.service';
 import {FilerecruitComponent} from './modules/home/filerecruit/filerecruit.component';
 
@@ -47,7 +47,7 @@ export const routes: Routes = [
     loadChildren: () => import('./modules/home-public/regis/regis.module').then(m => m.RegisModule),
   },
 
-  {path: 'job', component: JobListComponent},
+  // {path: 'job', component: JobListComponent},
   {path: '', redirectTo: 'jobs', pathMatch: 'full'},
 
   {

@@ -10,15 +10,15 @@ export class Job {
   academicLevelId: User;
   rankId: User;
   qtyPerson: string;
-  startRecruitmentDate: string;
+
   dueDate: Date;
   skills: string;
   startRecruitmentDate?: Date;
-  workingForm: WorkingForm;
+  // workingForm: WorkingForm;
   jobRequirement: string;
   description: string;
   interest: string;
-  jobRequirement: string;
+  // jobRequirement: string;
   salaryMax: number;
   salaryMin: number;
   contactId: User;
@@ -65,7 +65,7 @@ export class Job {
     this.academicLevelId = academicLevelId;
     this.rankId = rankId;
     this.qtyPerson = qtyPerson;
-    this.startRecruitmentDate = startRecruitmentDate;
+    // this.startRecruitmentDate = startRecruitmentDate;
     this.dueDate = dueDate;
     this.skills = skills;
     this.description = description;
