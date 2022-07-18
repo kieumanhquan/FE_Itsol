@@ -12,6 +12,7 @@ import {ThemeModule} from './@theme/theme.module';
 import {AppComponent} from './app.component';
 import {ToastrModule} from 'ngx-toastr';
 import {AppRoutingModule} from './app.routing';
+import { ToastNotificationsModule } from 'ngx-toast-notifications';
 import {
   NbChatModule,
   NbDatepickerModule,
@@ -63,6 +64,7 @@ const configToast: any = {
     MatIconModule,
     MatPaginatorModule,
     BrowserAnimationsModule,
+    ToastNotificationsModule,
   ],
   bootstrap: [AppComponent],
   providers: [{

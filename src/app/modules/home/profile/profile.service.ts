@@ -2,7 +2,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable, OnInit} from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
-import {User} from "./profile.model";
+
 
 
 @Injectable({
@@ -19,7 +19,6 @@ private  httpOptions = {
   };
   private readonly profileAPI = `${environment.apiUrl}auth/getuser/`;
   private readonly profileAPI1 = `${environment.apiUrl}auth/update/`;
-
 
   constructor(private http: HttpClient) { }
 
