@@ -8,13 +8,17 @@ import { ProfileComponent } from './profile/profile.component';
 import { ManagerJeComponent } from './managerJe/managerJe.component';
 import { SharedModule } from 'primeng/api';
 import { PrimengModule } from '../../shared/primeng.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {FilerecruitComponent} from './filerecruit/filerecruit.component';
 import {JobListComponent} from './job/job-list/job-list.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {JobInsertComponent} from './job/job-insert/job-insert.component';
 import {JobDetailComponent} from './job/job-detail/job-detail.component';
+import {NgbToastModule} from '@ng-bootstrap/ng-bootstrap';
+import { JobExportPdfComponent } from './job/job-export-pdf/job-export-pdf.component';
+import { JobUpdateComponent } from './job/job-detail/job-update/job-update.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 const routes: Routes = [{
   path: '',
@@ -50,6 +54,11 @@ const routes: Routes = [{
       path: 'job/detail/:id',
       component: JobDetailComponent,
     },
+
+    {
+      path: 'job/update/:id',
+      component: JobUpdateComponent,
+    },
   ],
 }];
 
@@ -60,6 +69,8 @@ const routes: Routes = [{
     ManagerJeComponent,
     FilerecruitComponent,
     JobListComponent,
+    JobExportPdfComponent,
+    JobUpdateComponent,
   ],
   imports: [
     CommonModule,
@@ -70,6 +81,9 @@ const routes: Routes = [{
     PrimengModule,
     SharedModule,
     MatPaginatorModule,
+    NgbToastModule,
+    MatDialogModule,
+    FormsModule,
   ],
 })
 export class HomeModule { }

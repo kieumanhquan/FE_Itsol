@@ -12,6 +12,12 @@ import {WorkingFormService} from '../../../../@core/services/working-form.servic
 import {AcademicLevelService} from '../../../../@core/services/academic-level.service';
 import {RankService} from '../../../../@core/services/rank.service';
 import {StatusJobService} from '../../../../@core/services/status-job.service';
+import {AbstractControl, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
+import {Je} from "../../managerJe/managerJe.model";
+import {ManagerJeService} from "../../managerJe/managerJe.service";
+import {SessionService} from "../../../../@core/services/session.service";
+import {NgbDate, NgbToastModule} from "@ng-bootstrap/ng-bootstrap";
+import {Toaster} from "ngx-toast-notifications";
 
 @Component({
   selector: 'ngx-job-insert',
@@ -25,7 +31,12 @@ export class JobInsertComponent implements OnInit {
   workingForms: WorkingForm[];
   academicLevels: AcademicLevel[];
   ranks: Rank[];
-  statusJobs: StatusJob[];
+  contactJE: Je[];
+  currentUser: string;
+  idCurrentUser: number;
+  isSubmitted = false;
+
+  insertJobForm: FormGroup;
 
   constructor(private jobService: JobService,
               private jobPositionService: JobPositionService,
@@ -33,14 +44,53 @@ export class JobInsertComponent implements OnInit {
               private academicLevelService: AcademicLevelService,
               private rankService: RankService,
               private statusJobService: StatusJobService,
-              private router: Router) { }
+              private managerJeService: ManagerJeService,
+              private sessionService: SessionService,
+              private router: Router,
+              private toast: Toaster) { }
 
   ngOnInit(): void {
     this.getJobPosition();
     this.getWorkingForm();
     this.getAcademicLevel();
     this.getRank();
-    this.getStatusJob();
+    this.getContactJE();
+    this.getCurrentUserId();
+
+    this.insertJobForm = new FormGroup({
+      'name' : new FormControl('',
+        [Validators.required, Validators.maxLength(150)]),
+      'job-position': new FormControl('',
+        [Validators.required]),
+      'working-form': new FormControl('',
+        [Validators.required]),
+      'salary-min' : new FormControl('',
+        [Validators.required, Validators.pattern('[0-9]+')]),
+      'salary-max' : new FormControl('',
+        [Validators.required, Validators.pattern('[0-9]+')]),
+      'address-work' : new FormControl('',
+        [Validators.required, Validators.maxLength(300)]),
+      'description' : new FormControl('',
+        [Validators.required, Validators.maxLength(2000)]),
+      'number-experience' : new FormControl('',
+        [Validators.required, Validators.pattern('[0-9]+')]),
+      'qty-person' : new FormControl('',
+        [Validators.required, Validators.pattern('[0-9]+')]),
+      'academic-level': new FormControl('',
+        [Validators.required]),
+      'rank': new FormControl('',
+        [Validators.required]),
+      'skills' : new FormControl('',
+        [Validators.required]),
+      'due-date' : new FormControl('',
+        [Validators.required]),
+      'contact' : new FormControl('',
+        [Validators.required]),
+      'interest' : new FormControl('',
+        [Validators.required, Validators.maxLength(2000)]),
+      'job-requirement' : new FormControl('',
+        [Validators.required, Validators.maxLength(2000)]),
+      });
   }
 
   getJobPosition() {
@@ -82,17 +132,67 @@ export class JobInsertComponent implements OnInit {
     this.job.rankId = id;
   }
 
-  getStatusJob() {
-    this.statusJobService.getStatusJobList().subscribe(data => {
-      this.statusJobs = data;
+  getContactJE() {
+    this.managerJeService.getJE().subscribe(data => {
+      this.contactJE = data;
     });
   }
-  selectStatusJobOption(id: number) {
-    this.job.statusId = id;
+  selectContactJE(id: number) {
+    this.job.contactId = id;
+  }
+
+  getCurrentUserId() {
+    this.currentUser=this.sessionService.getItem('auth-user');
+    this.jobService.getProfile(this.currentUser.sub).subscribe(
+      (res)=>{
+        console.log('id current log in: ' + res.id);
+        this.idCurrentUser = res.id;
+      },
+    );
+  }
+
+  inputJob() {
+    const today = new Date();
+    this.job.startRecruitmentDate = today;
+    this.job.updateId = this.idCurrentUser;
+    this.job.createId = this.idCurrentUser;
+    this.job.updateDate = today;
+    this.job.createDate = today;
+    this.job.statusId = 1;
+    this.job.views = 0;
+    this.job.isDelete = false;
+  }
+
+  saveJob() {
+    this.inputJob();
+
+    this.jobService.createJob(this.job).subscribe( data => {
+      console.log("data = " + data);
+      this.gotoJobList();
+    }, error => console.log(error));
+  }
+
+  gotoJobList() {
+    this.router.navigate(['home/job']);
+  }
+
+  showToaster(message: string,typea: any) {
+    const type = typea;
+    this.toast.open({
+      text: message,
+      caption: 'Thành công',
+      type: type,
+      duration: 3000
+    });
   }
 
   onSubmit() {
+    this.isSubmitted = true;
     console.log(this.job);
+    console.log("idCurrentUser = " + this.idCurrentUser);
+    this.showToaster('Thêm mới thành công','success');
+    this.saveJob();
   }
-
 }
+
+

@@ -1,16 +1,16 @@
-import {User} from './user';
+import {NgbDate} from "@ng-bootstrap/ng-bootstrap";
 
 export class Job {
   id: number;
   name: string;
   jobPositionId: number;
   numberExperience: string;
-  workingFormId: User;
+  workingFormId: number;
   addressWork: string;
-  academicLevelId: User;
-  rankId: User;
+  academicLevelId: number;
+  rankId: number;
   qtyPerson: string;
-  startRecruitmentDate: string;
+  startRecruitmentDate: Date;
   dueDate: Date;
   skills: string;
   description: string;
@@ -18,24 +18,24 @@ export class Job {
   jobRequirement: string;
   salaryMax: number;
   salaryMin: number;
-  contactId: User;
-  createId: User;
-  createDate: number;
-  updateId: User;
+  contactId: number;
+  createId: number;
+  createDate: Date;
+  updateId: number;
   updateDate: Date;
-  statusId: User;
+  statusId: number;
   views: number;
   isDelete: boolean;
 
-  constructor(
-    id: number,
+  /*constructor(
+  id: number,
   name: string,
   jobPositionId: number,
   numberExperience: string,
-  workingFormId: User,
+  workingFormId: number,
   addressWork: string,
-  academicLevelId: User,
-  rankId: User,
+  academicLevelId: number,
+  rankId: number,
   qtyPerson: string,
   startRecruitmentDate: string,
   dueDate: Date,
@@ -45,15 +45,15 @@ export class Job {
   jobRequirement: string,
   salaryMax: number,
   salaryMin: number,
-  contactId: User,
-  createId: User,
+  contactId: number,
+  createId: number,
   createDate: number,
-  updateId: User,
+  updateId: number,
   updateDate: Date,
-  statusId: User,
+  statusId: number,
   views: number,
   isDelete: boolean) {
-    this.id = id;
+    this.id =id;
     this.name = name;
     this.jobPositionId = jobPositionId;
     this.numberExperience = numberExperience;
@@ -78,5 +78,5 @@ export class Job {
     this.statusId = statusId;
     this.views = views;
     this.isDelete = isDelete;
-  }
+  }*/
 }
