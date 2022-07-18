@@ -24,8 +24,8 @@ import {
 import {TokenInterceptor} from './@core/services/interceptor.service';
 import {RouteGuardService} from './@core/services/route.guard.service';
 import {FilerecruitComponent} from './modules/home/filerecruit/filerecruit.component';
+import { AboutComponent } from './modules/home-public/about/about.component';
 import {FormsModule} from '@angular/forms';
-import { AboutComponent } from './modules/about/about.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatPaginatorModule} from '@angular/material/paginator';

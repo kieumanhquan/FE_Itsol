@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AboutService} from '../../@core/services/about.service';
-import {Company} from '../../@core/models/company';
+import {AboutService} from '../../../@core/services/about.service';
+import {Company} from '../../../@core/models/company';
 
 @Component({
   selector: 'ngx-about',

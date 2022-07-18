@@ -13,37 +13,14 @@ export class WebHomeService {
 
   private readonly baseUrl = `${environment.apiUrl}public/itsol_recruitment`;
 
-  constructor(private httpClient: HttpClient) { }
-
-  getJobList(): Observable<Job[]>{
-    return this.httpClient.get<Job[]>(`${this.baseUrl}`);
+  constructor(private http: HttpClient) {
   }
-  getAllJob() {
-    return this.httpClient.get<any>(this.baseUrl + 'getAll');
-  }
-  public getJobById(id: number): Observable<Job> {
-    return this.httpClient.get<Job>(`${this.baseUrl+'getJob'}/${id}`, {
+  getAllJob(page: number): Observable<object>{
+    return this.http.get(`${this.baseUrl}`,{
       params: {
-        // eslint-disable-next-line @typescript-eslint/naming-convention
-        IdNumber: id,
+        pageNumber: page,
       },
     });
-  }
-
-  public getAllJobPage(
-    pageN: number,
-    pageS: number,
-  ): Observable<ResponseData> {
-    return this.httpClient.get<ResponseData>(`${this.baseUrl+'getAllPage'}`, {
-      params: {
-        pageNumber: pageN,
-        pageSize: pageS,
-      },
-    });
-  }
-
-  public searchJobs(search: searchJob): Observable<Job[]>{
-    return this.httpClient.post<Job[]>(`${this.baseUrl+'search'}`, search);
   }
 
 }

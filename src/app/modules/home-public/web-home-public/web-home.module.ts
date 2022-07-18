@@ -6,6 +6,7 @@ import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import {WebHomeComponent} from './web-home.component';
 import {CardModule} from 'primeng/card';
+import {MatSelectModule} from "@angular/material/select";
 
 const routes: Routes = [{
   path: '',
@@ -24,6 +25,7 @@ const routes: Routes = [{
         InputTextModule,
         ReactiveFormsModule,
         CardModule,
+        MatSelectModule,
     ],
 })
 export class WebhomeModule { }

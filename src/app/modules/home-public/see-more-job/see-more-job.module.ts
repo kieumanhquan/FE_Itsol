@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SearchjobComponent } from './searchjob.component';
 import { RouterModule, Routes } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
+import {SeeMoreJobComponent} from "./see-more-job.component";
 
 const routes: Routes = [{
   path: '',
-  component: SearchjobComponent,
+  component: SeeMoreJobComponent,
   children: [],
 }];
 
 @NgModule({
   declarations: [
-    SearchjobComponent,
+    SeeMoreJobComponent,
   ],
   imports: [
     CommonModule,
@@ -22,6 +22,7 @@ const routes: Routes = [{
     ButtonModule,
     InputTextModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
 })
-export class SearchjobModule { }
+export class SeeMoreJobModule { }

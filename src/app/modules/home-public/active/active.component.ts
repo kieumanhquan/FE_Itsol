@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RegisService } from '../../@core/services/regis.service';
-import { TokenService } from '../../@core/services/token.service';
-import {User} from '../../@core/models/user';
+import { RegisService } from '../../../@core/services/regis.service';
+import { TokenService } from '../../../@core/services/token.service';
+import {User} from '../../../@core/models/user';
 import {ActivatedRoute} from '@angular/router';
-import {ActiveService} from '../../@core/services/active.service';
+import {ActiveService} from '../../../@core/services/active.service';
 import jwtDecode from "jwt-decode";
 
 @Component({

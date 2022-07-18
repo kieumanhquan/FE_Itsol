@@ -1,6 +1,6 @@
-export interface Rank{
+export interface StatusJob{
   id: number ;
   code: string;
   description: string;
-  delete: number;
+  delete: boolean;
 }
