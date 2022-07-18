@@ -12,6 +12,8 @@ import {WorkingFormService} from '../../../../../@core/services/working-form.ser
 import {AcademicLevelService} from '../../../../../@core/services/academic-level.service';
 import { RankService } from '../../../../../@core/services/rank.service';
 import { ActivatedRoute } from '@angular/router';
+import {ManagerJeService} from '../../../managerJe/managerJe.service';
+import {Je} from '../../../managerJe/managerJe.model';
 
 @Component({
   selector: 'ngx-job-update',
@@ -25,6 +27,7 @@ export class JobUpdateComponent implements OnInit {
   workingForms: WorkingForm[];
   academicLevels: AcademicLevel[];
   ranks: Rank[];
+  contactJE: Je[];
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
               private jobService: JobService,
@@ -32,6 +35,7 @@ export class JobUpdateComponent implements OnInit {
               private workingFormService: WorkingFormService,
               private academicLevelService: AcademicLevelService,
               private rankService: RankService,
+              private managerJeService: ManagerJeService,
               private router: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -45,6 +49,7 @@ export class JobUpdateComponent implements OnInit {
     this.getWorkingForm();
     this.getAcademicLevel();
     this.getRank();
+    this.getContactJE();
   }
 
   getJobPosition() {
@@ -84,5 +89,14 @@ export class JobUpdateComponent implements OnInit {
   }
   selectRankOption(id: number) {
     this.job.rankId = id;
+  }
+
+  getContactJE() {
+    this.managerJeService.getJE().subscribe(data => {
+      this.contactJE = data;
+    });
+  }
+  selectContactJE(id: number) {
+    this.job.contactId = id;
   }
 }

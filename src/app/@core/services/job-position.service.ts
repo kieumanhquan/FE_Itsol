@@ -8,7 +8,7 @@ import {JobPosition} from '../models/job-position';
 @Injectable({
   providedIn: 'root',
 })
-export class JobPositionSerice {
+export class JobPositionService {
 
   private baseURL = `${environment.apiUrl}public/job-position`;
 
@@ -18,7 +18,7 @@ export class JobPositionSerice {
     return this.httpClient.get<JobPosition[]>(`${this.baseURL}`);
   }
 
-  getJobById(id: number): Observable<JobPosition>{
+  getJobPostionById(id: number): Observable<JobPosition>{
     return this.httpClient.get<JobPosition>(`${this.baseURL}/${id}`);
   }
 

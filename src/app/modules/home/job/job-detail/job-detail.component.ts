@@ -112,7 +112,6 @@ export class JobDetailComponent implements OnInit {
 
   openDialog(id): void {
     this.dialog.open(JobUpdateComponent, {
-      disableClose:true,
       data:({idJob:id}),
     });
   }

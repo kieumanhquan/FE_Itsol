@@ -8,18 +8,21 @@ import { ProfileComponent } from './profile/profile.component';
 import { ManagerJeComponent } from './managerJe/managerJe.component';
 import { SharedModule } from 'primeng/api';
 import { PrimengModule } from '../../shared/primeng.module';
-import { ReactiveFormsModule } from '@angular/forms';
-import {JobListComponent} from './job/job-list/job-list.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 import {FilerecruitComponent} from './filerecruit/filerecruit.component';
+import {JobListComponent} from './job/job-list/job-list.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatDialog} from '@angular/material/dialog';
+import {JobInsertComponent} from './job/job-insert/job-insert.component';
+import {JobDetailComponent} from './job/job-detail/job-detail.component';
+import {NgbToastModule} from '@ng-bootstrap/ng-bootstrap';
+import { JobExportPdfComponent } from './job/job-export-pdf/job-export-pdf.component';
+import { JobUpdateComponent } from './job/job-detail/job-update/job-update.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {PaginatorModule} from "primeng/paginator";
 import {EditJeComponent} from './managerJe/editJe/editJe.component';
 import {ResJeService} from './managerJe/resJe/resJe.service';
 import {ResJeComponent} from './managerJe/resJe/resJe.component';
-import {DashboardComponent} from "./dashboard/dashboard.component";
-import {PaginatorModule} from "primeng/paginator";
-
 
 
 const routes: Routes = [{
@@ -47,13 +50,20 @@ const routes: Routes = [{
       path: 'jobregister',
       component: FilerecruitComponent,
     },
+
     {
       path: 'job/insert',
       component: JobInsertComponent,
     },
+
     {
       path: 'job/detail/:id',
       component: JobDetailComponent,
+    },
+
+    {
+      path: 'job/update/:id',
+      component: JobUpdateComponent,
     },
   ],
 }];
@@ -65,21 +75,25 @@ const routes: Routes = [{
     JobListComponent,
     ManagerJeComponent,
     FilerecruitComponent,
+    JobListComponent,
+    JobExportPdfComponent,
+    JobUpdateComponent,
     EditJeComponent,
     ResJeComponent,
   ],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),
-        ThemeModule,
-        NbMenuModule,
-        ReactiveFormsModule,
-        PrimengModule,
-        SharedModule,
-        MatPaginatorModule,
-        MatDialogModule,
-        PaginatorModule,
-
-    ],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    ThemeModule,
+    NbMenuModule,
+    ReactiveFormsModule,
+    PrimengModule,
+    SharedModule,
+    MatPaginatorModule,
+    NgbToastModule,
+    MatDialogModule,
+    FormsModule,
+    PaginatorModule,
+  ],
 })
 export class HomeModule { }
