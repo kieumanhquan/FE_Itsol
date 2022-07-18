@@ -22,18 +22,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/home/product',
   },
   {
-    title: 'Tin tuyển dụng',
-    icon:'briefcase-outline',
-    link: '/home/job',
-  },
-  {
-    title: 'hồ sơ ứng tuyển',
+    title: 'Sản phẩm',
     icon: 'file',
     link: '/home/jobregister',
-  },
-  {
-    title: 'Company',
-    icon: 'globe-2-outline',
-    link: '/home/aboutCompany',
   },
 ];

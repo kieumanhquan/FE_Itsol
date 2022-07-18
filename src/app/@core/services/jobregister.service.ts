@@ -29,9 +29,14 @@ export class JobregisterService {
   //    return this.http.get<Filerecruit[]>(`${this.baseUrl}file-recruit`);
   // }
   // @ts-ignore
-  getJobRegister(param,param1): Observable<any> {
+  getJobRegister(param, param1): Observable<any> {
     // @ts-ignore
     return this.http.get<any>(`${this.baseUrl}job-register?pageNo=` + param + `&pageSize=` + param1);
   }
 
+  public getListSort(param,param1, sort,type): Observable<any> {
+
+    // eslint-disable-next-line max-len
+    return this.http.get(`${this.baseUrl}job-register?pageNo=` + param + `&pageSize=` + param1 + `&sort=` + sort + `&type=` + type);
+  }
 }

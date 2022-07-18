@@ -73,7 +73,7 @@ hide: boolean;
               console.log('aaa');
               this.router.navigate(['/home']);
             } else if(role === 'ROLE_USER'){
-              this.router.navigate(['/public']);
+              this.router.navigate(['/public/itsol_recruitment']);
             }
           }
         },

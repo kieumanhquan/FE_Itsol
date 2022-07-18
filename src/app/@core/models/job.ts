@@ -13,6 +13,9 @@ export class Job {
   startRecruitmentDate: string;
   dueDate: Date;
   skills: string;
+  startRecruitmentDate?: Date;
+  workingForm: WorkingForm;
+  jobRequirement: string;
   description: string;
   interest: string;
   jobRequirement: string;
