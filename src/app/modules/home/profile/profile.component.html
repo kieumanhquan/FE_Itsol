@@ -65,7 +65,7 @@
             <div class="col-md-6">
                 <div class="row">
                     <label class="label col-3 col-form-label">Ngày sinh</label>
-                    <div class="col-9" style="max-height: 100px;">
+                    <div class="field col-9 md:col-4">
 <!--                      <input type="text" pInputText class="form-control" formControlName="birthDay">-->
 <!--                      <div *ngIf="formProfile.controls.birthDay.invalid && formProfile.controls.birthDay.touched ">-->
 <!--                        <div *ngIf="formProfile.controls.birthDay.errors.required && formProfile.controls.birthDay.touched">-->
@@ -73,7 +73,7 @@
 <!--                        </div>-->
 <!--                      </div>-->
 <!--                      <p-calendar [showTime]="true" inputId="time" formControlName="birthDay" ></p-calendar>-->
-                      <p-calendar [(ngModel)]="birthday" [maxDate]="currentDate" [placeholder]="birthday" inputId="time" formControlName="startRecruitmentDate"></p-calendar>
+                      <p-calendar [(ngModel)]="birthday" [maxDate]="currentDate" [placeholder]="birthday" [showIcon]="true" inputId="time" formControlName="startRecruitmentDate"></p-calendar>
                     </div>
                 </div>
 
