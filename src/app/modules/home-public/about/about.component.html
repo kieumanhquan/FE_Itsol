@@ -3,7 +3,7 @@
     <div class="container" style="position:relative">
 
       <!-- Image Logo -->
-      <a class="navbar-brand logo-image" href="index.html"><img style="width:60px" src="../../../assets/images/itsol.png" alt="alternative"></a>
+      <a class="navbar-brand logo-image" href="../../../../index.html"><img style="width:60px" src="../../../../assets/images/itsol.png" alt="alternative"></a>
 
       <!-- Text Logo - Use this if you don't have a graphic logo -->
       <!-- <a class="navbar-brand logo-text" href="index.html">Elma</a> -->
@@ -15,14 +15,14 @@
       <div style="margin-left:936px" class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav ms-auto navbar-nav-scroll">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#header">Trang chủ</a>
+            <a class="nav-link" href="/public/itsol_recruitment">Trang chủ</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="/public/aboutus">Liên hệ</a>
+            <a class="nav-link active" aria-current="page" href="/public/aboutus">Liên hệ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/auth">Đăng nhập</a>
+            <a class="nav-link" href="auth">Đăng nhập</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="signup">Đăng ký</a>
@@ -36,85 +36,46 @@
 
 
   <!-- Header -->
-
-
-
-  <div id="services" class="cards-1 bg-gray">
+  <header id="header" class="header">
     <div class="container">
-
-      <div class="row"></div>
-      <div class="row"></div>
-      <br>
-      <!--    <p>{{date}}</p>-->
-      <!--    end search-->
-
       <div class="row">
+        <div class="col-lg-6">
+          <h1 class="h1-large">ITSOL</h1>
+          <h2 class="h1-large">TALENTS<br> TRUSTED<br> PARTNER</h2>
+        </div> <!-- end of col -->
+        <div class="col-lg-6">
 
-        <div class="col-lg-12">
-          <!-- Card -->
-          <div class="card first">
-            <div class="card-body">
-
-              <hr>
-              <tr href="#" class=h2-heading *ngFor="let job of jobs">
-
-                <div *ngIf="countday(job.create_date)=== 1">
-                  <a style="font-size:20px" href = "#"> {{job.name}} </a>
-                  <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate|date}} </p>
-                  <span ><a style="color:red" href="#">{{job.addressWork}}</a> | </span>
-
-                  <span style="color:gray"> upto {{job.salaryMax }} </span></div>
-              </tr>
-              <hr>
-              <a href="#" style="color:#3B82F6"> Xem thêm</a>
-            </div>
-          </div>
-          <!-- end of card -->
-
-          <!-- Card -->
-          <div class="card second">
-
-            <div class="card-body">
-              <hr>
-              <tr href="#" class=h2-heading *ngFor="let job of jobs">
-
-                <div *ngIf="countday(job.dueDate)=== 1 && job.qtyPerson > 0">
-                  <a style="font-size:20px" href = "#"> {{job.name}} </a>
-                  <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate|date}} </p>
-                  <span ><a style="color:red" href="#">{{job.addressWork}}</a> | </span>
-
-                  <span style="color:gray"> upto {{job.salaryMax }} </span></div>
-              </tr>
-              <hr>
-              <a href="#" style="color:#3B82F6"> Xem thêm</a>
-            </div>
-          </div>
-          <!-- end of card -->
-
-          <!-- Card -->
-          <div class="card third">
-
-            <div class="card-body">
-
-              <hr>
-              <tr href="#" class=h2-heading *ngFor="let job of jobs">
-
-                <div *ngIf="job.salaryMin >=18000000">
-                  <a style="font-size:20px" href = "#"> {{job.name}} </a>
-                  <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate|date}} </p>
-                  <span ><a style="color:red" href="#">{{job.addressWork}}</a> | </span>
-
-                  <span style="color:gray"> upto {{job.salaryMax }} </span></div>
-              </tr>
-              <hr>
-              <a href="#" style="color:#3B82F6"> Xem thêm</a>
-            </div>
-          </div>
         </div> <!-- end of col -->
       </div> <!-- end of row -->
     </div> <!-- end of container -->
-  </div> <!-- end of cards-1 -->
+  </header> <!-- end of header -->
+  <!-- end of header -->
 
+
+
+
+  <div id="about" class="counter cards-1 bg-gray">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2 style="color:#313e5b ; font-family: 'Lato', sans-serif;" class="h2-heading">Who we are ?</h2>
+          <hr class="hr-heading">
+        </div> <!-- end of col -->
+      </div> <!-- end of row -->
+      <div class="row">
+        <div class="col-xl-6" >
+          {{company.description}}
+
+        </div> <!-- end of col -->
+        <div class="col-xl-6">
+
+          <!-- Counter -->
+
+
+        </div> <!-- end of col -->
+      </div> <!-- end of row -->
+    </div> <!-- end of container -->
+  </div> <!-- end of counter -->
   <!-- Footer -->
   <div class="footer">
     <div class="container">
@@ -182,7 +143,7 @@
   </div> <!-- end of copyright -->
 
   <button onclick="topFunction()" id="myBtn">
-    <img src="../../../assets/bootstrap/images/up-arrow.png" alt="alternative">
+    <img src="../../../../assets/bootstrap/images/up-arrow.png" alt="alternative">
   </button>
 
 </section>

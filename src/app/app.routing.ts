@@ -6,8 +6,7 @@ import {JobListComponent} from './modules/home/job-list/job-list.component';
 
 import {RouteGuardService} from './@core/services/route.guard.service';
 import {FilerecruitComponent} from './modules/home/filerecruit/filerecruit.component';
-import {AboutModule} from "./modules/about/about.module";
-import {SearchjobModule} from "./modules/searchjob/searchjob.module";
+
 
 // @ts-ignore
 // @ts-ignore
@@ -32,11 +31,11 @@ export const routes: Routes = [
   },
   {
     path: 'signup',
-    loadChildren: () => import('./modules/regis/regis.module').then(m => m.RegisModule),
+    loadChildren: () => import('./modules/home-public/regis/regis.module').then(m => m.RegisModule),
   },
   {
     path: 'public/active_account/:id',
-    loadChildren: () => import('./modules/active/active.module').then(m => m.ActiveModule),
+    loadChildren: () => import('./modules/home-public/active/active.module').then(m => m.ActiveModule),
   },
   { path: '',
     redirectTo: 'home',
@@ -47,7 +46,7 @@ export const routes: Routes = [
   // },
   {
     path: 'signup',
-    loadChildren: () => import('./modules/regis/regis.module').then(m => m.RegisModule),
+    loadChildren: () => import('./modules/home-public/regis/regis.module').then(m => m.RegisModule),
   },
 
   {path: 'job', component: JobListComponent},
@@ -60,11 +59,11 @@ export const routes: Routes = [
   },
   {
     path: 'public/itsol_recruitment',
-    loadChildren: () => import('./modules/web-home/web-home.module').then(m => m.WebhomeModule),
+    loadChildren: () => import('./modules/home-public/web-home-public/web-home.module').then(m => m.WebhomeModule),
   },
   {
     path: 'public/aboutus',
-    loadChildren: () => import('./modules/about/about.module').then(m => m.AboutModule),
+    loadChildren: () => import('./modules/home-public/about/about.module').then(m => m.AboutModule),
   },
   {
     path : 'file-recruit',
@@ -72,7 +71,11 @@ export const routes: Routes = [
   },
   {
     path: 'public/searchJob',
-    loadChildren: () => import('./modules/searchjob/searchjob.module').then(m => m.SearchjobModule),
+    loadChildren: () => import('./modules/home-public/searchjob/searchjob.module').then(m => m.SearchjobModule),
+  },
+  {
+    path: 'public/itsol_recruitment/:typeJob',
+    loadChildren: () => import('./modules/home-public/see-more-job/see-more-job.module').then(m => m.SeeMoreJobModule),
   },
 ];
 

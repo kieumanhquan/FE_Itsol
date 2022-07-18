@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import { RegisService } from '../../@core/services/regis.service';
-import { TokenService } from '../../@core/services/token.service';
-import {User} from '../../@core/models/user';
+import { RegisService } from '../../../@core/services/regis.service';
+import { TokenService } from '../../../@core/services/token.service';
+import {User} from '../../../@core/models/user';
 
 @Component({
   selector: 'ngx-regis',
@@ -65,7 +65,7 @@ export class RegisComponent implements OnInit {
     );
     if (this.FormRegis.valid) {
       this.error = null;
-      console.log("ok");
+      console.log('ok');
       // show html truoc khi gui sang service
       this.regisService.regis(this.user)
         .then (data => {

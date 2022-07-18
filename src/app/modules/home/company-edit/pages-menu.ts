@@ -26,9 +26,4 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'file',
     link: '/home/jobregister',
   },
-  {
-    title: 'Company',
-    icon: 'globe-2-outline',
-    link: '/home/aboutCompany',
-  },
 ];

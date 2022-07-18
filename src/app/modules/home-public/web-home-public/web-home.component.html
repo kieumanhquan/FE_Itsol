@@ -3,10 +3,7 @@
     <div class="container" style="position:relative">
 
       <!-- Image Logo -->
-      <a class="navbar-brand logo-image" href="index.html"><img style="width:60px" src="../../../assets/images/itsol.png" alt="alternative"></a>
-
-      <!-- Text Logo - Use this if you don't have a graphic logo -->
-      <!-- <a class="navbar-brand logo-text" href="index.html">Elma</a> -->
+      <a class="navbar-brand logo-image" href="../../../../index.html"><img style="width:60px" src="../../../../assets/images/itsol.png" alt="alternative"></a>
 
       <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -15,7 +12,7 @@
       <div style="margin-left:936px" class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav ms-auto navbar-nav-scroll">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#header">Trang chủ</a>
+            <a class="nav-link active" aria-current="page" href="/public/itsol_recruitment">Trang chủ</a>
           </li>
 
           <li class="nav-item">
@@ -57,70 +54,86 @@
 
       <h1>Tìm kiếm vị trí công việc phù hợp với bạn</h1>
       <div class="col-lg-12">
-
-        <p-card>
-          <form >
-            <div class="form-row">
-              <div class="col-2">
-                <select class="form-select" aria-label="Default select example">
-                  <option value="kỹ năng" >Kỹ năng</option>
-                  <option value="php" >PHP</option>
-                  <option value = "python">Python</option>
-                  <option value = "java">Java</option>
-                </select>
-              </div>
-              <div class="col-1">
-                <select class="form-select" aria-label="Default select example">
-                  <option value = "địa điểm">Địa điểm</option>
-                  <option value="hồ chí minh">TP.Hồ Chí Minh</option>
-                  <option value = "đà nẵng">Đà nẵng</option>
-                </select>
-              </div>
-            </div>
-            <br>
-            <div class="form-row">
-              <div class="col-2">
-                <select class="form-select" aria-label="Default select example">
-                  <option value = "mức lương">Mức lương</option>
-                  <option value="12000000-15000000">12-15m</option>
-                  <option value = "20000000-30000000">20-30m</option>
-                </select>
-
-              </div>
+        <form [formGroup]="FormSearch">
+          <div class="dropdown">
+            <div class="">
+              <!-- seach -->
+              <div class="input-group rounded row mb-2">
 
                 <div class="col-2">
-                  <select class="form-select" aria-label="Default select example">
-                    <option value = "full time">FullTime</option>
-                    <option value = "part time">PartTime</option>
+                  <label style="margin-right: 5px" for="skills">Kỹ năng </label>
+                  <select [(ngModel)]="select_skill"  id="skills" style="width:100px"  formControlName="skills" class="form-select" aria-label="Default select example">-->
+                    <ng-container *ngFor="let skill of skills">
+                      <option [ngValue]="skill">{{skill}}</option>
+
+                    </ng-container>
                   </select>
                 </div>
+                <div class="col-2">
+                  <label style="margin-right: 5px" for="salary">Mức lương </label>
+                  <select [(ngModel)]="select_salary"   id="salary" style="width:100px"    formControlName="salary" class="form-select" aria-label="Default select example">-->
+                    <ng-container *ngFor="let salary of salarys">
 
+                      <option [ngValue]="salary">{{salary}}</option>
 
-            </div>
-            <br>
-            <div class="form-row">
-              <div class="col-2">
-                <select class="form-select" aria-label="Default select example">
-                  <option>Số năm kinh nghiệm</option>
-                  <option>Từ 2 đến 3  năm</option>
-                  <option>Từ 3 đến 5 năm</option>
-                </select>
+                    </ng-container>
+                  </select>
+                </div>
+                <div class="col-2">
+                  <label style="margin-right: 5px" for="working_forms">Hình thức làm việc </label>
+                  <select [(ngModel)]="select_working_form"  id="working_forms" style="width:100px"    formControlName="working_form" class="form-select" aria-label="Default select example">-->
+                    <ng-container *ngFor="let working_form of working_forms">
+
+                      <option [ngValue]="working_form">{{working_form}}</option>
+
+                    </ng-container>
+                  </select>
+                </div>
+                <div class="col-2">
+                  <label style="margin-right: 5px" for="number_experiences">Số năm kinh nghiệm </label>
+                  <select [(ngModel)]="select_number_experience"  id="number_experiences" style="width:100px"    formControlName="number_experience" class="form-select" aria-label="Default select example">-->
+                    <ng-container *ngFor="let number_experience of number_experiences">
+
+                      <option [ngValue]="number_experience">{{number_experience}}</option>
+
+                    </ng-container>
+                  </select>
+                </div>
+                <div class="col-2">
+                  <label style="margin-right: 5px" for="academic_level">Trình độ học vấn </label>
+                  <select [(ngModel)]="select_academic_level"  id="academic_level" style="width:100px"    formControlName="academic_level" class="form-select" aria-label="Default select example">-->
+                    <ng-container *ngFor="let academic_level of academic_levels">
+
+                      <option [ngValue]="academic_level">{{academic_level}}</option>
+
+                    </ng-container>
+                  </select>
+                </div>
+                <div class="col-2">
+                  <label style="margin-right: 5px" for="address_work">Địa điểm làm việc </label>
+                  <select [(ngModel)]="select_address_work" id="address_work" style="width:100px"    formControlName="address_work" class="form-select" aria-label="Default select example">-->
+                    <ng-container *ngFor="let address_work of address_works">
+
+                      <option [ngValue]="address_work">{{address_work}}</option>
+
+                    </ng-container>
+                  </select>
+                </div>
+                <br>
+
               </div>
-              <div class="col-1">
-                <select class="form-select" aria-label="Default select example">
-                  <option>Trình độ</option>
-                  <option>Cao đẳng</option>
-                  <option>Không yêu cầu</option>
-                </select>
-              </div>
+              <button
+                style="border-radius: 4px"
+                class="btn btn-success col-sm-2"
+                (click)="seach()">
+                <!--                >-->
+                Tìm kiếm
+              </button>
             </div>
-            <br>
-            <div >
-              <button class="btn-success"  pButton type="button" label="Tìm kiếm" ></button>
-            </div>
-          </form>
+          </div>
+        </form>
 
-        </p-card>
+
       </div>
 
       <div class="row"></div>
@@ -141,18 +154,20 @@
             <div class="card-body">
 
               <h4 class="card-title">Việc mới tuyển</h4>
-              <hr>
-              <tr href="#" class=h2-heading *ngFor="let job of jobs">
 
-                <div *ngIf="countday(job.create_date) <=7">
+              <tr href="#" class=h2-heading *ngFor="let job of newJob; let i = index">
+
+                <div *ngIf="i < 5">
                   <a style="font-size:20px" href = "#"> {{job.name}} </a>
-                  <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate|date}} </p>
+                  <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate}} </p>
                   <span ><a style="color:red" href="#">{{job.addressWork}}</a> | </span>
 
                   <span style="color:gray"> upto {{job.salaryMax }} </span></div>
+                <hr *ngIf="i < 5">
+                <a *ngIf="i === 6" href="/public/itsol_recruitment/newJob" style="color:#3B82F6"> Xem thêm</a>
               </tr>
-              <hr>
-              <a href="#" style="color:#3B82F6"> Xem thêm</a>
+
+
             </div>
           </div>
           <!-- end of card -->
@@ -164,18 +179,18 @@
             </div>
             <div class="card-body">
               <h4 class="card-title">Việc tuyển gấp</h4>
-              <hr>
-              <tr href="#" class=h2-heading *ngFor="let job of jobs">
 
-                <div *ngIf="countday(job.dueDate)=== 1 && job.qtyPerson > 0">
+              <tr href="#" class=h2-heading *ngFor="let job of urgentJob; let i = index">
+
+                <div *ngIf="i < 5">
                   <a style="font-size:20px" href = "#"> {{job.name}} </a>
-                  <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate|date}} </p>
+                  <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate}} </p>
                   <span ><a style="color:red" href="#">{{job.addressWork}}</a> | </span>
 
                   <span style="color:gray"> upto {{job.salaryMax }} </span></div>
+                <hr *ngIf="i < 5">
+                <a *ngIf="i === 6" href="/public/itsol_recruitment/urgentJob" style="color:#3B82F6"> Xem thêm</a>
               </tr>
-              <hr>
-              <a href="#" style="color:#3B82F6"> Xem thêm</a>
             </div>
           </div>
           <!-- end of card -->
@@ -186,25 +201,26 @@
               <span class="far fa-comments green"></span>
             </div>
             <div class="card-body">
-              <h4 class="card-title">Việc làm lương cao</h4>
-              <hr>
-              <tr href="#" class=h2-heading *ngFor="let job of jobs">
+              <h4 class="card-title">Việc lương cao</h4>
 
-                <div *ngIf="job.salaryMin >=18000000">
+              <tr href="#" class=h2-heading *ngFor="let job of highPJob; let i = index">
+
+                <div *ngIf="i < 5">
                   <a style="font-size:20px" href = "#"> {{job.name}} </a>
-                  <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate|date}} </p>
+                  <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate}} </p>
                   <span ><a style="color:red" href="#">{{job.addressWork}}</a> | </span>
 
                   <span style="color:gray"> upto {{job.salaryMax }} </span></div>
+                <hr *ngIf="i < 5">
+                <a *ngIf="i === 6" href="/public/itsol_recruitment/highPJob" style="color:#3B82F6"> Xem thêm</a>
               </tr>
-              <hr>
-              <a href="#" style="color:#3B82F6"> Xem thêm</a>
             </div>
           </div>
         </div> <!-- end of col -->
       </div> <!-- end of row -->
     </div> <!-- end of container -->
   </div> <!-- end of cards-1 -->
+
 
   <!-- Footer -->
   <div class="footer">
@@ -273,10 +289,8 @@
   </div> <!-- end of copyright -->
 
   <button onclick="topFunction()" id="myBtn">
-    <img src="../../../assets/bootstrap/images/up-arrow.png" alt="alternative">
+    <img src="../../../../assets/bootstrap/images/up-arrow.png" alt="alternative">
   </button>
 
 </section>
 
-<!--</body>-->
-<!--</html>-->
