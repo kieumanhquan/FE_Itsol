@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import {Job} from '../../../../@core/models/job';
-import {JobPosition} from '../../../../@core/models/job-position';
+// import {JobPosition} from '../../../../@core/models/job-position';
 import {JobService} from '../../../../@core/services/job.service';
 import {Router} from '@angular/router';
-import {JobPositionService} from '../../../../@core/services/job-position.service';
-import {WorkingForm} from '../../../../@core/models/working-form';
-import {AcademicLevel} from '../../../../@core/models/academic-level';
-import {Rank} from '../../../../@core/models/rank';
-import {StatusJob} from '../../../../@core/models/status-job';
-import {WorkingFormService} from '../../../../@core/services/working-form.service';
-import {AcademicLevelService} from '../../../../@core/services/academic-level.service';
-import {RankService} from '../../../../@core/services/rank.service';
-import {StatusJobService} from '../../../../@core/services/status-job.service';
+// import {JobPositionService} from '../../../../@core/services/job-position.service';
+// import {WorkingForm} from '../../../../@core/models/working-form';
+// import {AcademicLevel} from '../../../../@core/models/academic-level';
+// import {Rank} from '../../../../@core/models/rank';
+// import {StatusJob} from '../../../../@core/models/status-job';
+// import {WorkingFormService} from '../../../../@core/services/working-form.service';
+// import {AcademicLevelService} from '../../../../@core/services/academic-level.service';
+// import {RankService} from '../../../../@core/services/rank.service';
+// import {StatusJobService} from '../../../../@core/services/status-job.service';
 
 @Component({
   selector: 'ngx-job-insert',

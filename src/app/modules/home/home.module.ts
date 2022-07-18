@@ -11,21 +11,22 @@ import { PrimengModule } from '../../shared/primeng.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import {FilerecruitComponent} from './filerecruit/filerecruit.component';
-import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialog} from '@angular/material/dialog';
 import {MatDialogModule} from '@angular/material/dialog';
 import {JobListComponent} from './job/job-list/job-list.component';
-import {JobInsertComponent} from './job/job-insert/job-insert.component';
-import {JobDetailComponent} from './job/job-detail/job-detail.component';
+// import {JobInsertComponent} from './job/job-insert/job-insert.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+// import {JobDetailComponent} from './job/job-detail/job-detail.component';
 
 const routes: Routes = [{
   path: '',
   component: HomeComponent,
   children: [
-    {
-      path: 'dashboard',
-      // loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
-    },
+    // {
+    //   path: 'dashboard',
+    //   loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+    // },
     {
       path: 'profile',
       component: ProfileComponent,
@@ -46,22 +47,23 @@ const routes: Routes = [{
       path: 'job/insert',
       component: JobInsertComponent,
     },
-    {
-      path: 'job/detail/:id',
-      component: JobDetailComponent,
-    },
+    // {
+    //   path: 'job/detail/:id',
+    //   component: JobDetailComponent,
+    // },
   ],
 }];
 
 @NgModule({
   declarations: [
     HomeComponent,
-    ProfileComponent,
+    // ProfileComponent,
     ManagerJeComponent,
     FilerecruitComponent,
-    JobListComponent,
+    // JobListComponent,
   ],
   imports: [
+    MatAutocompleteModule,
     CommonModule,
     RouterModule.forChild(routes),
     ThemeModule,

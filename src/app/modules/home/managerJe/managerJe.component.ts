@@ -6,6 +6,7 @@ import {EditJeComponent} from './editJe/editJe.component';
 import {MatDialog} from '@angular/material/dialog';
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'ngx-managerJe',
   templateUrl: './managerJe.component.html',
   styleUrls: ['./managerJe.component.scss'],
@@ -15,7 +16,7 @@ import {MatDialog} from '@angular/material/dialog';
   pageSizeOption: Number[] = [1, 2, 5, 10, 20, 50];
   sort: String;
   jes: Je[];
-  id:number;
+  id: number;
 
   constructor(public dialog: MatDialog, private managerJeService: ManagerJeService ) {
   }
