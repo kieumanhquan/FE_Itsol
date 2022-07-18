@@ -19,6 +19,11 @@ import {NgbToastModule} from '@ng-bootstrap/ng-bootstrap';
 import { JobExportPdfComponent } from './job/job-export-pdf/job-export-pdf.component';
 import { JobUpdateComponent } from './job/job-detail/job-update/job-update.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {PaginatorModule} from "primeng/paginator";
+import {EditJeComponent} from './managerJe/editJe/editJe.component';
+import {ResJeService} from './managerJe/resJe/resJe.service';
+import {ResJeComponent} from './managerJe/resJe/resJe.component';
+
 
 const routes: Routes = [{
   path: '',
@@ -27,6 +32,7 @@ const routes: Routes = [{
     {
       path: 'dashboard',
       // loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+      component: DashboardComponent,
     },
     {
       path: 'profile',
@@ -66,11 +72,14 @@ const routes: Routes = [{
   declarations: [
     HomeComponent,
     ProfileComponent,
+    JobListComponent,
     ManagerJeComponent,
     FilerecruitComponent,
     JobListComponent,
     JobExportPdfComponent,
     JobUpdateComponent,
+    EditJeComponent,
+    ResJeComponent,
   ],
   imports: [
     CommonModule,
@@ -84,6 +93,7 @@ const routes: Routes = [{
     NgbToastModule,
     MatDialogModule,
     FormsModule,
+    PaginatorModule,
   ],
 })
 export class HomeModule { }

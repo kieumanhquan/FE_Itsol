@@ -30,7 +30,6 @@ hide: boolean;
       this.isLoggedIn = true;
       // this.roles = this.tokenService.getUser().roles;
     }
-
   }
 
   initForm() {
@@ -40,10 +39,7 @@ hide: boolean;
           Validators.minLength(5),
           Validators.maxLength(20),
         ]),
-        password: new FormControl('', [
-          Validators.required,
-          Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,16}$'),
-        ]),
+        password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,16}$')]),
       });
   }
 
@@ -77,7 +73,7 @@ hide: boolean;
               console.log('aaa');
               this.router.navigate(['/home']);
             } else if(role === 'ROLE_USER'){
-              this.router.navigate(['/public']);
+              this.router.navigate(['/public/itsol_recruitment']);
             }
           }
         },

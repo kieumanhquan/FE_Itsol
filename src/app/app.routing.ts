@@ -50,6 +50,8 @@ export const routes: Routes = [
     loadChildren: () => import('./modules/regis/regis.module').then(m => m.RegisModule),
   },
 
+  {path: 'job', component: JobListComponent},
+  {path: '', redirectTo: 'jobs', pathMatch: 'full'},
 
   {
     path:'change-password',
@@ -76,7 +78,16 @@ export const routes: Routes = [
     path : 'file-recruit',
     component : FilerecruitComponent,
   },
+  {
+    path: 'public/searchJob',
+    loadChildren: () => import('./modules/home-public/searchjob/searchjob.module').then(m => m.SearchjobModule),
+  },
+  {
+    path: 'public/itsol_recruitment/:typeJob',
+    loadChildren: () => import('./modules/home-public/see-more-job/see-more-job.module').then(m => m.SeeMoreJobModule),
+  },
 ];
+
 
 const config: ExtraOptions = {
   useHash: false,

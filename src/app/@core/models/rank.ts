@@ -1,6 +1,6 @@
-export class Rank {
-  id: number;
+export interface Rank{
+  id: number ;
   code: string;
   description: string;
-  isDelete: boolean;
+  delete: number;
 }
