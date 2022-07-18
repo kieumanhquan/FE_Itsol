@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {AuthGuard} from './@core/guards/auth.guard';
 import {PublicModule} from './modules/Public/public.module';
 import {JobListComponent} from './modules/home/job-list/job-list.component';
-
 import {RouteGuardService} from './@core/services/route.guard.service';
 import {FilerecruitComponent} from './modules/home/filerecruit/filerecruit.component';
 
@@ -78,6 +77,7 @@ export const routes: Routes = [
     loadChildren: () => import('./modules/home-public/see-more-job/see-more-job.module').then(m => m.SeeMoreJobModule),
   },
 ];
+
 
 const config: ExtraOptions = {
   useHash: false,

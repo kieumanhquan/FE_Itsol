@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Job} from '../../../@core/models/job';
-import {JobService} from '../../../@core/services/job.service';
-import { Router } from '@angular/router';
+import {JobService} from '../../../../@core/services/job.service';
+import {Router} from '@angular/router';
+import {Job} from '../../../../@core/models/job';
 
 @Component({
   selector: 'ngx-job-list',
@@ -19,22 +19,20 @@ export class JobListComponent implements OnInit {
     this.getJobs();
   }
 
-  private getJobs(){
+  getJobs(){
     this.jobService.getJobList().subscribe(data => {
       this.jobs = data;
       console.log(this.jobs);
     });
   }
 
-  /*jobDetails(id: number){
-    this.router.navigate(['Job-details', id]);
+  gotoInsertJob() {
+    this.router.navigate(['home/job/insert']);
+  }
+
+  gotoDetailJob(id: number) {
+    this.router.navigate(['home/job/detail', id]);
   }
 
 
-  deleteJob(id: number){
-    this.jobService.deleteJob(id).subscribe( data => {
-      console.log(data);
-      this.getJobs();
-    });
-  }*/
 }
