@@ -1,10 +1,11 @@
 import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { PrimeNGConfig } from 'primeng/api';
 import { SessionService } from '../../../@core/services/session.service';
 import { User } from './profile.model';
 import { ProfileService } from './profile.service';
+import {Toaster} from 'ngx-toast-notifications';
 
 @Component({
   selector: 'ngx-profile',
@@ -18,12 +19,14 @@ export class ProfileComponent implements OnInit {
   username: string;
   id: number;
   res: any;
-
+  currentDate= new Date();
+  birthday: string;
   constructor(
     private sessionService: SessionService,
     private profileService: ProfileService,
     private fb: FormBuilder,
-    private primengConfig: PrimeNGConfig) { }
+    private primengConfig: PrimeNGConfig,
+    private toaster: Toaster) { }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
@@ -33,12 +36,12 @@ export class ProfileComponent implements OnInit {
   }
   initForm(){
     this.formProfile = this.fb.group({
-      fullName: ['', Validators.required],
-      email: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
-      birthDay: ['', Validators.required],
-      homeTown: ['', Validators.required],
-      gender: ['', Validators.required],
+      fullName: new FormControl('',[ Validators.required, Validators.minLength(5),Validators.maxLength(20)]),
+      email:  new FormControl('',[ Validators.required, Validators.email]) ,
+      phoneNumber: new FormControl('', [Validators.required, Validators.pattern('^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$')]),
+      birthDay:new FormControl('',[ Validators.required]) ,
+      homeTown: new FormControl('',[ Validators.required]) ,
+      gender: new FormControl('',[ Validators.required]) ,
     });
   }
 
@@ -65,7 +68,9 @@ export class ProfileComponent implements OnInit {
       gender: this.formProfile.value.gender,
     };
     this.profileService.updateUser(this.id, user).subscribe();
+    this.showToater('thành công', 'success');
   }
+
 
 
   updateForm(user: User): void {
@@ -79,6 +84,17 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-
-
+  showToater(message: string, typea: any){
+    const type = typea;
+    this.toaster.open({
+      text:message,
+      caption: 'thành công',
+      type,
+      duration:3000,
+    });
+  }
+  changeGender(event: any){
+    const a = document.querySelector('.select');
+    console.log(this.formProfile.value.gender);
+  }
 }

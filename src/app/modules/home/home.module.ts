@@ -9,14 +9,18 @@ import { ManagerJeComponent } from './managerJe/managerJe.component';
 import { SharedModule } from 'primeng/api';
 import { PrimengModule } from '../../shared/primeng.module';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import {JobListComponent} from './job/job-list/job-list.component';
 import {FilerecruitComponent} from './filerecruit/filerecruit.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialog} from '@angular/material/dialog';
 import {MatDialogModule} from '@angular/material/dialog';
-import {JobListComponent} from './job/job-list/job-list.component';
-import {JobInsertComponent} from './job/job-insert/job-insert.component';
-import {JobDetailComponent} from './job/job-detail/job-detail.component';
+import {EditJeComponent} from './managerJe/editJe/editJe.component';
+import {ResJeService} from './managerJe/resJe/resJe.service';
+import {ResJeComponent} from './managerJe/resJe/resJe.component';
+import {DashboardComponent} from "./dashboard/dashboard.component";
+import {PaginatorModule} from "primeng/paginator";
+
+
 
 const routes: Routes = [{
   path: '',
@@ -25,6 +29,7 @@ const routes: Routes = [{
     {
       path: 'dashboard',
       // loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+      component: DashboardComponent,
     },
     {
       path: 'profile',
@@ -57,20 +62,24 @@ const routes: Routes = [{
   declarations: [
     HomeComponent,
     ProfileComponent,
+    JobListComponent,
     ManagerJeComponent,
     FilerecruitComponent,
-    JobListComponent,
+    EditJeComponent,
+    ResJeComponent,
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    ThemeModule,
-    NbMenuModule,
-    ReactiveFormsModule,
-    PrimengModule,
-    SharedModule,
-    MatPaginatorModule,
-    MatDialogModule,
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        ThemeModule,
+        NbMenuModule,
+        ReactiveFormsModule,
+        PrimengModule,
+        SharedModule,
+        MatPaginatorModule,
+        MatDialogModule,
+        PaginatorModule,
+
+    ],
 })
 export class HomeModule { }
