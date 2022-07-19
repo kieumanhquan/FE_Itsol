@@ -55,7 +55,6 @@ export class ChangePasswordComponent implements OnInit {
     this.forgotPasswordService.changePassword(data).subscribe(
       // eslint-disable-next-line @typescript-eslint/no-shadow
       data => {
-
         console.log(this.forgotPasswordService.email);
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         this.change = data.change,

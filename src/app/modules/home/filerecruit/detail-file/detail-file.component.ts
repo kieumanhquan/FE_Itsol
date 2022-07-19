@@ -1,15 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {DetailFile} from './detail-file';
-import {DetailfileService} from '../../../../../@core/services/detailfile.service';
+import {DetailfileService} from '../../../../@core/services/detailfile.service';
 import {FormBuilder} from '@angular/forms';
 import {Router} from '@angular/router';
-import {DataService} from '../../../../../@core/services/dataservice.service';
-// import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-// import {DialogdetailfileComponent} from "./dialogdetailfile/dialogdetailfile/dialogdetailfile.component";
-import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import {MatDialog} from "@angular/material/dialog";
-import {DialogdetailfileComponent} from "./dialogdetailfile/dialogdetailfile/dialogdetailfile.component";
+import {DataService} from '../../../../@core/services/dataservice.service';
+import {MatDialog} from '@angular/material/dialog';
+import {DialogdetailfileComponent} from './dialogdetailfile/dialogdetailfile.component';
 
 @Component({
   selector: 'ngx-detail-file',
@@ -29,12 +24,13 @@ export class DetailFileComponent implements OnInit {
   status = this.dataService.getStatus();
 
   constructor(public detailfileService: DetailfileService, private fb: FormBuilder, private router: Router,
-              public dataService: DataService ,public dialog : MatDialog) {
+              public dataService: DataService, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
     this.getDetailFile();
     this.itemToForm;
+    console.log(this.status);
   }
 
   itemToForm = () => {
@@ -44,6 +40,7 @@ export class DetailFileComponent implements OnInit {
 
     // The rest of the code
   };
+
   getDetailFile() {
     this.detailfileService.getDetailFile(this.dataService.getidJobRegis()).subscribe(dat => {
       this.detailfile = dat;
@@ -65,7 +62,6 @@ export class DetailFileComponent implements OnInit {
   }
 
 
-
   changeSuccess() {
     this.detailfileService.changeSuccess(this.dataService.getidJobRegis()).subscribe(sc => {
       this.detailfile = sc;
@@ -80,13 +76,15 @@ export class DetailFileComponent implements OnInit {
   showReason(regisId) {
     alert(this.detailfile.reason);
   }
+
   bookInter(regisId) {
     this.router.navigate(['home/regdetail']);
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogdetailfileComponent, {
-
+      width:'50%',
+      height:'50%'
     });
 
     dialogRef.afterClosed().subscribe(result => {

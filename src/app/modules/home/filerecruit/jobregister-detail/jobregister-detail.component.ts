@@ -12,18 +12,22 @@ import {JobregisterService} from '../../../../@core/services/jobregister.service
 })
 export class JobregisterDetailComponent implements OnInit {
   method: string;
-  mediat:string;
+  mediat: string;
   selection = ['offline', 'online'];
+  typemedia = ['facebook', 'skype', 'googlemeet', 'zalo'];
+
   check = false;
   formJobRegis: FormGroup;
   status: any;
-
+  date = new Date();
+  // eslint-disable-next-line max-len
   constructor(private jobregisterService: JobregisterService, private detailJobregisService: DetailJobregisService, private fb: FormBuilder, private router: Router,
               public dataService: DataService) {
   }
 
   ngOnInit(): void {
     this.initForm();
+    console.log(this.typemedia[0]);
   }
 
   initForm() {
@@ -38,7 +42,7 @@ export class JobregisterDetailComponent implements OnInit {
   sendMail() {
     const jobRegis = {
       dateInterview: this.formJobRegis.value.dateInterview,
-      mediaType:this.mediat,
+      mediaType: this.mediat,
       timeInterview: this.formJobRegis.value.timeInterview,
     };
     console.log(this.dataService.getidJobRegis());
@@ -67,6 +71,7 @@ export class JobregisterDetailComponent implements OnInit {
     }
     console.log(event.target.value);
   }
+
   showMedia(event: any) {
     if (event.target.value === 'facebook') {
       this.mediat = event.target.value;
@@ -80,7 +85,7 @@ export class JobregisterDetailComponent implements OnInit {
     if (event.target.value === 'zalo') {
       this.mediat = event.target.value;
     }
+    console.log(this.mediat);
   }
-  // eslint-disable-next-line @typescript-eslint/member-ordering
-  media =['facebook','skype', 'googlemeet','zalo'];
+
 }

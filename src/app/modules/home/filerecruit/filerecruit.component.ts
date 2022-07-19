@@ -5,7 +5,6 @@ import {PageEvent} from '@angular/material/paginator';
 import {FormBuilder} from '@angular/forms';
 import {Router} from '@angular/router';
 import {DataService} from '../../../@core/services/dataservice.service';
-import {getLocaleDateFormat} from "@angular/common";
 
 // @ts-ignore
 @Component({
@@ -14,14 +13,20 @@ import {getLocaleDateFormat} from "@angular/common";
   styleUrls: ['./filerecruit.component.scss'],
 })
 export class FilerecruitComponent implements OnInit {
-  pageNo = 0;
-  pageSize = 5;
+  // pageNo = 0;
+  // pageSize = 5;
+  // totalRecords = 5;
+  page = 0;
+  size = 2;
+  totalRecords: any;
+  // @ts-ignore
   pageSizeOption: Number[] = [1, 2, 3, 4, 10, 20];
   sort = 'dateRegister';
   type = true;
   // @ts-ignore
   filerecruit: Filerecruit[];
   change: any;
+
   // pageQuantity= 5;
 
   constructor(private jobregisterService: JobregisterService, private fb: FormBuilder, private router: Router,
@@ -30,24 +35,39 @@ export class FilerecruitComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFilerecruit();
+    this.getAllRecord();
   }
 
+  getAllRecord() {
+    this.jobregisterService.getTotal().subscribe(data =>{
+      this.totalRecords = data;
+    });
+  }
 
   getFilerecruit() {
-    this.jobregisterService.getJobRegister(this.pageNo, this.pageSize).subscribe(data => {
+    this.jobregisterService.getJobRegister(this.page, this.size).subscribe(data => {
       this.filerecruit = data;
     });
   }
 
-  onChangePage(event: PageEvent) {
-    this.pageSize = event.pageSize;
-    this.pageNo = event.pageIndex;
-    // this.pageQuantity = (this.pageNo + 1) * this.pageNo;
+  // onChangePage(event: PageEvent) {
+  //   this.pageSize = event.pageSize;
+  //   this.pageNo = event.pageIndex;
+  //   // this.pageQuantity = (this.pageNo + 1) * this.pageNo;
+  //   this.getFilerecruit();
+  // }
+
+  onChangePage(event: any) {
+    this.page = event.page;
+    this.size = event.rows;
+    console.log(this.totalRecords);
     this.getFilerecruit();
+
   }
 
+
   sorttable() {
-    this.jobregisterService.getListSort(this.pageNo, this.pageSize, this.sort, this.type).subscribe(data => {
+    this.jobregisterService.getListSort(this.page, this.size, this.sort, this.type).subscribe(data => {
       this.filerecruit = data;
       if (this.type) {
         this.type = false;

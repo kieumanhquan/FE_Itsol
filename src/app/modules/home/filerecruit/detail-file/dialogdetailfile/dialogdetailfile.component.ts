@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {DetailfileService} from '../../../../../../../@core/services/detailfile.service';
-import {DataService} from '../../../../../../../@core/services/dataservice.service';
+import {DetailfileService} from '../../../../../@core/services/detailfile.service';
+import {DataService} from '../../../../../@core/services/dataservice.service';
 import {Router} from '@angular/router';
 import {FormBuilder, FormControl, FormControlName, FormGroup, Validators} from '@angular/forms';
 
@@ -12,8 +12,10 @@ import {FormBuilder, FormControl, FormControlName, FormGroup, Validators} from '
 })
 export class DialogdetailfileComponent implements OnInit {
   detailfile: any;
-  // DialogForm: FormGroup;
   reason: any;
+  test : any;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  // DialogForm: FormGroup;
 
   constructor(public dialogRef: MatDialogRef<DialogdetailfileComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any, public detailfileService: DetailfileService,
@@ -38,7 +40,6 @@ export class DialogdetailfileComponent implements OnInit {
     // const reason = this.DialogForm.value.reason;
     this.detailfileService.changeRefuse(this.dataService.getidJobRegis(), this.reason).subscribe(rf => {
       this.detailfile = rf;
-      console.log(rf);
       if (this.detailfile.rf === 'success') {
         alert('Đã từ chối ứng viên ');
         this.router.navigate(['home']).then(r => console.log(r));

@@ -43,4 +43,7 @@ export class JobregisterService {
   updateJobRegisdetail(inter): Observable<any> {
     return this.http.post(`${this.baseUrl}bookinter?id=` + inter, this.httpOptions);
   }
+  getTotal(): Observable<any> {
+    return this.http.get(`${this.baseUrl}total` );
+  }
 }

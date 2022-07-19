@@ -8,20 +8,23 @@
     <th>#</th>
     <th>Tên ứng viên</th>
     <th>vị trí ứng tuyển</th>
-
     <th>file CV</th>
     <th>Trạng thái</th>
     <th>Thời gian nộp hồ sơ <i class="fa fa-sort" (click)="sorttable()"></i></th>
     <th>quicktion</th>
-
   </tr>
   </thead>
+
   <tbody>
   <ng-container *ngFor="let filerecruits of filerecruit ">
     <tr>
       <td>{{filerecruits.id}}</td>
-      <td style="cursor: pointer" (click)="changeDetailFile(filerecruits)">{{filerecruits.name}}</td>
-      <td (click)="getjobPosition(filerecruits)" style="cursor: pointer;">{{filerecruits.jobPosition}}</td>
+      <td style="cursor: pointer" (click)="changeDetailFile(filerecruits)">
+        {{filerecruits.name}}
+      </td>
+      <td (click)="getjobPosition(filerecruits)" style="cursor: pointer;">
+        {{filerecruits.jobPosition}}
+      </td>
       <td>{{filerecruits.cv}}</td>
       <td>{{filerecruits.status}}</td>
       <td>{{filerecruits.dateRegister}}</td>
@@ -38,10 +41,9 @@
 
     </tr>
   </ng-container>
-
   </tbody>
 </table>
-<mat-paginator [length]='50' [pageIndex]="pageNo" [pageSize]="pageSize" (page)="onChangePage($event)"
-               [pageSizeOptions]="pageSizeOption" aria-label="Select page" showFirstLastButtons="firstLastButtons">
-</mat-paginator>
-
+<!--<mat-paginator [length]='50' [pageIndex]="pageNo" [pageSize]="pageSize" (page)="onChangePage($event)"-->
+<!--               [pageSizeOptions]="pageSizeOption" aria-label="Select page" showFirstLastButtons="firstLastButtons">-->
+<!--</mat-paginator>-->
+<p-paginator  [rows]="2" [totalRecords]="totalRecords" [rowsPerPageOptions]="[2,5,10]" (onPageChange)="onChangePage($event)" > số lượng;{{totalRecords}} </p-paginator>

@@ -1,25 +1,26 @@
-<div class="btnfix">
-  <button type="button" id="btn" class="btn btn-primary">Tải xuống CV</button>
-
-  <ng-template [ngIf]="'đang phỏng vấn'">
-    <p-button type="button" id="btn" class="btn btn-primary" (click)="changeBrowser()">Xét duyệt</p-button>
-  </ng-template>
-<!--  *ngif="status === 'chờ phỏng vấn' || status === 'chờ duyệt' || status === 'đang phỏng vấn'"-->
-    <button type="button" id="btn" class="btn btn-primary" (click)="openDialog()">Từ chối ứng viên</button>
-  <ng-template *ngif="status === 'ứng viên bị từ chối'">
-    <button type="button"  id="btn" class="btn btn-primary" (click)="showReason(regisId)">Xem lí do</button>
-  </ng-template>
-  <ng-template *ngif="status === 'chờ phỏng vấn'">
-    <button type="button" id="btn" class="btn btn-primary" (click)="bookInter(regisId)">Đặt lịch phỏng vấn</button>
-  </ng-template>
-  <ng-template *ngif="status === 'đang phỏng vấn'">
-    <button type="button" id="btn" class="btn btn-primary" (click)="changeSuccess()" *ngif="status === 'đang phỏng vấn'">Tuyển</button>
-  </ng-template>
-
+<div class="btn">
+  <button class="btn btn-primary"
+  >Tải xuống CV
+  </button>
+  <button *ngIf="status ==='chờ duyệt'" class="btn btn-primary"
+          (click)="changeBrowser()">Xét duyệt
+  </button>
+  <button *ngIf="status === 'chờ phỏng vấn' || status === 'chờ duyệt' || status === 'đang phỏng vấn'"
+          (click)="openDialog()" class="btn btn-primary">Từ chối ứng viên
+  </button>
+  <button *ngIf="status === 'ứng viên bị từ chối'"
+          (click)="showReason(regisId)" class="btn btn-primary">Xem lí do
+  </button>
+  <button *ngIf="status === 'chờ phỏng vấn'" id="btn2" class="btn btn-primary" (click)="bookInter(regisId)">
+    Đặt lịch phỏng vấn
+  </button>
+  <button *ngIf="status === 'đang phỏng vấn'" id="btn3" class="btn btn-primary" (click)="changeSuccess()">
+    Tuyển
+  </button>
 </div>
 
-
 <table class="table">
+
   <div>
     <tr>
       <th scope="col" style="font-size: 1.5rem;">Trường thông tin</th>

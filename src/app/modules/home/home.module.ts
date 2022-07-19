@@ -13,9 +13,14 @@ import {FilerecruitComponent} from './filerecruit/filerecruit.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSelectModule} from '@angular/material/select';
 import {JobregisterDetailComponent} from './filerecruit/jobregister-detail/jobregister-detail.component';
-import {DetailFileComponent} from "./filerecruit/detailfile/detail-file/detail-file.component";
-import {CommonModule} from "@angular/common";
-
+import {CommonModule} from '@angular/common';
+import {PaginatorModule} from 'primeng/paginator';
+import {DetailFileComponent} from './filerecruit/detail-file/detail-file.component';
+import {BrowserModule} from '@angular/platform-browser';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatButtonModule} from "@angular/material/button";
+import {MatInputModule} from "@angular/material/input";
+import {MatRippleModule} from "@angular/material/core";
 const routes: Routes = [{
   path: '',
   component: HomeComponent,
@@ -41,12 +46,13 @@ const routes: Routes = [{
       component: JobregisterDetailComponent,
     },
     {
-      path: 'detailfile',
-      component: DetailFileComponent,
-    },
-    {
       path: 'jobregister',
       component: FilerecruitComponent,
+
+    },
+    {
+      path: 'detailfile',
+      component: DetailFileComponent,
     },
   ],
 }];
@@ -59,8 +65,10 @@ const routes: Routes = [{
     ManagerJeComponent,
     FilerecruitComponent,
     JobregisterDetailComponent,
+    DetailFileComponent,
   ],
   imports: [
+
     MatSelectModule,
     RouterModule.forChild(routes),
     ThemeModule,
@@ -71,6 +79,11 @@ const routes: Routes = [{
     MatPaginatorModule,
     FormsModule,
     CommonModule,
+    PaginatorModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRippleModule,
   ],
 })
 export class HomeModule {
