@@ -1,3 +1,4 @@
+<button  (click)="openDialog2()" style=" margin-left: 79.5%;" type="button" class="btn btn-primary">Add JE</button>
 <table class="table" >
   <thead>
   <tr>
@@ -7,23 +8,31 @@
     <th scope="col">Phone</th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
   </thead>
   <tbody>
   <ng-container  *ngFor="let je of jes">
-    <tr>
-      <td >{{je.id}} </td>
-      <td>{{je.userName}} </td>
-      <std>{{je.email}}</std>
-      <td>{{je.phoneNumber}}</td>
-      <td><button (click)="openDialog(je.id)" id="button" type="button" class="btn btn-primary ">Update</button></td>
-      <td><button id="button" type="button" class="btn btn-primary (click)=">deactive</button></td>
-    </tr>
+        <tr *ngIf="je.active === true">
+          <td >{{je.id}} </td>
+          <td>{{je.userName}} </td>
+          <std>{{je.email}}</std>
+          <td>{{je.phoneNumber}}</td>
+          <td><button (click)="openDialog(je.id)" id="button" type="button" class="btn btn-primary ">Update</button></td>
+          <td><button (click)="openDialog1(je.id)" type="button" class="btn btn-danger">deactive</button></td>
+        </tr>
+        <tr *ngIf="je.active === false">
+          <td >{{je.id}} </td>
+          <td>{{je.userName}} </td>
+          <std>{{je.email}}</std>
+          <td>{{je.phoneNumber}}</td>
+          <td><button (click)="openDialog(je.id)" id="button" type="button" class="btn btn-primary ">Update</button></td>
+          <td><button (click)="openDialog1(je.id)" type="button" class="btn btn-success">active</button></td>
+        </tr>
   </ng-container>
 
 
   </tbody>
 </table>
-<mat-paginator [length]='this.jes.length+1' [pageIndex]="0" [pageSize]="5" (page)="onChangePage($event)"
-               [pageSizeOptions]="pageSizeOption" aria-label="Select page" color = "warning">
-</mat-paginator>
+
+<p-paginator [rows]="5" [totalRecords]="totalRecords" [rowsPerPageOptions]="[2,5,10]" (onPageChange)="onChangePage($event)"></p-paginator>

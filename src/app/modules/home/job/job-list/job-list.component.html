@@ -10,23 +10,23 @@
   <thead class = "table-primary">
 
   <tr>
-    <th> Tên </th>
-    <th> Vị trí công việc </th>
+    <th> Tên <i class="fa fa-sort" (click)="sorttable('name')"></i></th>
+    <th> Vị trí công việc <i class="fa fa-sort" (click)="sorttable('jobPosition.code')"></i></th>
     <!--      <th> Số năm kinh nghiệm</th>-->
     <!--      <th> Hình thức làm việc</th>-->
     <!--      <th> Địa chỉ làm việc</th>-->
     <!--      <th> Trình độ học vấn</th>-->
     <!--      <th> Level</th>-->
     <!--      <th> Số lượng cần tuyển</th>-->
-    <th> Hạn nộp hồ sơ</th>
+    <th> Hạn nộp hồ sơ <i class="fa fa-sort" (click)="sorttable('dueDate')"></i></th>
     <!--      <th> Kĩ năng</th>-->
     <!--      <th> Mô tả công việc</th>-->
     <!--      <th> Quyền lợi được hưởng</th>-->
     <!--      <th> Yêu cầu công việc</th>-->
-    <th> Mức lương</th>
+    <th> Mức lương <i class="fa fa-sort" (click)="sorttable('salaryMin')"></i></th>
     <!--      <th> Người liên hệ</th>-->
-    <th> Trạng thái</th>
-    <th> Lượt xem</th>
+    <th> Trạng thái <i class="fa fa-sort" (click)="sorttable('status.code')"></i></th>
+    <th> Lượt xem <i class="fa fa-sort" (click)="sorttable('views')"></i></th>
     <th colspan = "3" >Quick Action</th>
   </tr>
   </thead>
@@ -51,17 +51,21 @@
     <td> {{job.status.description}}</td>
     <td> {{job.views}}</td>
 
-    <td>
-      <button class="btn btn-sm btn-info" (click)="gotoDetailJob(job.id)" >
-        <i class="fa fa-search"></i>Xem</button>
-      <button class="btn btn-sm btn-warning">
-        <i class="fa fa-download"></i>Export JD</button>
-      <button class="btn btn-sm btn-danger">
-        <i class="fa fa-trash"></i>Xóa</button>
+    <td class = "td-btn">
+      <button class="btn btn-sm btn-info" (click)="gotoPreviewJob(job.id)" >
+        <i class="fa fa-search"></i>Xem trước</button>
+      <button class="btn btn-sm btn-warning" (click)="gotoExportPDFJob(job.id)">
+        <i class="fa fa-download" ></i>Export JD</button>
+      <button class="btn btn-sm btn-success">
+        <i class="fa fa-paper-plane"></i>Đăng tuyển</button>
     </td>
 
   </tr>
   </tbody>
 </table>
+
+<mat-paginator [length]='100' [pageIndex]="pageNo" [pageSize]="pageSize" (page)="onChangePage($event)"
+               [pageSizeOptions]="pageSizeOption" aria-label="Chọn trang" showFirstLastButtons="firstLastButtons">
+</mat-paginator>
 
 

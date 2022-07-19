@@ -8,25 +8,34 @@ import { ProfileComponent } from './profile/profile.component';
 import { ManagerJeComponent } from './managerJe/managerJe.component';
 import { SharedModule } from 'primeng/api';
 import { PrimengModule } from '../../shared/primeng.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {FilerecruitComponent} from './filerecruit/filerecruit.component';
-import {MatDialog} from '@angular/material/dialog';
-import {MatDialogModule} from '@angular/material/dialog';
 import {JobListComponent} from './job/job-list/job-list.component';
-// import {JobInsertComponent} from './job/job-insert/job-insert.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-// import {JobDetailComponent} from './job/job-detail/job-detail.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {JobInsertComponent} from './job/job-insert/job-insert.component';
+import {JobDetailComponent} from './job/job-detail/job-detail.component';
+import {NgbToastModule} from '@ng-bootstrap/ng-bootstrap';
+import { JobExportPdfComponent } from './job/job-export-pdf/job-export-pdf.component';
+import { JobUpdateComponent } from './job/job-detail/job-update/job-update.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {PaginatorModule} from 'primeng/paginator';
+import {EditJeComponent} from './managerJe/editJe/editJe.component';
+import {ResJeService} from './managerJe/resJe/resJe.service';
+import {ResJeComponent} from './managerJe/resJe/resJe.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {CompanyComponent} from './company-edit/company.component';
+
 
 const routes: Routes = [{
   path: '',
   component: HomeComponent,
   children: [
-    // {
-    //   path: 'dashboard',
-    //   loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
-    // },
+    {
+      path: 'dashboard',
+      // loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+      component: DashboardComponent,
+    },
     {
       path: 'profile',
       component: ProfileComponent,
@@ -43,27 +52,43 @@ const routes: Routes = [{
       path: 'jobregister',
       component: FilerecruitComponent,
     },
+
     {
       path: 'job/insert',
       component: JobInsertComponent,
     },
-    // {
-    //   path: 'job/detail/:id',
-    //   component: JobDetailComponent,
-    // },
+
+    {
+      path: 'job/detail/:id',
+      component: JobDetailComponent,
+    },
+
+    {
+      path: 'job/update/:id',
+      component: JobUpdateComponent,
+    },
+    {
+      path: 'company-edit',
+      component: CompanyComponent,
+    },
   ],
 }];
 
 @NgModule({
   declarations: [
     HomeComponent,
-    // ProfileComponent,
+    ProfileComponent,
+    JobListComponent,
     ManagerJeComponent,
     FilerecruitComponent,
-    // JobListComponent,
+    JobListComponent,
+    JobExportPdfComponent,
+    JobUpdateComponent,
+    EditJeComponent,
+    ResJeComponent,
+    CompanyComponent,
   ],
   imports: [
-    MatAutocompleteModule,
     CommonModule,
     RouterModule.forChild(routes),
     ThemeModule,
@@ -72,7 +97,10 @@ const routes: Routes = [{
     PrimengModule,
     SharedModule,
     MatPaginatorModule,
+    NgbToastModule,
     MatDialogModule,
+    FormsModule,
+    PaginatorModule,
   ],
 })
 export class HomeModule { }

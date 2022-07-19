@@ -8,3 +8,15 @@ i {
 .modal-backdrop {
   z-index: -1;
 }
+
+th i {
+  cursor: pointer;
+}
+
+td,th {
+  width: 10vw;
+}
+
+.td-btn {
+  width: 35vw;
+}

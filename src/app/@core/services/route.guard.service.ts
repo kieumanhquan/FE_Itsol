@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, Routes} from '@angular/router';
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {TokenService} from './token.service';
-import jwt_decode from 'jwt-decode';
+
 
 @Injectable()
 export class RouteGuardService implements CanActivate {

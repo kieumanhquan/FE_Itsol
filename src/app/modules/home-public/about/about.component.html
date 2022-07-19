@@ -63,17 +63,54 @@
         </div> <!-- end of col -->
       </div> <!-- end of row -->
       <div class="row">
-        <div class="col-xl-6" >
-          {{company.description}}
-
+        <div class="col-xl-9" >
+          {{company.name}}
         </div> <!-- end of col -->
-        <div class="col-xl-6">
-
-          <!-- Counter -->
-
-
+        <img  [src]="dbImage" alt="Avatar"
+              style="width:90px; border-radius: 50%;">
+      </div> <!-- end of row -->
+      <div class="row">
+        <div class="col-xl-9" >
+          {{company.email}}
+        </div> <!-- end of col -->
+        <div class="col-xl-3">
+          {{company.hotline}}
         </div> <!-- end of col -->
       </div> <!-- end of row -->
+      <div class="row">
+        <div class="col-xl-9" >
+          {{company.date_incoporation}}
+        </div> <!-- end of col -->
+        <div class="col-xl-3">
+          {{company.tax_code}}
+        </div> <!-- end of col -->
+      </div> <!-- end of row -->
+      <div class="row">
+        <div class="col-xl-9" >
+          {{company.tax_date}}
+        </div> <!-- end of col -->
+        <div class="col-xl-3">
+          {{company.tax_place}}
+        </div> <!-- end of col -->
+      </div>
+        <div class="row">
+          <div class="col-xl-9" >
+            {{company.head_office}}
+          </div> <!-- end of col -->
+          <div class="col-xl-3">
+            {{company.number_staff}}
+          </div> <!-- end of col -->
+      </div> <!-- end of row -->
+        <div class="row">
+          <div class="col-xl-9" >
+            {{company.link_web}}
+          </div> <!-- end of col -->
+          <div class="col-xl-3">
+            {{company.description}}
+          </div> <!-- end of col -->
+        </div>
+
+
     </div> <!-- end of container -->
   </div> <!-- end of counter -->
   <!-- Footer -->

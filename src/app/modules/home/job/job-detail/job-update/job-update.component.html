@@ -1,0 +1,150 @@
+
+<h2 style="text-align: center" class="text-uppercase">Cập nhật công việc</h2>
+<mat-dialog-content>
+<form>
+  <div class = "form-row">
+    <div class = "form-group col-md-12">
+      <label> Tên công việc </label>
+      <input type="text" class = "form-control" id="name"
+             name = "name" placeholder="Nhập tên công việc"
+             [(ngModel)]="job.name" formControlName = "name">
+    </div>
+
+    <div class = "form-group col-md-3">
+      <label for="job position"> Vị trí công việc </label>
+      <select class = "form-control" id="job position"
+              (change)="selectJobPositionOption($event.target.value)"
+              formControlName = "job-position">
+        <option *ngFor="let jobPosition of jobPositions"
+                [value]="jobPosition.id"
+        >{{ jobPosition.description }}
+        </option>
+      </select>
+    </div>
+
+    <div class = "form-group col-md-3">
+      <label for="working form"> Hình thức làm việc </label>
+      <select class = "form-control" id="working form"
+              (change)="selectWorkingFormOption($event.target.value)"
+              formControlName = "working-form">
+        <option *ngFor="let workingForm of workingForms"
+                [value]="workingForm.id"
+        >{{ workingForm.description }}
+        </option>
+      </select>
+    </div>
+
+    <div class = "form-group col-md-3">
+      <label> Lương tối thiểu </label>
+      <input type="number" class = "form-control" id="salary min"
+             name = "salary min" placeholder="Nhập lương tối thiểu"
+             [(ngModel)]="job.salaryMin" formControlName = "salary-min">
+      </div>
+
+    <div class = "form-group col-md-3">
+      <label> Lương tối đa </label>
+      <input type="number" class = "form-control" id="salary max"
+             name = "salary max" placeholder="Nhập lương tối đa"
+             [(ngModel)]="job.salaryMax" formControlName = "salary-max">
+      </div>
+
+    <div class = "form-group col-md-12">
+      <label> Địa chỉ làm việc </label>
+      <input type="text" class = "form-control" id="address work"
+             name = "address work" placeholder="Nhập địa chỉ công việc"
+             [(ngModel)]="job.addressWork" formControlName = "address-work">
+    </div>
+
+    <div class = "form-group col-md-12">
+      <label> Mô tả công việc </label>
+      <textarea class="form-control" id="description" rows="3"
+                name = "description" placeholder="Nhập mô tả công việc"
+                [(ngModel)]="job.description" formControlName = "description"></textarea>
+    </div>
+
+    <div class = "form-group col-md-3">
+      <label> Số năm kinh nghiệm </label>
+      <input type="text" class = "form-control" id="number experience"
+             name = "number experience" placeholder="Nhập số năm kinh nghiệm"
+             [(ngModel)]="job.numberExperience" formControlName = "number-experience">
+    </div>
+
+    <div class = "form-group col-md-3">
+      <label> Số lượng cần tuyển </label>
+      <input type="text" class = "form-control" id="qty person"
+             name = "qty person" placeholder="Nhập số lượng tuyển"
+             [(ngModel)]="job.qtyPerson" formControlName = "qty-person">
+    </div>
+
+    <div class = "form-group col-md-3">
+      <label for="academic level"> Trình độ học vấn </label>
+      <select class = "form-control" id="academic level"
+              (change)="selectAcademicLevelOption($event.target.value)"
+              formControlName = "academic-level">
+        <option *ngFor="let academicLevel of academicLevels"
+                [value]="academicLevel.id"
+        >{{ academicLevel.description }}</option>
+      </select>
+    </div>
+
+    <div class = "form-group col-md-3">
+      <label for="rank"> Level </label>
+      <select class = "form-control" id="rank"
+              (change)="selectRankOption($event.target.value)"
+              formControlName = "rank">
+        <option *ngFor="let rank of ranks"
+                [value]="rank.id"
+        >{{ rank.description }}</option>
+      </select>
+    </div>
+
+    <div class = "form-group col-md-12">
+      <label> Kĩ năng </label>
+      <input type="text" class = "form-control" id="skills"
+             name = "skilss" placeholder="Nhập kĩ năng"
+             [(ngModel)]="job.skills" formControlName = 'skills'>
+    </div>
+
+    <div class = "form-group col-md-6">
+      <label> Hạn nộp hồ sơ </label>
+      <input type="date" class = "form-control" id="due date"
+             name = "due date"
+             [(ngModel)]="job.dueDate" formControlName = "due-date">
+    </div>
+
+    <div class = "form-group col-md-6">
+      <label> Người liên hệ </label>
+      <select class = "form-control" id="contact"
+              (change)="selectContactJE($event.target.value)"
+              formControlName = "contact">
+        <option *ngFor="let contact of contactJE"
+                [value]="contact.id"
+        >{{ contact.name }}</option>
+      </select>
+
+    </div>
+
+    <div class = "form-group col-md-12">
+      <label> Quyền lợi được hưởng </label>
+      <textarea class="form-control" id="interest" rows="3"
+                name = "interest" placeholder="Nhập quyền lợi được hưởng"
+                [(ngModel)]="job.interest" formControlName = "interest"></textarea>
+    </div>
+
+    <div class = "form-group col-md-12">
+      <label> Yêu cầu công việc </label>
+      <textarea class="form-control" id="job requirement" rows="3"
+                [(ngModel)]="job.jobRequirement" formControlName = "job-requirement"
+                name = "job requirement" placeholder="Nhập yêu cầu công việc"></textarea>
+    </div>
+
+  </div>
+
+</form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close class="btn btn-danger group-btn">Hủy</button>
+  <button type="submit" class="btn btn-primary group-btn">Cập nhập</button>
+</mat-dialog-actions>
+
