@@ -20,7 +20,6 @@ export class TokenInterceptor implements HttpInterceptor {
       const requestUser = request.clone({
         headers: request.headers.set('Authorization', role),
       });
-      console.log(role);
       return next.handle(requestUser).pipe(
         map((event: HttpEvent<any>) =>{
           if(event instanceof HttpResponse){

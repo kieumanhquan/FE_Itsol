@@ -41,9 +41,9 @@ export class JobregistrationComponent implements OnInit {
   regisJob(f: any) {
     this.jobRegistrationService.regisJob(this.file, this.userName).subscribe(response => {
       this.setdata = response;
-      console.log(response);
       this.setdata = response;
       this.router.navigate(['public']);
     });
+    alert('Đăng kí việc làm thành công');
   }
 }
