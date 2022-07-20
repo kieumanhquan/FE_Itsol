@@ -1,5 +1,4 @@
 import {WorkingForm} from './working-form';
-
 export class Job {
   id: number;
   name: string;

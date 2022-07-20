@@ -66,9 +66,9 @@ export class JobInsertComponent implements OnInit {
         [Validators.required]),
       'working-form': new FormControl('',
         [Validators.required]),
-      'salary-min' : new FormControl('',
+      'salaryMin' : new FormControl('',
         [Validators.required, Validators.pattern('[0-9]+')]),
-      'salary-max' : new FormControl('',
+      'salaryMax' : new FormControl('',
         [Validators.required, Validators.pattern('[0-9]+')]),
       'address-work' : new FormControl('',
         [Validators.required, Validators.maxLength(300)]),
@@ -94,6 +94,7 @@ export class JobInsertComponent implements OnInit {
         [Validators.required, Validators.maxLength(2000)]),
       });
   }
+
 
   getJobPosition() {
     this.jobPositionService.getJobPositionList().subscribe(data => {
@@ -133,12 +134,11 @@ export class JobInsertComponent implements OnInit {
   selectRankOption(id: number) {
     this.job.rankId = id;
   }
-  //
-  // getContactJE() {
-  //   this.managerJeService.getJE().subscribe(data => {
-  //     this.contactJE = data;
-  //   });
-  // }
+  getContactJE() {
+    this.managerJeService.getContactJE().subscribe(data => {
+      this.contactJE = data;
+    });
+  }
   selectContactJE(id: number) {
     this.job.contactId = id;
   }

@@ -27,12 +27,16 @@ export class JobService {
     return this.httpClient.get(`${this.baseURL}?pageNo=` + param + `&pageSize=` + param1 + `&sort=` + sort + `&type=` + type);
   }
 
+  searchJob(keyword: String): Observable<any> {
+    return this.httpClient.get<Job[]>(`${this.baseURL}/search?keyword=` + keyword);
+  }
+
   createJob(job: Job): Observable<any>{
     return this.httpClient.post(`${this.baseURL}/insert`, job);
   }
 
   getJobById(id: number): Observable<Job>{
-    return this.httpClient.get<Job>(`${this.baseURL}/${id}`);
+    return this.httpClient.get<Job>(`${this.baseURL}/`+id);
   }
 
   getProfile(username: any): Observable<any>{
@@ -43,8 +47,13 @@ export class JobService {
     return this.httpClient.put(`${this.baseURL}/update/${id}`, job);
   }
 
-  /*  deleteJobById (id: number): Observable<Job> {
-    return this.httpClient.delete(`${this.baseURL}/${id}`);
-  }*/
+  updateJobStatus(id: number, idStatus: number): Observable<any> {
+    return this.httpClient.put(`${this.baseURL}/updateStatus?id=` + id + `&idStatus=` + idStatus, id);
+  }
+
+
+  deleteJobById(id: number): Observable<any> {
+    return this.httpClient.delete(`${this.baseURL}/delete/${id}`);
+  }
 
 }

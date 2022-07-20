@@ -13,7 +13,10 @@ import {AcademicLevelService} from '../../../../../@core/services/academic-level
 import { RankService } from '../../../../../@core/services/rank.service';
 import { ActivatedRoute } from '@angular/router';
 import {ManagerJeService} from '../../../managerJe/managerJe.service';
-import {Je} from '../../../managerJe/managerJe.model';
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Je} from "../../../managerJe/managerJe.model";
+import {SessionService} from "../../../../../@core/services/session.service";
+import {Toaster} from "ngx-toast-notifications";
 
 @Component({
   selector: 'ngx-job-update',
@@ -28,28 +31,88 @@ export class JobUpdateComponent implements OnInit {
   academicLevels: AcademicLevel[];
   ranks: Rank[];
   contactJE: Je[];
+  currentUser: string;
+  idCurrentUser: number;
+  id: number;
+  jobUpdate: any;
+  //Form
+  updateJobForm: FormGroup;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-              private jobService: JobService,
+  constructor(private jobService: JobService,
               private jobPositionService: JobPositionService,
               private workingFormService: WorkingFormService,
               private academicLevelService: AcademicLevelService,
               private rankService: RankService,
               private managerJeService: ManagerJeService,
-              private router: ActivatedRoute) { }
+              private sessionService: SessionService,
+              private toast: Toaster,
+              private router: ActivatedRoute,
+              public dialogRef: MatDialogRef<JobUpdateComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
-    console.log(this.data.idJob);
-    this.jobService.getJobById(this.router.snapshot.params['id']).
-    subscribe(data => {
-      this.job = data;
-      console.log(this.job);
-    });
+    this.getJob();
+    this.initForm();
+    //Select Option
     this.getJobPosition();
     this.getWorkingForm();
     this.getAcademicLevel();
     this.getRank();
-    // this.getContactJE();
+    this.getContactJE();
+    this.getCurrentUserId();
+
+  }
+
+  initForm() {
+    this.updateJobForm = new FormGroup({
+      'name' : new FormControl('',
+        [Validators.required, Validators.maxLength(150)]),
+      'jobPosition': new FormControl('',
+        [Validators.required]),
+      'workingForm': new FormControl('',
+        [Validators.required]),
+      'salaryMin' : new FormControl('',
+        [Validators.required, Validators.pattern('[0-9]+')]),
+      'salaryMax' : new FormControl('',
+        [Validators.required, Validators.pattern('[0-9]+')]),
+      'addressWork' : new FormControl('',
+        [Validators.required, Validators.maxLength(300)]),
+      'description' : new FormControl('',
+        [Validators.required, Validators.maxLength(2000)]),
+      'numberExperience' : new FormControl('',
+        [Validators.required, Validators.pattern('[0-9]+')]),
+      'qtyPerson' : new FormControl('',
+        [Validators.required, Validators.pattern('[0-9]+')]),
+      'academicLevel': new FormControl('',
+        [Validators.required]),
+      'rank': new FormControl('',
+        [Validators.required]),
+      'skills' : new FormControl('',
+        [Validators.required]),
+      'dueDate' : new FormControl('',
+        [Validators.required]),
+      'contact' : new FormControl('',
+        [Validators.required]),
+      'interest' : new FormControl('',
+        [Validators.required, Validators.maxLength(2000)]),
+      'jobRequirement' : new FormControl('',
+        [Validators.required, Validators.maxLength(2000)]),
+    });
+  }
+  getJob() {
+    this.id = this.data.idJob;
+    this.jobService.getJobById(this.id).
+    subscribe(data => {
+      this.job = data;
+      console.log(this.job);
+      this.displayForm(data);
+    });
+  }
+
+  displayForm(job: Job): void{
+    this.updateJobForm.patchValue({
+      name: job.name,
+    });
   }
 
   getJobPosition() {
@@ -58,19 +121,17 @@ export class JobUpdateComponent implements OnInit {
       console.log(this.jobPositions);
     });
   }
-  selectJobPositionOption(id: number) {
+  selectJobPostionOption(id: number) {
+    this.jobUpdate.jobPosition.id = id;
     console.log(id);
-    this.job.jobPositionId = id;
-    console.log(this.job.jobPositionId);
   }
-
   getWorkingForm() {
     this.workingFormService.getWorkingFormList().subscribe(data => {
       this.workingForms = data;
     });
   }
   selectWorkingFormOption(id: number) {
-    this.job.workingFormId = id;
+    this.jobUpdate.workingForm.id = id;
   }
 
   getAcademicLevel() {
@@ -79,7 +140,7 @@ export class JobUpdateComponent implements OnInit {
     });
   }
   selectAcademicLevelOption(id: number) {
-    this.job.academicLevelId = id;
+    this.jobUpdate.academicLevel.id = id;
   }
 
   getRank() {
@@ -88,15 +149,66 @@ export class JobUpdateComponent implements OnInit {
     });
   }
   selectRankOption(id: number) {
-    this.job.rankId = id;
+    this.jobUpdate.rank.id = id;
+    console.log(id);
   }
 
-  // getContactJE() {
-  //   this.managerJeService.getJE().subscribe(data => {
-  //     this.contactJE = data;
-  //   });
-  // }
+  getContactJE() {
+    this.managerJeService.getContactJE().subscribe(data => {
+      this.contactJE = data;
+    });
+  }
   selectContactJE(id: number) {
-    this.job.contactId = id;
+    this.jobUpdate.contact.id = id;
+  }
+
+  getCurrentUserId() {
+    this.currentUser=this.sessionService.getItem('auth-user');
+    this.jobService.getProfile(this.currentUser.sub).subscribe(
+      (res)=>{
+        console.log('id current log in: ' + res.id);
+        this.idCurrentUser = res.id;
+      },
+    );
+  }
+
+  inputJob() {
+    const today = new Date();
+    this.jobUpdate = this.job;
+    this.jobUpdate.name = this.updateJobForm.value.name;
+    this.jobUpdate.numberExperience = this.updateJobForm.value.numberExperience;
+    this.jobUpdate.addressWork = this.updateJobForm.value.addressWork;
+    this.jobUpdate.qtyPerson = this.updateJobForm.value.qtyPerson;
+    this.jobUpdate.dueDate = this.updateJobForm.value.dueDate;
+    this.jobUpdate.skills = this.updateJobForm.value.skills;
+    this.jobUpdate.description = this.updateJobForm.value.description;
+    this.jobUpdate.interest = this.updateJobForm.value.interest;
+    this.jobUpdate.jobRequirement = this.updateJobForm.value.jobRequirement;
+    this.jobUpdate.salaryMax = this.updateJobForm.value.salaryMax;
+    this.jobUpdate.salaryMin = this.updateJobForm.value.salaryMin;
+    this.jobUpdate.update.id = this.idCurrentUser;
+    this.jobUpdate.updateDate = today;
+  }
+
+  onSubmit() {
+    this.inputJob();
+    console.log("job update");
+    console.log(this.jobUpdate);
+    this.jobService.updateJob(this.job.id, this.jobUpdate).subscribe(data => {
+      console.log("data = ");
+      console.log(data);
+      this.showToaster('Đã cập nhật', 'success');
+    }, error => console.log(error));
+    this.dialogRef.close();
+  }
+
+  showToaster(message: string,typea: any) {
+    const type = typea;
+    this.toast.open({
+      text: message,
+      caption: 'Thành công',
+      type: type,
+      duration: 3000
+    });
   }
 }

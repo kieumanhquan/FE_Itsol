@@ -5,8 +5,10 @@ import {PublicModule} from './modules/Public/public.module';
 import {RouteGuardService} from './@core/services/route.guard.service';
 import {FilerecruitComponent} from './modules/home/filerecruit/filerecruit.component';
 import {JobListComponent} from './modules/home/job/job-list/job-list.component';
-import {JobDetailComponent} from './modules/home/job/job-detail/job-detail.component';
-import {JobExportPdfComponent} from './modules/home/job/job-export-pdf/job-export-pdf.component';
+import {JobInsertComponent} from "./modules/home/job/job-insert/job-insert.component";
+import {JobDetailComponent} from "./modules/home/job/job-detail/job-detail.component";
+import {JobExportPdfComponent} from "./modules/home/job/job-export-pdf/job-export-pdf.component";
+import {PublicJobDetailComponent} from "./modules/home-public/public-job-detail/public-job-detail.component";
 import {CompanyComponent} from './modules/home/company-edit/company.component';
 
 // @ts-ignore
@@ -70,6 +72,10 @@ export const routes: Routes = [
     path: 'public/aboutus',
     loadChildren: () => import('./modules/home-public/about/about.module').then(m => m.AboutModule),
   },
+  // {
+  //   path: 'public/aboutus',
+  //   loadChildren: () => import('./modules/about/about.module').then(m => m.AboutModule),
+  // },
   {
     path: 'job',
     component: JobListComponent,
@@ -93,6 +99,10 @@ export const routes: Routes = [
   {
     path: 'public/itsol_recruitment/:typeJob',
     loadChildren: () => import('./modules/home-public/see-more-job/see-more-job.module').then(m => m.SeeMoreJobModule),
+  },
+  {
+    path: 'public/itsol_recruitment/job/:id',
+    component: PublicJobDetailComponent,
   },
 ];
 

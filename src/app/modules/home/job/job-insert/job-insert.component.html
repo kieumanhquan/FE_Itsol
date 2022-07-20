@@ -8,7 +8,7 @@
              [(ngModel)]="job.name" formControlName = "name">
       <small *ngIf = "insertJobForm.get('name').invalid && insertJobForm.get('name').touched"
              class="text-danger"> Vui lòng nhập tên (không quá 150 ký tự) </small>
-     </div>
+    </div>
 
     <div class = "form-group col-md-3">
       <label for="job position"> Vị trí công việc </label>
@@ -22,7 +22,6 @@
       </select>
       <small *ngIf = "insertJobForm.get('job-position').invalid && insertJobForm.get('job-position').touched"
              class="text-danger"> Vui lòng chọn vị trí công việc </small>
-
     </div>
 
     <div class = "form-group col-md-3">
@@ -37,28 +36,39 @@
       </select>
       <small *ngIf = "insertJobForm.get('working-form').invalid && insertJobForm.get('working-form').touched"
              class="text-danger"> Vui lòng chọn hình thức làm việc </small>
-
     </div>
 
     <div class = "form-group col-md-3">
       <label> Lương tối thiểu </label>
       <input type="number" class = "form-control" id="salary min"
              name = "salary min" placeholder="Nhập lương tối thiểu"
-             [(ngModel)]="job.salaryMin" formControlName = "salary-min">
-      <small *ngIf = "insertJobForm.get('salary-min').invalid && insertJobForm.get('salary-min').touched"
-             class="text-danger"> Vui lòng nhập lương (kiểu số) </small>
+             min="0"
+             [(ngModel)]="job.salaryMin" formControlName = "salaryMin">
+      <small *ngIf = "insertJobForm.get('salaryMin').invalid && insertJobForm.get('salaryMin').touched"
+             class="text-danger"> Vui lòng nhập lương (kiểu số không âm) </small>
     </div>
 
     <div class = "form-group col-md-3">
       <label> Lương tối đa </label>
       <input type="number" class = "form-control" id="salary max"
              name = "salary max" placeholder="Nhập lương tối đa"
-             [(ngModel)]="job.salaryMax" formControlName = "salary-max">
-      <small *ngIf = "insertJobForm.get('salary-max').invalid && insertJobForm.get('salary-max').touched"
-             class="text-danger"> Vui lòng nhập lương (kiểu số) </small>
+             [(ngModel)]="job.salaryMax" formControlName = "salaryMax">
+      <small *ngIf = "insertJobForm.get('salaryMax').invalid && insertJobForm.get('salaryMax').touched"
+             class="text-danger"> Vui lòng nhập lương (kiểu số không âm) </small>
+
+<!--      &lt;!&ndash;      {{this.insertJobForm.value.salaryMax | json}}&ndash;&gt;
+      <small *ngIf = "this.insertJobForm.value.salaryMax < this.insertJobForm.value.salaryMin"
+             class="text-danger"> Lương tối đa phải lớn hơn </small>
+      <div *ngIf="f.pattern.invalid && (f.pattern.dirty || f.pattern.touched)">
+        <div *ngIf="f.pattern.error" >
+          <small>Lương tối đa phải lớn hơn</small>
+        </div>
+        <div *ngIf="f.pattern.required" >
+          <small>Trương thông tin không được để trống</small>
+        </div>-->
     </div>
 
-    <div class = "col-md-12">
+    <div class = "form-group col-md-12">
       <label> Địa chỉ làm việc </label>
       <input type="text" class = "form-control" id="address work"
              name = "address work" placeholder="Nhập địa chỉ công việc"
@@ -181,6 +191,7 @@
              class="text-danger"> Vui lòng nhập yêu cầu< (không quá 2000 ký tự)</small>
     </div>
   </div>
+
   <div class = "form-row row" style="margin: 0px">
     <button type="submit" [disabled]="insertJobForm.invalid" (click)="onSubmit()"
             class="btn btn-primary group-btn col">Tạo</button>

@@ -1,10 +1,12 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {JobService} from '../../../../@core/services/job.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Job} from '../../../../@core/models/job';
 import {PageEvent} from '@angular/material/paginator';
-// import html2canvas from 'html2canvas';
-// import {jsPDF} from 'jspdf';
+import html2canvas from 'html2canvas';
+import {jsPDF} from 'jspdf';
+import any = jasmine.any;
+import {Toaster} from "ngx-toast-notifications";
 
 
 @Component({
@@ -14,15 +16,18 @@ import {PageEvent} from '@angular/material/paginator';
 })
 export class JobListComponent implements OnInit {
 
-  jobs: Job[];
+  jobs: any;
   pageNo = 0;
   pageSize = 5;
   pageSizeOption: Number[] = [1, 2,5,10,20];
   sort: string;
   type = true;
+  searchText: string;
 
   constructor(private jobService: JobService,
-              private router: Router) { }
+              private router: Router,
+              private router2: ActivatedRoute,
+              private toast: Toaster) { }
 
   ngOnInit(): void {
     this.getJobs();
@@ -33,6 +38,18 @@ export class JobListComponent implements OnInit {
       this.jobs = data;
       console.log(data);
     });
+  }
+
+
+  searchJob(keyword: string) {
+    if(keyword !== '') {
+      this.jobService.searchJob(keyword).subscribe(data => {
+        this.jobs = data;
+        console.log(data);
+      });
+    } else {
+      this.getJobs();
+    }
   }
 
   onChangePage(event: PageEvent) {
@@ -74,19 +91,30 @@ export class JobListComponent implements OnInit {
   gotoPreviewJob(id: number) {
     // this.router.navigate(['home/job/detail', id]);
     const url = this.router.serializeUrl(
-      this.router.createUrlTree(['/public/itsol_recruitment']),
+      this.router.createUrlTree(['public/itsol_recruitment/job',id])
     );
     window.open(url, '_blank');
   }
 
-/*
-  setPublishJob(id: number) {
-    this.jobService.getJobById(this.router.snapshot.params['id']).
-    subscribe(data => {
-      this.job = data;
-      console.log(this.job);
+  onPublish(id: number) {
+    this.jobService.updateJobStatus(id, 3).subscribe(data => {
+      console.log("id = " + id);
+      console.log("data = ");
+      console.log(data);
+      this.showToaster('Đăng tuyển thành công', 'success');
+      this.getJobs();
+    }, error => console.log(error));
+  }
+
+  showToaster(message: string,typea: any) {
+    const type = typea;
+    this.toast.open({
+      text: message,
+      caption: 'Thành công',
+      type: type,
+      duration: 3000
     });
-    this.getCurrentUserRole();
-  }*/
+  }
+
 
 }

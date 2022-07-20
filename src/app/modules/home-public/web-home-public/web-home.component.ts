@@ -71,26 +71,9 @@ export class WebHomeComponent implements OnInit {
     );
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  gotoPublicJobDetail(idJob: number) {
+    this.router.navigate(['public/itsol_recruitment/job', idJob]);
+  }
 
   seach(){
     console.log(this.FormSearch.value);

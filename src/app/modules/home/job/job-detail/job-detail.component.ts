@@ -5,7 +5,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {SessionService} from '../../../../@core/services/session.service';
 import {Toaster} from 'ngx-toast-notifications';
 import {MatDialog} from '@angular/material/dialog';
-import {JobUpdateComponent} from './job-update/job-update.component';
+import {JobUpdateComponent} from "./job-update/job-update.component";
+import dialog = CKEDITOR.dialog;
 
 @Component({
   selector: 'ngx-job-detail',
@@ -26,12 +27,16 @@ export class JobDetailComponent implements OnInit {
               private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.jobService.getJobById(this.router.snapshot.params['id']).
-      subscribe(data => {
-        this.job = data;
-        console.log(this.job);
-      });
+    this.getJob();
     this.getCurrentUserRole();
+  }
+
+  getJob() {
+    this.jobService.getJobById(this.router.snapshot.params['id']).
+    subscribe(data => {
+      this.job = data;
+      console.log(this.job);
+    });
   }
 
   getCurrentUserRole() {
@@ -50,9 +55,10 @@ export class JobDetailComponent implements OnInit {
     });
   }
 
-  onPreview() {
+  onPreview(id: number) {
+    // this.router.navigate(['home/job/detail', id]);
     const url = this.router2.serializeUrl(
-      this.router2.createUrlTree(['/public/itsol_recruitment']),
+      this.router2.createUrlTree(['public/itsol_recruitment/job',id])
     );
     window.open(url, '_blank');
   }
@@ -103,7 +109,11 @@ export class JobDetailComponent implements OnInit {
   }
 
   onDelete() {
+    this.jobService.deleteJobById(this.job.id).subscribe(data => {
+      console.log(data);
+    });
     this.showToaster('Đã xóa', 'success');
+    this.gotoJobList();
   }
 
   gotoJobList() {
@@ -111,8 +121,13 @@ export class JobDetailComponent implements OnInit {
   }
 
   openDialog(id): void {
-    this.dialog.open(JobUpdateComponent, {
+    const  dialogRef = this.dialog.open(JobUpdateComponent, {
       data:({idJob:id}),
+      width: '100%',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.getJob();
     });
   }
 }
