@@ -33,6 +33,7 @@ export class DialogdetailfileComponent implements OnInit {
 
   changeRefuse(a: any) {
     console.log(a);
+    this.reason =a;
     this.detailfileService.changeRefuse(this.dataService.getidJobRegis(), a).subscribe(rf => {
       this.detailfile = rf;
       this.check =true;

@@ -5,5 +5,5 @@
 </div>
 <div mat-dialog-actions>
   <button (click)="close()">Đóng</button>
-  <button (click)="changeRefuse(reason)" [disabled] = 'check'>Từ chối</button>
+  <button (click)="changeRefuse(reason)" [disabled] = 'check || !reason'>Từ chối</button>
 </div>
