@@ -208,11 +208,11 @@
         </div>
       </div>
        <div class="form-group col-lg-2" style="display:flex">
-        <label style="color: #212529">Avatar</label>
-         <img  [src]="dbImage" alt="Avatar"
-               style="width:90px; border-radius: 50%;">
+        <label  style="color: #212529">Avatar</label>
+         <img   [src]="dbImage" alt="Avatar"
+               style="width:82px; border-radius:50%">
          <input type="file"  accept="image/*" class="mt-5 custom-file-input" style="color: gray;" id="importFile" (change)="onSelect($event.target.files)">
-         <label  #labelImport for="importFile" style="color: gray;"><i class="fas fa-image"></i> Choose file</label>
+         <label  #labelImport for="importFile" style="color: gray;"><i class="fas fa-image"></i>Đổi avatar</label>
          <input type="hidden" name="fileHidden" formControlName="avatar"/>
        </div>
     </div>

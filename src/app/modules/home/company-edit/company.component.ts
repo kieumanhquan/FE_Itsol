@@ -12,7 +12,7 @@ import { Toaster } from 'ngx-toast-notifications';
 })
 export class CompanyComponent implements OnInit {
   formUpdate: FormGroup;
-  company: Company;
+  company?: Company;
   id =1;
   dbImage: any;
   [x: string]: any;
@@ -21,7 +21,7 @@ export class CompanyComponent implements OnInit {
   @ViewChild('labelImport')
   labelImport: ElementRef;
   constructor( private fb: FormBuilder, private companyService: CompanyService,private httpClient: HttpClient,
-              private router: Router) { }
+              private router: Router,private toaster: Toaster) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -50,6 +50,7 @@ update(){
   this.companyService.updateCompany(this.formUpdate.value).subscribe(
     (data)=>{
       console.log(this.formUpdate.value);
+      console.log(data);
       if(data!=null){
         this.showToaster('Cập nhật thành công','success');
       }
