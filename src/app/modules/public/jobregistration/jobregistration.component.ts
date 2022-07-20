@@ -9,7 +9,7 @@ import {ProfileService} from '../../home/profile/profile.service';
 @Component({
   selector: 'ngx-jobregistration',
   templateUrl: './jobregistration.component.html',
-  styleUrls: ['./jobregistration.component.scss']
+  styleUrls: ['./jobregistration.component.scss'],
 })
 export class JobregistrationComponent implements OnInit {
   date = new Date();
@@ -41,7 +41,7 @@ export class JobregistrationComponent implements OnInit {
   regisJob(f: any) {
     this.jobRegistrationService.regisJob(this.file, this.userName).subscribe(response => {
       this.setdata = response;
-      console.log(response)
+      console.log(response);
       this.setdata = response;
       this.router.navigate(['public']);
     });
