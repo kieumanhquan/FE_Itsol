@@ -13,9 +13,7 @@ import {FormBuilder, FormControl, FormControlName, FormGroup, Validators} from '
 export class DialogdetailfileComponent implements OnInit {
   detailfile: any;
   reason: any;
-  test : any;
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  // DialogForm: FormGroup;
+  check = false;
 
   constructor(public dialogRef: MatDialogRef<DialogdetailfileComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any, public detailfileService: DetailfileService,
@@ -27,19 +25,17 @@ export class DialogdetailfileComponent implements OnInit {
   }
 
   initForm() {
-    // this.DialogForm = this.fb.group({
-    //   reason: ['', Validators.required],
-    // });
   }
 
   close() {
     this.dialogRef.close();
   }
 
-  changeRefuse() {
-    // const reason = this.DialogForm.value.reason;
-    this.detailfileService.changeRefuse(this.dataService.getidJobRegis(), this.reason).subscribe(rf => {
+  changeRefuse(a: any) {
+    console.log(a);
+    this.detailfileService.changeRefuse(this.dataService.getidJobRegis(), a).subscribe(rf => {
       this.detailfile = rf;
+      this.check =true;
       if (this.detailfile.rf === 'success') {
         alert('Đã từ chối ứng viên ');
         this.router.navigate(['home']).then(r => console.log(r));

@@ -27,11 +27,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import {
-  DialogdetailfileComponent
-} from './modules/home/filerecruit/detail-file/dialogdetailfile/dialogdetailfile.component';
 import {CommonModule} from '@angular/common';
-import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 
 const configToast: any = {
   timeOut: 3000,
@@ -76,7 +73,6 @@ const configToast: any = {
     multi: true,
   }, RouteGuardService,
   ],
-  entryComponents:[DialogdetailfileComponent],
 })
 export class AppModule {
 

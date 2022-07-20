@@ -1,13 +1,9 @@
 <div mat-dialog-content>
-<!--  <form class="form-control" [formGroup]="DialogForm">-->
-  <form class="form-control" >
-  <p>Lý do từ chối:</p>
-<textarea name="" cols="80" rows="10" ></textarea>
-  </form>
+  <!--  <form class="form-control" [formGroup]="DialogForm">-->
+    <p>Lý do từ chối:</p>
+    <textarea name="" cols="80" rows="10" [(ngModel)]="reason"></textarea>
 </div>
-<br><br><br><br><br><br><br><br><br><br>
-
 <div mat-dialog-actions>
-  <button (click)="close()" >Đóng</button>
-  <button (click)="changeRefuse()">Từ chối</button>
+  <button (click)="close()">Đóng</button>
+  <button (click)="changeRefuse(reason)" [disabled] = 'check'>Từ chối</button>
 </div>

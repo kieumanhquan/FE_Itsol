@@ -18,4 +18,11 @@ export class PublicComponent implements OnInit {
     localStorage.removeItem('auth-user');
     this.router.navigate(['/auth']);
   }
+  change(){
+    this.router.navigate(['/public/jobregistration']);
+  }
+  changeprofile(){
+    this.router.navigate(['/public/profile'])
+  }
+
 }

@@ -21,6 +21,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {MatRippleModule} from "@angular/material/core";
+import {DialogdetailfileComponent} from "./filerecruit/detail-file/dialogdetailfile/dialogdetailfile.component";
 const routes: Routes = [{
   path: '',
   component: HomeComponent,
@@ -66,6 +67,7 @@ const routes: Routes = [{
     FilerecruitComponent,
     JobregisterDetailComponent,
     DetailFileComponent,
+    DialogdetailfileComponent,
   ],
   imports: [
 

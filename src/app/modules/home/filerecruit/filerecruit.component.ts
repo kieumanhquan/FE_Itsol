@@ -27,8 +27,6 @@ export class FilerecruitComponent implements OnInit {
   filerecruit: Filerecruit[];
   change: any;
 
-  // pageQuantity= 5;
-
   constructor(private jobregisterService: JobregisterService, private fb: FormBuilder, private router: Router,
               public dataService: DataService) {
   }
@@ -50,12 +48,6 @@ export class FilerecruitComponent implements OnInit {
     });
   }
 
-  // onChangePage(event: PageEvent) {
-  //   this.pageSize = event.pageSize;
-  //   this.pageNo = event.pageIndex;
-  //   // this.pageQuantity = (this.pageNo + 1) * this.pageNo;
-  //   this.getFilerecruit();
-  // }
 
   onChangePage(event: any) {
     this.page = event.page;
@@ -101,4 +93,6 @@ export class FilerecruitComponent implements OnInit {
     this.dataService.setStatus(filerecruits.status);
     this.router.navigate(['home/detailfile']);
   }
+
+
 }

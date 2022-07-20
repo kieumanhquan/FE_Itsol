@@ -6,6 +6,7 @@ import {JobListComponent} from './modules/home/job-list/job-list.component';
 import {RouteGuardService} from './@core/services/route.guard.service';
 import {FilerecruitComponent} from './modules/home/filerecruit/filerecruit.component';
 import {AboutModule} from './modules/about/about.module';
+import {JobregistrationComponent} from "./modules/public/jobregistration/jobregistration.component";
 // @ts-ignore
 
 // @ts-ignore
@@ -69,6 +70,7 @@ export const routes: Routes = [
     path : 'file-recruit',
     component : FilerecruitComponent,
   },
+
 ];
 
 

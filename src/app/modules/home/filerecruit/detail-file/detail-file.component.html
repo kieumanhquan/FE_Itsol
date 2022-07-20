@@ -3,7 +3,7 @@
   >Tải xuống CV
   </button>
   <button *ngIf="status ==='chờ duyệt'" class="btn btn-primary"
-          (click)="changeBrowser()">Xét duyệt
+          (click)="changeBrowser()" [disabled]="check">Xét duyệt
   </button>
   <button *ngIf="status === 'chờ phỏng vấn' || status === 'chờ duyệt' || status === 'đang phỏng vấn'"
           (click)="openDialog()" class="btn btn-primary">Từ chối ứng viên
@@ -11,10 +11,12 @@
   <button *ngIf="status === 'ứng viên bị từ chối'"
           (click)="showReason(regisId)" class="btn btn-primary">Xem lí do
   </button>
-  <button *ngIf="status === 'chờ phỏng vấn'" id="btn2" class="btn btn-primary" (click)="bookInter(regisId)">
+  <button *ngIf="status === 'chờ phỏng vấn'" id="btn2" class="btn btn-primary" (click)="bookInter(regisId)"
+          [disabled]="check">
     Đặt lịch phỏng vấn
   </button>
-  <button *ngIf="status === 'đang phỏng vấn'" id="btn3" class="btn btn-primary" (click)="changeSuccess()">
+  <button *ngIf="status === 'đang phỏng vấn'" id="btn3" class="btn btn-primary" (click)="changeSuccess()"
+          [disabled]="check">
     Tuyển
   </button>
 </div>

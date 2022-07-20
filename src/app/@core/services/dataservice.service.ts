@@ -6,6 +6,7 @@ import {Injectable} from '@angular/core';
 export class DataService {
   // eslint-disable-next-line @typescript-eslint/member-ordering
   idJobRegis: any;
+
   setIdJobRegis(element: any) {
     // @ts-ignore
     this.idJobRegis = element;
@@ -17,6 +18,7 @@ export class DataService {
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   status: any;
+
   setStatus(elements: any) {
     // @ts-ignore
     this.status = elements;
@@ -26,5 +28,14 @@ export class DataService {
     return this.status;
   }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  idLocal: any;
+  setIdLocal(elements: any) {
+    // @ts-ignore
+    this.idLocal = elements;
+  }
+  getIdLocal() {
+    return this.idLocal;
+  }
 
 }

@@ -14,12 +14,11 @@ import {DialogdetailfileComponent} from './dialogdetailfile/dialogdetailfile.com
 
 export class DetailFileComponent implements OnInit {
   detailfile: any;
-  check = true;
-  checks = false;
+  check = false;
   // @ts-ignore
   reason = 'agdsf';
   // @ts-ignore
-  check = true;
+  check = false;
   regisId = this.dataService.getidJobRegis();
   status = this.dataService.getStatus();
 
@@ -51,6 +50,7 @@ export class DetailFileComponent implements OnInit {
   changeBrowser() {
     this.detailfileService.changeBrowse(this.dataService.getidJobRegis()).subscribe(br => {
       this.detailfile = br;
+      this.check=true;
       if (this.detailfile.br === 'success') {
         alert('xét duyệt thành công');
         this.router.navigate(['home']).then(r => console.log(r));
@@ -61,10 +61,10 @@ export class DetailFileComponent implements OnInit {
     });
   }
 
-
   changeSuccess() {
     this.detailfileService.changeSuccess(this.dataService.getidJobRegis()).subscribe(sc => {
       this.detailfile = sc;
+      this.check=true;
       if (this.detailfile.sc === 'success') {
         alert('Tuyển thành công');
         this.router.navigate(['home']).then(r => console.log(r));
@@ -86,7 +86,6 @@ export class DetailFileComponent implements OnInit {
       width:'50%',
       height:'50%'
     });
-
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });

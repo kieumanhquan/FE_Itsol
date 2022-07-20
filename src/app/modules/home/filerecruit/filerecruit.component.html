@@ -37,13 +37,13 @@
                 (click)="getjobRegStatus(filerecruits.id)">
           <i class="fa fa-edit"></i>Hẹn phỏng vấn
         </button>
+        <button class="btn btn-sm btn-link">
+          <i class="fa fa-download" ></i>
+        </button>
       </td>
 
     </tr>
   </ng-container>
   </tbody>
 </table>
-<!--<mat-paginator [length]='50' [pageIndex]="pageNo" [pageSize]="pageSize" (page)="onChangePage($event)"-->
-<!--               [pageSizeOptions]="pageSizeOption" aria-label="Select page" showFirstLastButtons="firstLastButtons">-->
-<!--</mat-paginator>-->
 <p-paginator  [rows]="2" [totalRecords]="totalRecords" [rowsPerPageOptions]="[2,5,10]" (onPageChange)="onChangePage($event)" > số lượng;{{totalRecords}} </p-paginator>
