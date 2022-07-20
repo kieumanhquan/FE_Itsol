@@ -16,8 +16,9 @@ import {DeactiveComponent} from './deactive/deactive.component';
   page = 0;
   size = 5;
   totalRecords: number;
-  sort: String;
+  sort='name';
   jes: Je[];
+  type = true;
 
   constructor(public dialog: MatDialog, private managerJeService: ManagerJeService ) {
   }
@@ -31,14 +32,7 @@ import {DeactiveComponent} from './deactive/deactive.component';
       this.totalRecords = this.allJe.length;
     });
   }
-  getJe() {
-    this.managerJeService.getJe(this.page, this.size).subscribe(
-      res =>{
-      this.jes = res;
 
-    },
-    );
-  }
 
   onChangePage(event: any) {
     this.page = event.page;
@@ -47,24 +41,49 @@ import {DeactiveComponent} from './deactive/deactive.component';
 
   }
   openDialog(id): void {
-     this.dialog.open(EditJeComponent, {
-       disableClose:true,
-       data:({id1:id}),
-     });
+    const dialogRef = this.dialog.open(EditJeComponent, {
+      disableClose: true,
+      data: ({id1: id}),
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getJe();
+    });
   }
 
   openDialog1(id): void {
-    this.dialog.open(DeactiveComponent, {
+    const dialogRef = this.dialog.open(DeactiveComponent, {
       disableClose:true,
       data:({id2:id }),
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.sorttable();
     });
   }
 
   openDialog2(): void {
-    this.dialog.open(ResJeComponent, {
+    const dialogRef = this.dialog.open(ResJeComponent, {
       disableClose:true,
     });
+    dialogRef.afterClosed().subscribe(resulr => {
+      this.getJe();
+    });
   }
-
+  sorttable() {
+    this.managerJeService.getJeSort(this.page, this.size, this.sort, this.type).subscribe(jes => {
+      this.jes = jes;
+      if (this.type) {
+        this.type = false;
+      } else {
+        this.type = true;
+      }
+    });
+  }
+  getJe() {
+    this.managerJeService.getJe(this.page, this.size).subscribe(res =>{
+        this.jes = res;
+      },
+    );
+  }
 }
 

@@ -20,6 +20,7 @@ import {ResJeComponent} from './managerJe/resJe/resJe.component';
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {PaginatorModule} from "primeng/paginator";
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 
 
@@ -81,6 +82,7 @@ const routes: Routes = [{
     MatDialogModule,
     PaginatorModule,
     MatDatepickerModule,
+    MatFormFieldModule,
 
   ],
 })

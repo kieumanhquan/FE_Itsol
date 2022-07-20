@@ -4,6 +4,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ResJeService} from './resJe.service';
 import {MatDialogRef} from "@angular/material/dialog";
 import {Toaster} from "ngx-toast-notifications";
+import {formatDate} from "@angular/common";
 
 @Component({
   selector: 'ngx-managerJe',
@@ -13,11 +14,13 @@ import {Toaster} from "ngx-toast-notifications";
   roles: string[] = [];
   // eslint-disable-next-line @typescript-eslint/naming-convention
   FormRegis: FormGroup;
+  currentDate= new Date();
+  birthDay: any;
 
   constructor(private fb: FormBuilder,
               private resJeService: ResJeService,
               private dialogRef: MatDialogRef<ResJeComponent>,
-              private toaster: Toaster,) {
+              private toaster: Toaster) {
   }
   ngOnInit(): void {
     this.initForm();
@@ -49,7 +52,7 @@ import {Toaster} from "ngx-toast-notifications";
       homeTown: this.FormRegis.value.homeTown,
       gender: this.FormRegis.value.gender,
       password: this.FormRegis.value.password,
-      birthDay: this.FormRegis.value.birthDay,
+      birthDay: formatDate(this.FormRegis.value.birthDay,'dd-MM-YYYY', 'en'),
     };
     this.resJeService.resJe(userJe).subscribe();
     this.showToater('thành công', 'success');
@@ -66,5 +69,9 @@ import {Toaster} from "ngx-toast-notifications";
       type,
       duration:3000,
     });
+  }
+  changeGender(event: any){
+    const a = document.querySelector('.select');
+    console.log(this.FormRegis.value.gender);
   }
 }

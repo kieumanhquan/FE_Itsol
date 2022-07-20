@@ -50,21 +50,18 @@
     </div>
   </div>
   <div class="d-flex flex-row">
-    <div class="form-group">
+    <div class="form-group" style="width: 72%">
       <label for="formGroupExampleInput2">gender</label>
-      <input type="text" class="form-control" id="formGroupExampleInput5" formControlName="gender">
-      <div *ngIf="formUserJe.controls.gender.errors && formUserJe.controls.gender.touched ">
-        <small style="color: red;">không được để trống giới tính</small>
-      </div>
+
+        <select formControlName="gender" class="select form-control" (change)="changeGender($event)">
+          <option value="Nam">Nam</option>
+          <option value="Nữ">Nữ</option>
+        </select>
+
     </div>
     <div class="form-group" style="margin-left: 10%;">
       <label for="formGroupExampleInput2">birthDay</label>
-      <input type="string" class="form-control" id="formGroupExampleInput6" formControlName="birthDay">
-      <div *ngIf="formUserJe.controls.birthDay.invalid && formUserJe.controls.birthDay.touched ">
-        <div *ngIf="formUserJe.controls.birthDay.errors.required && formUserJe.controls.birthDay.touched">
-          <small style="color: red;">không được để trống ngày tháng năm sinh</small>
-        </div>
-      </div>
+      <p-calendar style="width: 50%" [(ngModel)]="birthDay" [maxDate]="currentDate" [placeholder]="birthDay" [showIcon]="true" inputId="time" formControlName="birthDay"></p-calendar>
     </div>
   </div>
   <div>

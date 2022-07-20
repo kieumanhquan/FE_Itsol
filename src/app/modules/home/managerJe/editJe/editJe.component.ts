@@ -5,6 +5,7 @@ import {EditJeService} from './editJe.service';
 import {Je} from './editJe.model';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Toaster} from 'ngx-toast-notifications';
+import {formatDate} from "@angular/common";
 
 
 @Component({
@@ -13,9 +14,11 @@ import {Toaster} from 'ngx-toast-notifications';
   templateUrl: './editJe.component.html',
   styleUrls: ['./editJe.component.scss'],
 }) export class EditJeComponent implements OnInit{
+  currentDate= new Date();
   id: number;
   formUserJe: FormGroup;
   // eslint-disable-next-line max-len
+  birthDay: any;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
               private editJeService: EditJeService,
               private fb: FormBuilder,
@@ -66,7 +69,7 @@ import {Toaster} from 'ngx-toast-notifications';
       userName: this.formUserJe.value.userName,
       email: this.formUserJe.value.email,
       phoneNumber: this.formUserJe.value.phoneNumber,
-      birthDay: this.formUserJe.value.birthDay,
+      birthDay: formatDate(this.formUserJe.value.birthDay,'dd-MM-YYYY', 'en'),
       homeTown: this.formUserJe.value.homeTown,
       gender: this.formUserJe.value.gender,
     };
@@ -89,5 +92,9 @@ import {Toaster} from 'ngx-toast-notifications';
       type,
       duration:3000,
     });
+  }
+  changeGender(event: any){
+    const a = document.querySelector('.select');
+    console.log(this.formUserJe.value.gender);
   }
 }

@@ -23,8 +23,8 @@ export class ManagerJeService{
   getJe(pram, pram1): Observable<any>{
     return this.http.get<any>(`${this.managerAPI}?pageNo=` + pram + `&pageSize=`+ pram1);
   }
-  getJeSort(pram, pram1 , sort): Observable<any>{
-    return this.http.get<any>(`${this.managerAPI}?pageNo=` + pram + `&pageSize=`+ pram1 + `&sort`+sort );
+  getJeSort(pram, pram1 , sort, type): Observable<any>{
+    return this.http.get<any>(`${this.managerAPI}?pageNo=` + pram + `&pageSize=`+ pram1 + `&sort=`+sort + `&type=`+type );
   }
 
   deactive(id: number): Observable<any>{

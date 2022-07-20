@@ -30,6 +30,7 @@ import {FormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSliderModule} from '@angular/material/slider';
 
 const configToast: any = {
   timeOut: 3000,
@@ -64,6 +65,7 @@ const configToast: any = {
     MatPaginatorModule,
     BrowserAnimationsModule,
     ToastNotificationsModule,
+    MatSliderModule,
   ],
   bootstrap: [AppComponent],
   providers: [{
