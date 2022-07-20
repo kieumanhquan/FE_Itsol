@@ -31,10 +31,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { JobListComponent } from './modules/home/job/job-list/job-list.component';
 import { JobInsertComponent } from './modules/home/job/job-insert/job-insert.component';
 import {JobDetailComponent} from './modules/home/job/job-detail/job-detail.component';
+// @ts-ignore
 import {ToastNotificationsModule} from 'ngx-toast-notifications';
-import { Component, ViewChild, ElementRef } from '@angular/core';
-import {jsPDF} from 'jspdf';
-import html2canvas from 'html2canvas';
 import {NgbModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { PublicJobDetailComponent } from './modules/home-public/public-job-detail/public-job-detail.component';
 

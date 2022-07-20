@@ -1,3 +1,4 @@
+import {WorkingForm} from './working-form';
 export class Job {
   id: number;
   name: string;
@@ -11,9 +12,10 @@ export class Job {
   startRecruitmentDate: Date;
   dueDate: Date;
   skills: string;
+  workingForm: WorkingForm;
+  jobRequirement: string;
   description: string;
   interest: string;
-  jobRequirement: string;
   salaryMax: number;
   salaryMin: number;
   contactId: number;

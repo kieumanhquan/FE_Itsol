@@ -50,8 +50,8 @@ export class JobDetailComponent implements OnInit {
     this.toast.open({
       text: message,
       caption: 'Thành công',
-      type: type,
-      duration: 3000
+      type,
+      duration: 3000,
     });
   }
 
@@ -65,7 +65,7 @@ export class JobDetailComponent implements OnInit {
 
   updateJob() {
     this.jobService.updateJob(this.job.id, this.job).subscribe(data => {
-      console.log("data = ");
+      console.log('data = ');
       console.log(data);
     }, error => console.log(error));
   }

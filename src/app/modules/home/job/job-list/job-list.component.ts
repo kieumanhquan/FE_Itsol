@@ -83,7 +83,7 @@ export class JobListComponent implements OnInit {
   gotoExportPDFJob(id: number) {
     // this.router.navigate(['job/exportPDF', id]);
     const url = this.router.serializeUrl(
-      this.router.createUrlTree(['job/exportPDF',id])
+      this.router.createUrlTree(['job/exportPDF',id]),
     );
     window.open(url, '_blank');
   }

@@ -34,6 +34,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Company',
     icon: 'globe-2-outline',
-    link: '/home/aboutCompany',
+    link: '/home/company-edit',
   },
 ];

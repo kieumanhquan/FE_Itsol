@@ -24,6 +24,7 @@ import {EditJeComponent} from './managerJe/editJe/editJe.component';
 import {ResJeService} from './managerJe/resJe/resJe.service';
 import {ResJeComponent} from './managerJe/resJe/resJe.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
+import {CompanyComponent} from './company-edit/company.component';
 
 
 const routes: Routes = [{
@@ -66,6 +67,10 @@ const routes: Routes = [{
       path: 'job/update/:id',
       component: JobUpdateComponent,
     },
+    {
+      path: 'company-edit',
+      component: CompanyComponent,
+    },
   ],
 }];
 
@@ -81,6 +86,7 @@ const routes: Routes = [{
     JobUpdateComponent,
     EditJeComponent,
     ResJeComponent,
+    CompanyComponent,
   ],
   imports: [
     CommonModule,
