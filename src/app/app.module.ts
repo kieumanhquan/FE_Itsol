@@ -28,6 +28,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSliderModule} from '@angular/material/slider';
 import { JobListComponent } from './modules/home/job/job-list/job-list.component';
 import { JobInsertComponent } from './modules/home/job/job-insert/job-insert.component';
 import {JobDetailComponent} from './modules/home/job/job-detail/job-detail.component';

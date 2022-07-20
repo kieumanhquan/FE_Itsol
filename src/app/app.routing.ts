@@ -56,7 +56,7 @@ export const routes: Routes = [
     loadChildren: () => import('./modules/home-public/regis/regis.module').then(m => m.RegisModule),
   },
 
-  {path: 'job', component: JobListComponent},
+  // {path: 'job', component: JobListComponent},
   {path: '', redirectTo: 'jobs', pathMatch: 'full'},
 
   {

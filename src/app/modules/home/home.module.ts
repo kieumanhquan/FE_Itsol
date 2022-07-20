@@ -23,6 +23,9 @@ import {PaginatorModule} from 'primeng/paginator';
 import {EditJeComponent} from './managerJe/editJe/editJe.component';
 import {ResJeService} from './managerJe/resJe/resJe.service';
 import {ResJeComponent} from './managerJe/resJe/resJe.component';
+import {PaginatorModule} from "primeng/paginator";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatFormFieldModule} from "@angular/material/form-field";
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {CompanyComponent} from './company-edit/company.component';
 
@@ -52,7 +55,6 @@ const routes: Routes = [{
       path: 'jobregister',
       component: FilerecruitComponent,
     },
-
     {
       path: 'job/insert',
       component: JobInsertComponent,
@@ -101,6 +103,8 @@ const routes: Routes = [{
     MatDialogModule,
     FormsModule,
     PaginatorModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
   ],
 })
 export class HomeModule { }

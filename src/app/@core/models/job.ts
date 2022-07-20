@@ -62,7 +62,7 @@ export class Job {
     this.academicLevelId = academicLevelId;
     this.rankId = rankId;
     this.qtyPerson = qtyPerson;
-    this.startRecruitmentDate = startRecruitmentDate;
+    // this.startRecruitmentDate = startRecruitmentDate;
     this.dueDate = dueDate;
     this.skills = skills;
     this.description = description;

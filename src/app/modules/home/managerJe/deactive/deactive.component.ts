@@ -14,12 +14,10 @@ import {Je} from '../managerJe.model';
 
   sort: String;
   id: number;
-check = true;
+  check = true;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
               private managerJeService: ManagerJeService,
-              private dialogRef: MatDialogRef<DeactiveComponent>,
-              private deactiveService : DeactiveService,
-              private router: Router) {}
+              private dialogRef: MatDialogRef<DeactiveComponent>) {}
 
   ngOnInit(): void {
   }
@@ -27,7 +25,6 @@ check = true;
   deactive() {
     this.id = this.data.id2;
     this.managerJeService.deactive(this.id).subscribe(()=>{
-
       this.dialogRef.close();
     });
   }

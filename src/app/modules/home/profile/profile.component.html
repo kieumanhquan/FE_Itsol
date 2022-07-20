@@ -1,10 +1,18 @@
-<h1>Thông tin cá nhân</h1>
+<h1 xmlns="http://www.w3.org/1999/html">Thông tin cá nhân</h1>
 <p-card>
     <form [formGroup]="formProfile"  >
-        <div class="row">
-            <img src="assets/images/alan.png" alt="Avatar"
-                style="width:200px; border-radius: 50%;  margin: 0 auto; margin-bottom: 20px;">
-        </div>
+      <div class="row">
+        <img src="assets/images/alan.png" alt="Avatar"
+             style="width:200px; border-radius: 50%;  margin: 0 auto; margin-bottom: 20px;">
+      </div>
+<!--      <input type="hidden" pInputText class="form-control" formControlName="id">-->
+<!--      <div class="container">-->
+<!--        <img  [src]="dbImage" alt="Avatar"-->
+<!--              style="width:200px; border-radius: 50%;  margin: 0 auto; margin-bottom: 20px;margin-left: 40%;">-->
+<!--        <input type="file"  accept="image/*" class="mt-5 custom-file-input" style="color: black;" id="importFile" (change)="selectImage($event.target.files)">-->
+<!--        <label  #labelImport for="importFile" style="color: black;"><i class="fas fa-image"></i> Choose file</label>-->
+<!--        <input type="hidden" name="fileHidden" formControlName="avatarName"/>-->
+<!--      </div>-->
         <div class="form-row">
             <div class="form-group col-md-6">
                 <div class="row">
@@ -66,14 +74,7 @@
                 <div class="row">
                     <label class="label col-3 col-form-label">Ngày sinh</label>
                     <div class="field col-9 md:col-4">
-<!--                      <input type="text" pInputText class="form-control" formControlName="birthDay">-->
-<!--                      <div *ngIf="formProfile.controls.birthDay.invalid && formProfile.controls.birthDay.touched ">-->
-<!--                        <div *ngIf="formProfile.controls.birthDay.errors.required && formProfile.controls.birthDay.touched">-->
-<!--                          <small style="color: red;">không được để trống ngày tháng năm sinh</small>-->
-<!--                        </div>-->
-<!--                      </div>-->
-<!--                      <p-calendar [showTime]="true" inputId="time" formControlName="birthDay" ></p-calendar>-->
-                      <p-calendar [(ngModel)]="birthday" [maxDate]="currentDate" [placeholder]="birthday" [showIcon]="true" inputId="time" formControlName="startRecruitmentDate"></p-calendar>
+                      <p-calendar style="height: 5px" [(ngModel)]="birthday" [maxDate]="currentDate" [placeholder]="birthday" [showIcon]="true" inputId="time" formControlName="birthDay"></p-calendar>
                     </div>
                 </div>
 
@@ -108,6 +109,7 @@
         <div>
           <button [disabled]="formProfile.invalid" (click)="updateUser()" id="button" type="button" class="btn btn-primary (click)=">Update</button>
         </div>
+
     </form>
 
 </p-card>
