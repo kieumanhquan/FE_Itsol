@@ -9,7 +9,7 @@
           class="form-control"
           id="name"
           placeholder=""
-          [(ngModel)]="company.name"
+          [ngModel]="company.name"
         />
         <div *ngIf="formUpdate.controls.name.invalid && (formUpdate.controls.name.dirty || formUpdate.controls.name.touched)" class = "error">
           <div *ngIf="formUpdate.controls.name.errors?.['required']">
