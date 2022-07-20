@@ -80,7 +80,6 @@ import {formatDate} from "@angular/common";
     this.editJeService.updateUser(this.id, userJe).subscribe();
     this.showToater('thành công','success');
     this.dialogRef.close();
-
   }
 
   close(){

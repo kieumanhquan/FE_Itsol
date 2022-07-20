@@ -1,5 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import html2canvas from 'html2canvas';
+// @ts-ignore
 import {jsPDF} from 'jspdf';
 import {Job} from "../../../../@core/models/job";
 import {JobService} from "../../../../@core/services/job.service";

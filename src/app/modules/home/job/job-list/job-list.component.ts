@@ -1,12 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {JobService} from '../../../../@core/services/job.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Job} from '../../../../@core/models/job';
 import {PageEvent} from '@angular/material/paginator';
-import html2canvas from 'html2canvas';
-import {jsPDF} from 'jspdf';
-import any = jasmine.any;
-import {Toaster} from "ngx-toast-notifications";
+import {Toaster} from 'ngx-toast-notifications';
 
 
 @Component({
@@ -91,15 +87,15 @@ export class JobListComponent implements OnInit {
   gotoPreviewJob(id: number) {
     // this.router.navigate(['home/job/detail', id]);
     const url = this.router.serializeUrl(
-      this.router.createUrlTree(['public/itsol_recruitment/job',id])
+      this.router.createUrlTree(['public/itsol_recruitment/job',id]),
     );
     window.open(url, '_blank');
   }
 
   onPublish(id: number) {
     this.jobService.updateJobStatus(id, 3).subscribe(data => {
-      console.log("id = " + id);
-      console.log("data = ");
+      console.log('id = ' + id);
+      console.log('data = ');
       console.log(data);
       this.showToaster('Đăng tuyển thành công', 'success');
       this.getJobs();
@@ -112,7 +108,7 @@ export class JobListComponent implements OnInit {
       text: message,
       caption: 'Thành công',
       type: type,
-      duration: 3000
+      duration: 3000,
     });
   }
 
