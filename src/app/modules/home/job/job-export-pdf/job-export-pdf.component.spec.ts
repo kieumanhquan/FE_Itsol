@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { JobInsertComponent } from './job-insert.component';
+import { JobExportPdfComponent } from './job-export-pdf.component';
 
-describe('JobInsertComponent', () => {
-  let component: JobInsertComponent;
-  let fixture: ComponentFixture<JobInsertComponent>;
+describe('JobExportPdfComponent', () => {
+  let component: JobExportPdfComponent;
+  let fixture: ComponentFixture<JobExportPdfComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ JobInsertComponent ],
+      declarations: [ JobExportPdfComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(JobInsertComponent);
+    fixture = TestBed.createComponent(JobExportPdfComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

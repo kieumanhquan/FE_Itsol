@@ -158,8 +158,9 @@
               <tr href="#" class=h2-heading *ngFor="let job of newJob; let i = index">
 
                 <div *ngIf="i < 5">
-                  <a style="font-size:20px" href = "#"> {{job.name}} </a>
-                  <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate}} </p>
+                  <a style="font-size:20px; cursor: pointer; font-weight: bold;" (click)="gotoPublicJobDetail(job.id)">
+                    {{job.name}} </a>
+                  <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate|date:'dd-MM-yyyy'}} </p>
                   <span ><a style="color:red" href="#">{{job.addressWork}}</a> | </span>
 
                   <span style="color:gray"> upto {{job.salaryMax }} </span></div>
@@ -183,8 +184,9 @@
               <tr href="#" class=h2-heading *ngFor="let job of urgentJob; let i = index">
 
                 <div *ngIf="i < 5">
-                  <a style="font-size:20px" href = "#"> {{job.name}} </a>
-                  <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate}} </p>
+                  <a style="font-size:20px; cursor: pointer; font-weight: bold;" (click)="gotoPublicJobDetail(job.id)">
+                    {{job.name}} </a>
+                  <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate|date:'dd-MM-yyyy'}} </p>
                   <span ><a style="color:red" href="#">{{job.addressWork}}</a> | </span>
 
                   <span style="color:gray"> upto {{job.salaryMax }} </span></div>
@@ -206,8 +208,9 @@
               <tr href="#" class=h2-heading *ngFor="let job of highPJob; let i = index">
 
                 <div *ngIf="i < 5">
-                  <a style="font-size:20px" href = "#"> {{job.name}} </a>
-                  <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate}} </p>
+                  <a style="font-size:20px; cursor: pointer; font-weight: bold;" (click)="gotoPublicJobDetail(job.id)">
+                    {{job.name}} </a>
+                  <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate|date:'dd-MM-yyyy'}} </p>
                   <span ><a style="color:red" href="#">{{job.addressWork}}</a> | </span>
 
                   <span style="color:gray"> upto {{job.salaryMax }} </span></div>

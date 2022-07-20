@@ -1,17 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {Job} from '../../../../@core/models/job';
-import {JobPosition} from '../../../../@core/models/job-position';
-import {WorkingForm} from '../../../../@core/models/working-form';
-import {AcademicLevel} from '../../../../@core/models/academic-level';
-import {Rank} from '../../../../@core/models/rank';
-import {StatusJob} from '../../../../@core/models/status-job';
 import {JobService} from '../../../../@core/services/job.service';
-import {JobPositionService} from '../../../../@core/services/job-position.service';
-import {WorkingFormService} from '../../../../@core/services/working-form.service';
-import {AcademicLevelService} from '../../../../@core/services/academic-level.service';
-import {RankService} from '../../../../@core/services/rank.service';
-import {StatusJobService} from '../../../../@core/services/status-job.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {SessionService} from '../../../../@core/services/session.service';
+import {Toaster} from 'ngx-toast-notifications';
+import {MatDialog} from '@angular/material/dialog';
+import {JobUpdateComponent} from "./job-update/job-update.component";
+import dialog = CKEDITOR.dialog;
 
 @Component({
   selector: 'ngx-job-detail',
@@ -20,84 +15,119 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class JobDetailComponent implements OnInit {
 
-  job: Job = new Job();
-  jobPositions: JobPosition[];
-  workingForms: WorkingForm[];
-  academicLevels: AcademicLevel[];
-  ranks: Rank[];
-  statusJobs: StatusJob[];
+  job: any;
+  role: string;
+  user: any;
 
   constructor(private jobService: JobService,
-              private jobPositionService: JobPositionService,
-              private workingFormService: WorkingFormService,
-              private academicLevelService: AcademicLevelService,
-              private rankService: RankService,
-              private statusJobService: StatusJobService,
-              private router: ActivatedRoute) { }
+              private sessionService: SessionService,
+              private router: ActivatedRoute,
+              private router2: Router,
+              private toast: Toaster,
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.getJob();
+    this.getCurrentUserRole();
+  }
+
+  getJob() {
     this.jobService.getJobById(this.router.snapshot.params['id']).
-      subscribe(data => {
-        this.job = data;
-        console.log(this.job);
-      });
-    this.getJobPosition();
-    this.getWorkingForm();
-    this.getAcademicLevel();
-    this.getRank();
-    this.getStatusJob();
-  }
-
-  getJobPosition() {
-    this.jobPositionService.getJobPositionList().subscribe(data => {
-      this.jobPositions = data;
-      console.log(this.jobPositions);
+    subscribe(data => {
+      this.job = data;
+      console.log(this.job);
     });
   }
-  selectJobPositionOption(id: number) {
-    console.log(id);
-    this.job.jobPositionId = id;
-    console.log(this.job.jobPositionId);
+
+  getCurrentUserRole() {
+    this.user = this.sessionService.getItem('user');
+    this.role = this.user.auth;
+    console.log('role log in: ' + this.role);
   }
 
-  getWorkingForm() {
-    this.workingFormService.getWorkingFormList().subscribe(data => {
-      this.workingForms = data;
+  showToaster(message: string,typea: any) {
+    const type = typea;
+    this.toast.open({
+      text: message,
+      caption: 'Thành công',
+      type,
+      duration: 3000,
     });
   }
-  selectWorkingFormOption(id: number) {
-    this.job.workingFormId = id;
+
+  onPreview(id: number) {
+    // this.router.navigate(['home/job/detail', id]);
+    const url = this.router2.serializeUrl(
+      this.router2.createUrlTree(['public/itsol_recruitment/job',id])
+    );
+    window.open(url, '_blank');
   }
 
-  getAcademicLevel() {
-    this.academicLevelService.getAcademicLevelList().subscribe(data => {
-      this.academicLevels = data;
-    });
-  }
-  selectAcademicLevelOption(id: number) {
-    this.job.academicLevelId = id;
+  updateJob() {
+    this.jobService.updateJob(this.job.id, this.job).subscribe(data => {
+      console.log('data = ');
+      console.log(data);
+    }, error => console.log(error));
   }
 
-  getRank() {
-    this.rankService.getRankList().subscribe(data => {
-      this.ranks = data;
-    });
-  }
-  selectRankOption(id: number) {
-    this.job.rankId = id;
-  }
-
-  getStatusJob() {
-    this.statusJobService.getStatusJobList().subscribe(data => {
-      this.statusJobs = data;
-    });
-  }
-  selectStatusJobOption(id: number) {
-    this.job.statusId = id;
-  }
-
-  onSubmit() {
+  onApprove() {
+    this.job.status.id = 4;
     console.log(this.job);
+    this.updateJob();
+    this.showToaster('Đã xét duyệt', 'success');
   }
 
+  onRefuse() {
+    this.job.status.id = 2;
+    console.log(this.job);
+    this.updateJob();
+    this.showToaster('Đã từ chối ', 'success');
+
+  }
+
+  onPublish() {
+    this.job.status.id = 3;
+    console.log(this.job);
+    this.updateJob();
+    this.showToaster('Đã xét duyệt', 'success');
+
+  }
+
+  onStopHiring() {
+    this.job.status.id = 6;
+    console.log(this.job);
+    this.updateJob();
+    this.showToaster('Đã dừng tuyển', 'success');
+  }
+
+  onClose() {
+    this.job.status.id = 5;
+    console.log(this.job);
+    this.updateJob();
+    this.showToaster('Đã đóng', 'success');
+
+  }
+
+  onDelete() {
+    this.jobService.deleteJobById(this.job.id).subscribe(data => {
+      console.log(data);
+    });
+    this.showToaster('Đã xóa', 'success');
+    this.gotoJobList();
+  }
+
+  gotoJobList() {
+    this.router2.navigate(['home/job']);
+  }
+
+  openDialog(id): void {
+    const  dialogRef = this.dialog.open(JobUpdateComponent, {
+      data:({idJob:id}),
+      width: '100%',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.getJob();
+    });
+  }
 }

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {environment} from '../../../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Job} from "../../../@core/models/job";
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,11 @@ export class ManagerJeService{
     }),
   };
   constructor(private http: HttpClient) { }
+
+  getContactJE(): Observable<any>{
+    return this.http.get<any>(`${environment.apiUrl}auth/je`);
+  }
+
   getJe(pram, pram1): Observable<any>{
     return this.http.get<any>(`${this.managerAPI}?pageNo=` + pram + `&pageSize=`+ pram1);
   }

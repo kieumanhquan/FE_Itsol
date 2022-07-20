@@ -3,10 +3,7 @@
     <div class="container" style="position:relative">
 
       <!-- Image Logo -->
-      <a class="navbar-brand logo-image" href="../../../../index.html"><img style="width:60px" src="../../../../assets/images/itsol.png" alt="alternative"></a>
-
-      <!-- Text Logo - Use this if you don't have a graphic logo -->
-      <!-- <a class="navbar-brand logo-text" href="index.html">Elma</a> -->
+      <a class="navbar-brand logo-image" href="../../../../public/itsol_recruitment/"><img style="width:60px" src="../../../../assets/images/itsol.png" alt="alternative"></a>
 
       <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -15,14 +12,14 @@
       <div style="margin-left:936px" class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav ms-auto navbar-nav-scroll">
           <li class="nav-item">
-            <a class="nav-link" href="/public/itsol_recruitment">Trang chủ</a>
+            <a class="nav-link active" aria-current="page" href="/public/itsol_recruitment">Trang chủ</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/public/aboutus">Liên hệ</a>
+            <a class="nav-link" href="/public/aboutus">Liên hệ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="auth">Đăng nhập</a>
+            <a class="nav-link" href="/auth">Đăng nhập</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="signup">Đăng ký</a>
@@ -34,96 +31,96 @@
   </nav> <!-- end of navbar -->
   <!-- end of navigation -->
 
-
-  <!-- Header -->
-  <header id="header" class="header">
+  <!--  CONTENT-->
+  <div id="services" class="cards-1 bg-gray">
     <div class="container">
-      <div class="row">
 
-      </div> <!-- end of row -->
-    </div> <!-- end of container -->
-  </header> <!-- end of header -->
-  <!-- end of header -->
+      <h1 style="text-align: center" class="text-uppercase"> {{job.name}}</h1>
+      <div style="display: block; margin: auto; margin-top: 30px">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item row">
+            <p class="col-md-5 font-weight-bold font-weight-bold"> Tên công việc:</p>
+            <p class="col-md-7"> {{job.name}}</p>
+          </li>
 
+          <li class="list-group-item row">
+            <p class="col-md-5 font-weight-bold font-weight-bold"> Vị trí công việc:</p>
+            <p class="col-md-7"> {{job.jobPosition.description}}</p>
+          </li>
 
+          <li class="list-group-item row">
+            <p class="col-md-5 font-weight-bold font-weight-bold"> Hình thức làm việc:</p>
+            <p class="col-md-7"> {{job.workingForm.description}}</p>
+          </li>
 
+          <li class="list-group-item row">
+            <p class="col-md-5 font-weight-bold font-weight-bold"> Mức lương:</p>
+            <p class="col-md-7"> {{job.salaryMin}} - {{job.salaryMax}}</p>
+          </li>
 
-  <div id="about" class="counter cards-1 bg-gray">
-    <div class="container">
-      <div class="row">
-        <div class = "col-6"><img  [src]="dbImage" alt="Avatar"
-                                   style="width: 100%;">
-        </div>
-        <div class="col-sm-2"></div>
-        <div class="col4">
-          <h1>Who we are?</h1>
-          <p>{{company.description}}</p>
-          <p>Số thành viên: {{company.number_staff}}</p>
-          <p>Trụ sở chính: {{company.head_office}}</p>
-          <p>Contact:</p>
-          <p>Email: {{company.email}}</p>
-          <p>Phone: {{company.hotline}}</p>
-        </div>
+          <li class="list-group-item row">
+            <p class="col-md-5 font-weight-bold font-weight-bold"> Địa chỉ làm việc:</p>
+            <p class="col-md-7"> {{job.addressWork}}</p>
+          </li>
+
+          <li class="list-group-item row">
+            <p class="col-md-5 font-weight-bold font-weight-bold"> Mô tả công việc:</p>
+            <p class="col-md-7"> {{job.description}}</p>
+          </li>
+
+          <li class="list-group-item row">
+            <p class="col-md-5 font-weight-bold font-weight-bold"> Số năm kinh nghiệm:</p>
+            <p class="col-md-7"> {{job.numberExperience}}</p>
+          </li>
+
+          <li class="list-group-item row">
+            <p class="col-md-5 font-weight-bold font-weight-bold"> Số lượng cần tuyển:</p>
+            <p class="col-md-7"> {{job.qtyPerson}}</p>
+          </li>
+
+          <li class="list-group-item row">
+            <p class="col-md-5 font-weight-bold font-weight-bold"> Trình độ học vấn:</p>
+            <p class="col-md-7"> {{job.academicLevel.description}}</p>
+          </li>
+
+          <li class="list-group-item row">
+            <p class="col-md-5 font-weight-bold font-weight-bold"> Level:</p>
+            <p class="col-md-7"> {{job.rank.description}}</p>
+          </li>
+
+          <li class="list-group-item row">
+            <p class="col-md-5 font-weight-bold font-weight-bold"> Hạn nộp hồ sơ:</p>
+            <p class="col-md-7"> {{job.dueDate}}</p>
+          </li>
+
+          <li class="list-group-item row">
+            <p class="col-md-5 font-weight-bold font-weight-bold"> Người liên hệ:</p>
+            <p class="col-md-7"> {{job.contact.name}}</p>
+          </li>
+
+          <li class="list-group-item row">
+            <p class="col-md-5 font-weight-bold font-weight-bold"> Quyền lợi được hưởng:</p>
+            <p class="col-md-7"> {{job.interest}}</p>
+          </li>
+
+          <li class="list-group-item row">
+            <p class="col-md-5 font-weight-bold font-weight-bold"> Yêu cầu công việc:</p>
+            <p class="col-md-7"> {{job.jobRequirement}}</p>
+          </li>
+
+          <li class="list-group-item row">
+            <button style="margin-top: 20px;" type="button" class="btn btn-primary btn-lg btn-block">Ứng tuyển ngay</button>
+
+          </li>
+        </ul>
 
       </div>
 
-<!--      <div class="row">-->
-<!--        <div class="col-lg-12">-->
-<!--          <h2 style="color:#313e5b ; font-family: 'Lato', sans-serif;" class="h2-heading">Who we are ?</h2>-->
-<!--          <hr class="hr-heading">-->
-<!--        </div> &lt;!&ndash; end of col &ndash;&gt;-->
-<!--      </div> &lt;!&ndash; end of row &ndash;&gt;-->
-<!--      <div class="row">-->
-<!--        <div class="col-xl-9" >-->
-<!--          {{company.name}}-->
-<!--        </div> &lt;!&ndash; end of col &ndash;&gt;-->
-<!--        <img  [src]="dbImage" alt="Avatar"-->
-<!--              style="width:90px; border-radius: 50%;">-->
-<!--      </div> &lt;!&ndash; end of row &ndash;&gt;-->
-<!--      <div class="row">-->
-<!--        <div class="col-xl-9" >-->
-<!--          {{company.email}}-->
-<!--        </div> &lt;!&ndash; end of col &ndash;&gt;-->
-<!--        <div class="col-xl-3">-->
-<!--          {{company.hotline}}-->
-<!--        </div> &lt;!&ndash; end of col &ndash;&gt;-->
-<!--      </div> &lt;!&ndash; end of row &ndash;&gt;-->
-<!--      <div class="row">-->
-<!--        <div class="col-xl-9" >-->
-<!--          {{company.date_incoporation}}-->
-<!--        </div> &lt;!&ndash; end of col &ndash;&gt;-->
-<!--        <div class="col-xl-3">-->
-<!--          {{company.tax_code}}-->
-<!--        </div> &lt;!&ndash; end of col &ndash;&gt;-->
-<!--      </div> &lt;!&ndash; end of row &ndash;&gt;-->
-<!--      <div class="row">-->
-<!--        <div class="col-xl-9" >-->
-<!--          {{company.tax_date}}-->
-<!--        </div> &lt;!&ndash; end of col &ndash;&gt;-->
-<!--        <div class="col-xl-3">-->
-<!--          {{company.tax_place}}-->
-<!--        </div> &lt;!&ndash; end of col &ndash;&gt;-->
-<!--      </div>-->
-<!--        <div class="row">-->
-<!--          <div class="col-xl-9" >-->
-<!--            {{company.head_office}}-->
-<!--          </div> &lt;!&ndash; end of col &ndash;&gt;-->
-<!--          <div class="col-xl-3">-->
-<!--            {{company.number_staff}}-->
-<!--          </div> &lt;!&ndash; end of col &ndash;&gt;-->
-<!--      </div> &lt;!&ndash; end of row &ndash;&gt;-->
-<!--        <div class="row">-->
-<!--          <div class="col-xl-9" >-->
-<!--            {{company.link_web}}-->
-<!--          </div> &lt;!&ndash; end of col &ndash;&gt;-->
-<!--          <div class="col-xl-3">-->
 
-<!--          </div> &lt;!&ndash; end of col &ndash;&gt;-->
-<!--        </div>-->
+    </div>
+  </div>
 
 
-    </div> <!-- end of container -->
-  </div> <!-- end of counter -->
   <!-- Footer -->
   <div class="footer">
     <div class="container">
@@ -196,5 +193,3 @@
 
 </section>
 
-<!--</body>-->
-<!--</html>-->
