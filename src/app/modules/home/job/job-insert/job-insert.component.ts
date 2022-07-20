@@ -56,7 +56,7 @@ export class JobInsertComponent implements OnInit {
     this.getWorkingForm();
     this.getAcademicLevel();
     this.getRank();
-    // this.getContactJE();
+    this.getContactJE();
     this.getCurrentUserId();
 
     this.insertJobForm = new FormGroup({
