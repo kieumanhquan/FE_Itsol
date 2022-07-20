@@ -19,10 +19,11 @@ import {NgbToastModule} from '@ng-bootstrap/ng-bootstrap';
 import { JobExportPdfComponent } from './job/job-export-pdf/job-export-pdf.component';
 import { JobUpdateComponent } from './job/job-detail/job-update/job-update.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import {PaginatorModule} from "primeng/paginator";
+import {PaginatorModule} from 'primeng/paginator';
 import {EditJeComponent} from './managerJe/editJe/editJe.component';
 import {ResJeService} from './managerJe/resJe/resJe.service';
 import {ResJeComponent} from './managerJe/resJe/resJe.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 
 const routes: Routes = [{

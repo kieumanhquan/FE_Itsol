@@ -25,7 +25,6 @@ import {TokenInterceptor} from './@core/services/interceptor.service';
 import {RouteGuardService} from './@core/services/route.guard.service';
 import {FilerecruitComponent} from './modules/home/filerecruit/filerecruit.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { AboutComponent } from './modules/about/about.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -37,6 +36,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import {jsPDF} from 'jspdf';
 import html2canvas from 'html2canvas';
 import {NgbModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { PublicJobDetailComponent } from './modules/home-public/public-job-detail/public-job-detail.component';
 
 const configToast: any = {
   timeOut: 3000,
@@ -48,7 +48,7 @@ const configToast: any = {
 
 
 @NgModule({
-  declarations: [AppComponent, JobInsertComponent, JobDetailComponent],
+  declarations: [AppComponent, JobInsertComponent, JobDetailComponent, PublicJobDetailComponent],
     imports: [
         BrowserModule,
         HttpClientModule,

@@ -8,7 +8,9 @@ import {JobListComponent} from './modules/home/job/job-list/job-list.component';
 import {JobInsertComponent} from "./modules/home/job/job-insert/job-insert.component";
 import {JobDetailComponent} from "./modules/home/job/job-detail/job-detail.component";
 import {JobExportPdfComponent} from "./modules/home/job/job-export-pdf/job-export-pdf.component";
+import {PublicJobDetailComponent} from "./modules/home-public/public-job-detail/public-job-detail.component";
 
+// @ts-ignore
 // @ts-ignore
 // @ts-ignore
 // @ts-ignore
@@ -30,14 +32,14 @@ export const routes: Routes = [
     // canActivate: [AuthGuard ],
     loadChildren: () => import('./modules/public/public.module').then(m => m.PublicModule),
   },
-  {
-    path: 'signup',
-    loadChildren: () => import('./modules/regis/regis.module').then(m => m.RegisModule),
-  },
-  {
-    path: 'public/active_account/:id',
-    loadChildren: () => import('./modules/active/active.module').then(m => m.ActiveModule),
-  },
+  // {
+  //   path: 'signup',
+  //   loadChildren: () => import('./modules/regis/regis.module').then(m => m.RegisModule),
+  // },
+  // {
+  //   path: 'public/active_account/:id',
+  //   loadChildren: () => import('./modules/active/active.module').then(m => m.ActiveModule),
+  // },
   { path: '',
     redirectTo: 'home',
     pathMatch: 'full',
@@ -45,10 +47,10 @@ export const routes: Routes = [
   // { path: '**',
   //   redirectTo: 'auth',
   // },
-  {
-    path: 'signup',
-    loadChildren: () => import('./modules/regis/regis.module').then(m => m.RegisModule),
-  },
+  // {
+  //   path: 'signup',
+  //   loadChildren: () => import('./modules/regis/regis.module').then(m => m.RegisModule),
+  // },
 
   {path: 'job', component: JobListComponent},
   {path: '', redirectTo: 'jobs', pathMatch: 'full'},
@@ -60,12 +62,12 @@ export const routes: Routes = [
   },
   {
     path: 'public/itsol_recruitment',
-    loadChildren: () => import('./modules/web-home/web-home.module').then(m => m.WebhomeModule),
+    loadChildren: () => import('./modules/home-public/web-home-public/web-home.module').then(m => m.WebhomeModule),
   },
-  {
-    path: 'public/aboutus',
-    loadChildren: () => import('./modules/about/about.module').then(m => m.AboutModule),
-  },
+  // {
+  //   path: 'public/aboutus',
+  //   loadChildren: () => import('./modules/about/about.module').then(m => m.AboutModule),
+  // },
   {
     path: 'job',
     component: JobListComponent,
@@ -85,6 +87,10 @@ export const routes: Routes = [
   {
     path: 'public/itsol_recruitment/:typeJob',
     loadChildren: () => import('./modules/home-public/see-more-job/see-more-job.module').then(m => m.SeeMoreJobModule),
+  },
+  {
+    path: 'public/itsol_recruitment/job/:id',
+    component: PublicJobDetailComponent,
   },
 ];
 

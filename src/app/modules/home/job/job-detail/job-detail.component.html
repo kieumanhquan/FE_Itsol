@@ -4,9 +4,7 @@
 <div class = "row" style="margin: 0px">
 
   <button class="btn btn-primary group-btn col" (click)="openDialog(job.id)">Cập nhập</button>
-
-
-  <button *ngIf="job.status.id === 3 || job.status.id === 4" (click)="onPreview()"
+  <button *ngIf="job.status.id === 3 || job.status.id === 4" (click)="onPreview(job.id)"
           class="btn btn-info group-btn col">Xem trước</button>
   <button *ngIf="role==='ROLE_ADMIN' && job.status.id === 1" (click)="onApprove()"
           class="btn btn-success group-btn col">Xét duyệt</button>

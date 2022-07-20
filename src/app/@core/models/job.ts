@@ -1,5 +1,3 @@
-import {NgbDate} from "@ng-bootstrap/ng-bootstrap";
-
 export class Job {
   id: number;
   name: string;
@@ -13,9 +11,6 @@ export class Job {
   startRecruitmentDate: Date;
   dueDate: Date;
   skills: string;
-  startRecruitmentDate?: Date;
-  workingForm: WorkingForm;
-  jobRequirement: string;
   description: string;
   interest: string;
   jobRequirement: string;
