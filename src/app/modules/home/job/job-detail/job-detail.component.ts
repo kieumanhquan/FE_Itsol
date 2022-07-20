@@ -5,7 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {SessionService} from '../../../../@core/services/session.service';
 import {Toaster} from 'ngx-toast-notifications';
 import {MatDialog} from '@angular/material/dialog';
-import {JobUpdateComponent} from "./job-update/job-update.component";
+import {JobUpdateComponent} from './job-update/job-update.component';
 
 @Component({
   selector: 'ngx-job-detail',
@@ -45,21 +45,21 @@ export class JobDetailComponent implements OnInit {
     this.toast.open({
       text: message,
       caption: 'Thành công',
-      type: type,
-      duration: 3000
+      type,
+      duration: 3000,
     });
   }
 
   onPreview() {
     const url = this.router2.serializeUrl(
-      this.router2.createUrlTree(['/public/itsol_recruitment'])
+      this.router2.createUrlTree(['/public/itsol_recruitment']),
     );
     window.open(url, '_blank');
   }
 
   updateJob() {
     this.jobService.updateJob(this.job.id, this.job).subscribe(data => {
-      console.log("data = ");
+      console.log('data = ');
       console.log(data);
     }, error => console.log(error));
   }

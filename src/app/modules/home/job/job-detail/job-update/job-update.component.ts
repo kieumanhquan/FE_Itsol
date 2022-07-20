@@ -49,7 +49,7 @@ export class JobUpdateComponent implements OnInit {
     this.getWorkingForm();
     this.getAcademicLevel();
     this.getRank();
-    this.getContactJE();
+    // this.getContactJE();
   }
 
   getJobPosition() {
@@ -91,11 +91,11 @@ export class JobUpdateComponent implements OnInit {
     this.job.rankId = id;
   }
 
-  getContactJE() {
-    this.managerJeService.getJE().subscribe(data => {
-      this.contactJE = data;
-    });
-  }
+  // getContactJE() {
+  //   this.managerJeService.getJE().subscribe(data => {
+  //     this.contactJE = data;
+  //   });
+  // }
   selectContactJE(id: number) {
     this.job.contactId = id;
   }

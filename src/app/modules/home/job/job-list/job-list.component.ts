@@ -3,8 +3,8 @@ import {JobService} from '../../../../@core/services/job.service';
 import {Router} from '@angular/router';
 import {Job} from '../../../../@core/models/job';
 import {PageEvent} from '@angular/material/paginator';
-import html2canvas from 'html2canvas';
-import {jsPDF} from 'jspdf';
+// import html2canvas from 'html2canvas';
+// import {jsPDF} from 'jspdf';
 
 
 @Component({
@@ -66,7 +66,7 @@ export class JobListComponent implements OnInit {
   gotoExportPDFJob(id: number) {
     // this.router.navigate(['job/exportPDF', id]);
     const url = this.router.serializeUrl(
-      this.router.createUrlTree(['job/exportPDF',id])
+      this.router.createUrlTree(['job/exportPDF',id]),
     );
     window.open(url, '_blank');
   }
@@ -74,7 +74,7 @@ export class JobListComponent implements OnInit {
   gotoPreviewJob(id: number) {
     // this.router.navigate(['home/job/detail', id]);
     const url = this.router.serializeUrl(
-      this.router.createUrlTree(['/public/itsol_recruitment'])
+      this.router.createUrlTree(['/public/itsol_recruitment']),
     );
     window.open(url, '_blank');
   }
