@@ -43,7 +43,9 @@
       <div class="row" ></div>
       <br>
 
-      <div class="row"><h1> Việc mới ứng tuyển</h1></div>
+      <div class="row" *ngIf="typeJob === 'newJob'"><h1> Việc mới ứng tuyển</h1></div>
+      <div class="row" *ngIf="typeJob === 'urgentJob'"><h1> Việc cần tuyển gấp</h1></div>
+      <div class="row" *ngIf="typeJob === 'highPJob'"><h1> Việc làm lương cao</h1></div>
       <div class="row">
 
         <div class="col-4" *ngFor="let job of jobs; let i = index">
@@ -54,7 +56,7 @@
 
                 <div>
                   <a style="font-size:20px" href = "#"> {{job.name}} </a>
-                  <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate}} </p>
+                  <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate|date:'dd-MM-yyyy'}} </p>
                   <span ><a style="color:red" href="/public/searchJob">{{job.addressWork}}</a> | </span>
 
                   <span style="color:gray"> upto {{job.salaryMax }} </span></div>
@@ -71,7 +73,7 @@
 
               <div>
                 <a style="font-size:20px" href = "#"> {{job.name}} </a>
-                <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate}} </p>
+                <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate|date:'dd-MM-yyyy'}} </p>
                 <span ><a style="color:red" href="/public/searchJob">{{job.addressWork}}</a> | </span>
 
                 <span style="color:gray"> upto {{job.salaryMax }} </span></div>
@@ -87,7 +89,7 @@
 
               <div>
                 <a style="font-size:20px" href = "#"> {{job.name}} </a>
-                <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate}} </p>
+                <p style="font-size:15px">Hạn ứng tuyển: {{job.dueDate|date:'dd-MM-yyyy'}} </p>
                 <span ><a style="color:red" href="/public/searchJob">{{job.addressWork}}</a> | </span>
 
                 <span style="color:gray"> upto {{job.salaryMax }} </span></div>
